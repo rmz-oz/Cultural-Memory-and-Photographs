@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Topic 5 — Semiotics: The Study of Signs</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f5f5f0; color: #1a1a1a; padding: 2rem 1rem; }
+.container { max-width: 880px; margin: 0 auto; }
+.back { display: inline-block; color: #1a3a6e; text-decoration: none; font-size: 0.9rem; margin-bottom: 1.5rem; }
+.back:hover { text-decoration: underline; }
+h1 { font-size: 1.5rem; font-weight: 700; color: #1a3a6e; }
+.subtitle { color: #555; font-size: 0.9rem; margin: 0.3rem 0 1.5rem; }
+.tabs { display: flex; gap: 8px; margin-bottom: 1.5rem; border-bottom: 2px solid #e0e0d8; padding-bottom: 0; }
+.tab-btn { padding: 0.5rem 1.25rem; border: none; background: none; cursor: pointer; font-size: 0.9rem; color: #666; border-bottom: 2px solid transparent; margin-bottom: -2px; font-weight: 500; }
+.tab-btn.active { color: #1a3a6e; border-bottom-color: #1a3a6e; }
+.section { display: none; }
+.section.active { display: block; }
+
+h2 { font-size: 1.15rem; font-weight: 600; color: #1a3a6e; margin: 1.5rem 0 0.75rem; }
+h3 { font-size: 1rem; font-weight: 600; color: #333; margin: 1rem 0 0.5rem; }
+p { line-height: 1.65; margin-bottom: 0.75rem; color: #333; }
+ul, ol { padding-left: 1.5rem; margin-bottom: 0.75rem; }
+li { line-height: 1.6; margin-bottom: 0.25rem; }
+code { background: #e8e8e4; padding: 2px 5px; border-radius: 3px; font-family: 'SF Mono', monospace; font-size: 0.85em; }
+.card { background: #fff; border: 1px solid #e0e0d8; border-radius: 10px; padding: 1.1rem 1.25rem; margin-bottom: 1rem; }
+.card-title { font-weight: 600; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem; }
+.blue .card-title { color: #1a3a6e; }
+.teal .card-title { color: #0f766e; }
+.amber .card-title { color: #92400e; }
+.coral .card-title { color: #c2410c; }
+.grid2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin-bottom: 1rem; }
+.grid3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-bottom: 1rem; }
+.info-box { border-left: 4px solid #3b82f6; background: #eff6ff; padding: 0.85rem 1rem; border-radius: 0 8px 8px 0; margin-bottom: 1rem; }
+.success-box { border-left: 4px solid #4caf50; background: #f0fdf4; padding: 0.85rem 1rem; border-radius: 0 8px 8px 0; margin-bottom: 1rem; }
+.warning-box { border-left: 4px solid #f59e0b; background: #fffbeb; padding: 0.85rem 1rem; border-radius: 0 8px 8px 0; margin-bottom: 1rem; }
+
+.compare-table { width: 100%; border-collapse: collapse; margin-bottom: 1.25rem; font-size: 0.9rem; }
+.compare-table th { background: #1a3a6e; color: #fff; padding: 0.65rem 1rem; text-align: left; }
+.compare-table th:first-child { border-radius: 8px 0 0 0; }
+.compare-table th:last-child { border-radius: 0 8px 0 0; }
+.compare-table td { padding: 0.6rem 1rem; border-bottom: 1px solid #e0e0d8; background: #fff; vertical-align: top; }
+.compare-table tr:last-child td { border-bottom: none; }
+.compare-table tr:last-child td:first-child { border-radius: 0 0 0 8px; }
+.compare-table tr:last-child td:last-child { border-radius: 0 0 8px 0; }
+.dim-label { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; color: #888; letter-spacing: 0.04em; }
+
+.score-bar { background: #e0e0d8; border-radius: 8px; height: 8px; margin-bottom: 1.5rem; overflow: hidden; }
+#scorefill { height: 100%; background: #1a3a6e; border-radius: 8px; width: 0%; transition: width 0.4s; }
+.score-text { font-size: 0.85rem; color: #555; margin-bottom: 0.5rem; }
+.q-block { background: #fff; border: 1px solid #e0e0d8; border-radius: 10px; padding: 1.1rem 1.25rem; margin-bottom: 1rem; }
+.q-text { font-weight: 500; margin-bottom: 0.75rem; font-size: 0.95rem; }
+.opt { padding: 0.6rem 0.9rem; border: 1px solid #e0e0d8; border-radius: 7px; margin-bottom: 0.4rem; cursor: pointer; font-size: 0.9rem; transition: background 0.1s; }
+.opt:hover:not(.correct):not(.wrong) { background: #f0f0eb; }
+.opt.correct { background: #d1fae5; border-color: #4caf50; color: #065f46; pointer-events: none; }
+.opt.wrong { background: #fee2e2; border-color: #ef4444; color: #991b1b; pointer-events: none; }
+.opt.disabled { pointer-events: none; color: #aaa; }
+.explanation { margin-top: 0.6rem; font-size: 0.85rem; color: #555; background: #f5f5f0; padding: 0.6rem 0.8rem; border-radius: 6px; display: none; }
+</style>
+</head>
+<body>
+<div class="container">
+  <a class="back" href="index.html">← Back</a>
+  <h1>Semiotics: The Study of Signs</h1>
+  <p class="subtitle">Cultural Memory and Photographs · Topic 5 — D. Simpson / Peirce &amp; Saussure</p>
+
+  <div class="tabs">
+    <button class="tab-btn active" onclick="switchTab('lesson', this)">Lesson</button>
+    <button class="tab-btn" onclick="switchTab('quiz', this)">Quiz (15 Q)</button>
+  </div>
+
+  <!-- ═══ LESSON SECTION ═══ -->
+  <div id="lesson" class="section active">
+
+    <div class="info-box">
+      <strong>Key Thinkers:</strong> <strong>C.S. Peirce</strong> (American pragmatist) and <strong>Ferdinand de Saussure</strong> (Swiss linguist). Semiotics — also called <em>semiology</em> — is the scientific, literary, and philosophical study of signs in all their forms.
+    </div>
+
+    <h2>1. What Is a Sign?</h2>
+
+    <p>The foundational principle of semiotics is: <strong>"A sign is something that stands for something else."</strong> Peirce expanded this: a sign is something that <em>stands to somebody for something in some respect</em>. Umberto Eco offered a more provocative definition:</p>
+
+    <div class="warning-box">
+      <strong>Eco's Definition:</strong> "A sign is anything that can be used to tell a lie." — If a sign can misrepresent, it has the full power of meaning. This foregrounds the conventional, arbitrary nature of all signs.
+    </div>
+
+    <p>Peirce also made a sweeping claim about the pervasiveness of signs:</p>
+
+    <div class="info-box">
+      <strong>Peirce:</strong> "The entire universe is perfused with signs, if it is not composed exclusively of signs." Once human consciousness emerges, everything becomes charged with potential significance.
+    </div>
+
+    <h2>2. Sign Components: Signifier and Signified</h2>
+
+    <div class="grid2">
+      <div class="card blue">
+        <div class="card-title">Signifier</div>
+        <p>The <strong>physical, material form</strong> of the sign — the perceptible vehicle that carries meaning.</p>
+        <ul>
+          <li>A wooden cross</li>
+          <li>A red traffic light</li>
+          <li>A checkered flag at a race</li>
+        </ul>
+      </div>
+      <div class="card teal">
+        <div class="card-title">Signified</div>
+        <p>The <strong>mental concept</strong> or idea that the signifier calls up in the mind of an interpreter.</p>
+        <ul>
+          <li>Christianity / sacrifice</li>
+          <li>Stop / danger</li>
+          <li>Race ended / victory</li>
+        </ul>
+      </div>
+    </div>
+
+    <h2>3. Denotation vs. Connotation</h2>
+
+    <div class="grid2">
+      <div class="card amber">
+        <div class="card-title">Denotation</div>
+        <p>The <strong>explicit, referential meaning</strong> of a sign — what it literally points to.</p>
+        <p><em>Example:</em> "Hollywood" denotes a specific district in Los Angeles.</p>
+      </div>
+      <div class="card coral">
+        <div class="card-title">Connotation</div>
+        <p>The <strong>social, cultural, and emotional associations</strong> that attach to a sign beyond its literal meaning.</p>
+        <p><em>Example:</em> "Hollywood" connotes glamour, celebrity, the film industry, stardom.</p>
+      </div>
+    </div>
+
+    <h2>4. Codes: The Social Contract of Signs</h2>
+
+    <p>A <strong>code</strong> is a social contract — a shared agreement within a community about the relationship between signifiers and their signifieds. Without shared codes, communication fails.</p>
+
+    <div class="grid2">
+      <div class="card blue">
+        <div class="card-title">Highway Codes</div>
+        <ul>
+          <li>Traffic signs, signals, painted lines</li>
+          <li>Stoplights and lane markings</li>
+          <li>Universally agreed meanings within a jurisdiction</li>
+        </ul>
+      </div>
+      <div class="card teal">
+        <div class="card-title">Body Language</div>
+        <ul>
+          <li>Facial expressions, hand signals, posture</li>
+          <li>Proximity between speakers</li>
+          <li>Often culturally variable in meaning</li>
+        </ul>
+      </div>
+      <div class="card amber">
+        <div class="card-title">Clothing &amp; Fashion</div>
+        <ul>
+          <li>Conveys wealth, occupation, group affiliation</li>
+          <li>Fashion as a system of status symbols</li>
+          <li>Dress codes for institutions (uniforms, mourning attire)</li>
+        </ul>
+      </div>
+      <div class="card coral">
+        <div class="card-title">Personal Possessions</div>
+        <ul>
+          <li>Automobiles, jewelry as identity markers</li>
+          <li>Consumer goods communicate values and taste</li>
+          <li>Objects become signs in a consumer culture</li>
+        </ul>
+      </div>
+    </div>
+
+    <h2>5. The Three Branches of Semiotics</h2>
+
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th>Branch</th>
+          <th>Focus</th>
+          <th>Example Question</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="dim-label">Syntactics</span></td>
+          <td>How signs are <strong>combined and structured</strong> — the rules for constructing sign systems</td>
+          <td>What grammar governs this visual layout?</td>
+        </tr>
+        <tr>
+          <td><span class="dim-label">Semantics</span></td>
+          <td>The <strong>meanings</strong> of signs — what they stand for</td>
+          <td>What does this image mean?</td>
+        </tr>
+        <tr>
+          <td><span class="dim-label">Pragmatics</span></td>
+          <td>The <strong>practical uses and effects</strong> of signs in real communicative situations</td>
+          <td>How does this message affect its audience?</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>6. Guidelines for Effective Semiotic Communication</h2>
+
+    <ol>
+      <li style="margin-bottom:0.6rem;"><strong>Avoid semiotic overload.</strong> Too many competing signs impede rather than facilitate communication. Human attention is limited; clutter defeats meaning.</li>
+      <li style="margin-bottom:0.6rem;"><strong>Principle of brevity.</strong> Present messages clearly and concisely without unnecessary repetition. Trust audiences to interpret actively.</li>
+      <li style="margin-bottom:0.6rem;"><strong>Strategic redundancy.</strong> In noisy environments or when feedback is unavailable, appropriate repetition becomes necessary to ensure the message gets through.</li>
+      <li style="margin-bottom:0.6rem;"><strong>Visual dominance.</strong> Images and sounds command significantly more attention than surrounding text. Visual elements should carry the main point.</li>
+      <li style="margin-bottom:0.6rem;"><strong>Code comprehension.</strong> Misunderstanding codes causes serious communication failures. Cultural and contextual knowledge is essential for accurate interpretation.</li>
+    </ol>
+
+    <h2>7. Code Misinterpretation: Cross-Cultural Examples</h2>
+
+    <div class="warning-box">
+      <strong>The Same Gesture, Different Meanings:</strong> A circle made with thumb and index finger signals "OK" in the United States, means "zero" in parts of France, and was an obscene gesture in ancient Athens. The physical form (signifier) is identical; the code — and therefore the meaning — differs entirely.
+    </div>
+
+    <div class="grid2">
+      <div class="card blue">
+        <div class="card-title">Fur Coat Example</div>
+        <p>A woman wearing a fur coat communicates <strong>luxury and status</strong> to fashion-oriented audiences but communicates <strong>cruelty and ethical violation</strong> to animal rights activists. Same signifier; radically different codes produce radically different signifieds.</p>
+      </div>
+      <div class="card coral">
+        <div class="card-title">Sexual Identity Codes</div>
+        <p>Dress, body language, and speech patterns used to signal sexual identity are <strong>ambiguous and easily misread</strong> across social contexts — demonstrating how codes for identity are fragile, contested, and culturally specific.</p>
+      </div>
+    </div>
+
+    <h2>8. Semiotics Applied: Sports, Media, and Culture</h2>
+
+    <div class="grid3">
+      <div class="card blue">
+        <div class="card-title">Sports Events</div>
+        <p>Football games are dense semiotic systems: uniforms signal team allegiance, play-signals coordinate action, officiating gestures mark rule violations, and field markings structure the game's space.</p>
+      </div>
+      <div class="card teal">
+        <div class="card-title">Mass Media</div>
+        <p>Film, advertising, television, and online media orchestrate images, words, and sounds into layered sign systems. Reading media critically requires decoding both denotation and connotation simultaneously.</p>
+      </div>
+      <div class="card amber">
+        <div class="card-title">Daily Life</div>
+        <p>Traffic congestion, fashion choices, and consumer goods all function as sign systems — encoding identity, values, and social position through the objects and behaviors we display publicly.</p>
+      </div>
+    </div>
+
+    <h2>9. Historical and Philosophical Context</h2>
+
+    <p>The Genesis account of Adam <em>naming</em> the animals functions as a mythological origin story for semiotics — language as the power to assign meaning. The New Testament concept of <em>logos</em> (primordial reason or word) extends this: language and meaning are not merely human tools but fundamental structures of reality.</p>
+
+    <div class="info-box">
+      <strong>Why This Matters for Photography:</strong> Every photograph is a semiotic object. Its subject is the signifier; what the image culturally <em>means</em> — dignity, poverty, heroism, threat — is the signified. Photographic meaning is not natural or automatic: it is always produced through codes (genre conventions, framing, caption, context) and read differently by audiences operating under different cultural agreements.
+    </div>
+
+    <h2>10. Exam-Style Questions</h2>
+
+    <div class="card blue">
+      <div class="card-title">Question 1 — Sign, Signifier, Signified</div>
+      <p><strong>Q:</strong> Using Saussure's framework, explain the concepts of signifier and signified. How does a red traffic light function as a sign? How does Peirce's definition add to or differ from Saussure's?</p>
+      <div class="success-box" style="margin-top:0.75rem; margin-bottom:0;">
+        <strong>Model Answer:</strong> For Saussure, a sign is the union of two inseparable components: the <em>signifier</em> (the material, perceptible form — the physical red light) and the <em>signified</em> (the mental concept it produces — "stop" or "danger"). The relationship is arbitrary: there is nothing inherently "stop-like" about the color red; the link is established by social convention (the highway code).<br><br>
+        Peirce's definition — "something that stands to somebody for something in some respect" — emphasizes the interpretive dimension: meaning is not simply encoded in the sign but produced in the act of interpretation by a person within a context. This makes Peirce's model triadic (sign, object, interpretant) rather than Saussure's dyadic (signifier, signified), and foregrounds the social and contextual variability of meaning.
+      </div>
+    </div>
+
+    <div class="card blue" style="margin-top:1rem;">
+      <div class="card-title">Question 2 — Codes and Cross-Cultural Misreading</div>
+      <p><strong>Q:</strong> What is a "code" in semiotics? Using the cross-cultural gesture example, explain why code comprehension is essential and what happens when codes are misread.</p>
+      <div class="success-box" style="margin-top:0.75rem; margin-bottom:0;">
+        <strong>Model Answer:</strong> A code is a social contract — a shared agreement within a community that links specific signifiers to specific signifieds. Codes are not universal; they are culturally and contextually constructed.<br><br>
+        The circle gesture (thumb and index finger) illustrates this perfectly: the physical form of the gesture is identical across cultures, yet it signifies "OK" in the U.S., "zero" in parts of France, and obscenity in ancient Athens. A traveler applying American code while in a French context will produce a miscommunication; the <em>signifier</em> is shared but the <em>code</em> — the social agreement about what it means — is not. When codes are misread, communication fails entirely, regardless of how clearly the signifier is presented.
+      </div>
+    </div>
+
+    <div class="warning-box" style="margin-top:1rem;">
+      <strong>Key Concept to Remember:</strong> Denotation and connotation always coexist in a sign. A photograph of a refugee camp <em>denotes</em> people living in tents; it <em>connotes</em> — depending on the code the viewer brings — humanitarian crisis, political failure, human resilience, or threat. Semiotics asks us to examine which codes activate which connotations, and who controls them.
+    </div>
+
+  </div>
+
+  <!-- ═══ QUIZ SECTION ═══ -->
+  <div id="quiz" class="section">
+    <p class="score-text">Score: <span id="scorenum">0</span> / 15</p>
+    <div class="score-bar"><div id="scorefill"></div></div>
+    <div id="quiz-container"></div>
+  </div>
+</div>
+
+<script>
+function switchTab(id, btn) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+}
+
+const questions = [
+  {
+    q: "What is the foundational principle of semiotics?",
+    opts: [
+      "A sign is a written symbol used to encode language",
+      "A sign is something that stands for something else",
+      "A sign is any visual image produced for communication",
+      "A sign is a cultural artifact from a specific historical period"
+    ],
+    ans: 1,
+    exp: "The core definition in semiotics: 'a sign is something that stands for something else.' Peirce elaborated that it stands to somebody for something in some respect."
+  },
+  {
+    q: "According to Umberto Eco, what reveals the full power of a sign?",
+    opts: [
+      "A sign's ability to convey exact scientific measurements",
+      "A sign's capacity to unite an entire community around one meaning",
+      "A sign's ability to be used to tell a lie",
+      "A sign's material durability across time"
+    ],
+    ans: 2,
+    exp: "Eco defined a sign as 'anything that can be used to tell a lie.' If a sign can misrepresent reality, it has genuine semiotic power — it is not merely mechanical but meaningful."
+  },
+  {
+    q: "Which term refers to the physical, material form of a sign?",
+    opts: [
+      "Signified",
+      "Referent",
+      "Code",
+      "Signifier"
+    ],
+    ans: 3,
+    exp: "The signifier is the perceptible, material vehicle of the sign — a wooden cross, a red light, a checkered flag. The signified is the mental concept it evokes."
+  },
+  {
+    q: "What does 'denotation' mean in semiotic analysis?",
+    opts: [
+      "The emotional and cultural associations attached to a sign",
+      "The process by which a community agrees on a code",
+      "The explicit, referential meaning of a sign",
+      "The physical material from which a sign is made"
+    ],
+    ans: 2,
+    exp: "Denotation is the literal, explicit meaning — what a sign directly refers to. 'Hollywood' denotes a district in Los Angeles. Connotation is the layer of cultural associations on top of this."
+  },
+  {
+    q: "If 'Hollywood' connotes glamour and celebrity, what semiotic concept is being described?",
+    opts: [
+      "Denotation",
+      "Syntactics",
+      "Pragmatics",
+      "Connotation"
+    ],
+    ans: 3,
+    exp: "Connotation refers to the social, cultural, and emotional associations that surround a sign beyond its literal referent. Hollywood connotes the film industry and stardom."
+  },
+  {
+    q: "In semiotics, a 'code' is best defined as:",
+    opts: [
+      "A secret cipher used to encrypt messages",
+      "A social contract about the relationship between signifiers and signifieds",
+      "The physical structure of a written language",
+      "A government regulation governing communication"
+    ],
+    ans: 1,
+    exp: "A code is a shared social agreement within a community that links signifiers to signifieds. Without a shared code, communication between parties breaks down."
+  },
+  {
+    q: "Which branch of semiotics is concerned with how signs are combined and structured?",
+    opts: [
+      "Semantics",
+      "Pragmatics",
+      "Syntactics",
+      "Hermeneutics"
+    ],
+    ans: 2,
+    exp: "Syntactics examines the rules for constructing and combining signs — the grammar of sign systems. Semantics concerns meaning; pragmatics concerns practical use and effect."
+  },
+  {
+    q: "The semiotic guideline 'avoid semiotic overload' refers to:",
+    opts: [
+      "Avoiding the use of more than three colors in a design",
+      "Not using signs from foreign cultural codes",
+      "Limiting repetition to exactly one instance per sign",
+      "Not using too many competing signs that exceed the audience's attention capacity"
+    ],
+    ans: 3,
+    exp: "Semiotic overload occurs when too many competing signs are present simultaneously. This impedes rather than facilitates communication because the audience cannot attend to all signs at once."
+  },
+  {
+    q: "When is 'strategic redundancy' in communication justified?",
+    opts: [
+      "Always — repetition always strengthens a message",
+      "In noisy environments or when there is no opportunity for audience feedback",
+      "Only when using visual media rather than written text",
+      "When the audience is highly educated and can process multiple signals"
+    ],
+    ans: 1,
+    exp: "Strategic redundancy is appropriate when communication occurs in a noisy context or when the sender cannot receive feedback. In such situations, repetition helps ensure the message is received correctly."
+  },
+  {
+    q: "Why does the 'visual dominance' guideline recommend that images carry the main point of a message?",
+    opts: [
+      "Because text is less reliable than images",
+      "Because images are cheaper to produce than text",
+      "Because images and sounds command significantly more attention than surrounding text",
+      "Because audiences prefer aesthetics over information"
+    ],
+    ans: 2,
+    exp: "Visual dominance is a semiotic principle: images and sounds command far more audience attention than text. Therefore, the main communicative point should be conveyed visually."
+  },
+  {
+    q: "A circle made with the thumb and index finger means 'OK' in the U.S. but 'zero' in parts of France. This illustrates:",
+    opts: [
+      "That gestures are always universal across cultures",
+      "That signifiers are unstable and break down under scrutiny",
+      "That the same signifier can carry different meanings under different codes",
+      "That French culture is more literal than American culture"
+    ],
+    ans: 2,
+    exp: "This example shows that meaning is not in the physical form (signifier) alone — it is produced by the code (social agreement) applied to that form. Different communities apply different codes to the same gesture."
+  },
+  {
+    q: "A woman wearing a fur coat is read as 'luxury' by one viewer and 'cruelty' by another. This demonstrates:",
+    opts: [
+      "That the sign has no stable denotation",
+      "That connotation can vary radically depending on the code the viewer applies",
+      "That fashion is always a politically neutral sign system",
+      "That signs only carry meaning for their intended audience"
+    ],
+    ans: 1,
+    exp: "The fur coat has the same denotative form for both viewers, but the connotations differ because the viewers operate under different codes — fashion code vs. animal-rights code."
+  },
+  {
+    q: "Peirce's statement that 'the entire universe is perfused with signs' means:",
+    opts: [
+      "All objects in the universe carry a factory-assigned label",
+      "Scientific laws can be written as semiotic systems",
+      "Once human consciousness emerges, everything becomes charged with potential significance",
+      "Signs are only meaningful in linguistic contexts"
+    ],
+    ans: 2,
+    exp: "Peirce's claim is that signification is not limited to language. Human consciousness transforms the entire world into a potential sign system — every object, event, or phenomenon can stand for something."
+  },
+  {
+    q: "Which semiotic concept does Saussure's term 'semiology' most closely align with?",
+    opts: [
+      "The study of signs in natural languages only",
+      "The study of signs in all their forms — Peirce's semiotics under a different name",
+      "The anthropological study of cultural rituals",
+      "The branch of linguistics dealing with grammar"
+    ],
+    ans: 1,
+    exp: "Semiology is Saussure's term for the same discipline Peirce called semiotics. Both terms refer to the systematic study of signs — letters, images, gestures, symbols — across all domains."
+  },
+  {
+    q: "Why is semiotics especially relevant to the analysis of photographs?",
+    opts: [
+      "Because photographs are purely objective records with no cultural bias",
+      "Because photographs are too complex for verbal description",
+      "Because photographs are sign systems where meaning is produced through codes, not automatically by the image itself",
+      "Because photography is a recent technology that requires new semiotic frameworks"
+    ],
+    ans: 2,
+    exp: "A photograph is a semiotic object: its subject is the signifier, but what the image culturally means — heroism, poverty, threat — is produced through codes (framing, genre, caption, context). Meaning is not natural; it is coded and therefore interpretable, contestable, and variable."
+  }
+];
+
+let answered = Array(questions.length).fill(false);
+let score = 0;
+
+function answer(qi, oi) {
+  if (answered[qi]) return;
+  answered[qi] = true;
+  const block = document.querySelectorAll('.q-block')[qi];
+  const opts = block.querySelectorAll('.opt');
+  opts.forEach((o, i) => {
+    if (i === questions[qi].ans) o.classList.add('correct');
+    else o.classList.add(i === oi ? 'wrong' : 'disabled');
+  });
+  block.querySelector('.explanation').style.display = 'block';
+  if (oi === questions[qi].ans) score++;
+  document.getElementById('scorenum').textContent = score;
+  document.getElementById('scorefill').style.width = (answered.filter(Boolean).length / questions.length * 100) + '%';
+}
+
+function buildQuiz() {
+  const c = document.getElementById('quiz-container');
+  questions.forEach((q, qi) => {
+    c.innerHTML += `<div class="q-block">
+      <div class="q-text">${qi + 1}. ${q.q}</div>
+      ${q.opts.map((o, oi) => `<div class="opt" onclick="answer(${qi},${oi})">${o}</div>`).join('')}
+      <div class="explanation">&#128161; ${q.exp}</div>
+    </div>`;
+  });
+}
+buildQuiz();
+</script>
+</body>
+</html>
