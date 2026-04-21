@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Topic 5 — Semiotics: The Study of Signs</title>
+<title>Topic 5 — Ways of Seeing: Image, Reproduction & Oil Painting</title>
 <style>
 * { box-sizing: border-box; margin: 0; padding: 0; }
 body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f5f5f0; color: #1a1a1a; padding: 2rem 1rem; }
@@ -17,13 +17,11 @@ h1 { font-size: 1.5rem; font-weight: 700; color: #1a3a6e; }
 .tab-btn.active { color: #1a3a6e; border-bottom-color: #1a3a6e; }
 .section { display: none; }
 .section.active { display: block; }
-
 h2 { font-size: 1.15rem; font-weight: 600; color: #1a3a6e; margin: 1.5rem 0 0.75rem; }
 h3 { font-size: 1rem; font-weight: 600; color: #333; margin: 1rem 0 0.5rem; }
 p { line-height: 1.65; margin-bottom: 0.75rem; color: #333; }
 ul, ol { padding-left: 1.5rem; margin-bottom: 0.75rem; }
 li { line-height: 1.6; margin-bottom: 0.25rem; }
-code { background: #e8e8e4; padding: 2px 5px; border-radius: 3px; font-family: 'SF Mono', monospace; font-size: 0.85em; }
 .card { background: #fff; border: 1px solid #e0e0d8; border-radius: 10px; padding: 1.1rem 1.25rem; margin-bottom: 1rem; }
 .card-title { font-weight: 600; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem; }
 .blue .card-title { color: #1a3a6e; }
@@ -35,7 +33,7 @@ code { background: #e8e8e4; padding: 2px 5px; border-radius: 3px; font-family: '
 .info-box { border-left: 4px solid #3b82f6; background: #eff6ff; padding: 0.85rem 1rem; border-radius: 0 8px 8px 0; margin-bottom: 1rem; }
 .success-box { border-left: 4px solid #4caf50; background: #f0fdf4; padding: 0.85rem 1rem; border-radius: 0 8px 8px 0; margin-bottom: 1rem; }
 .warning-box { border-left: 4px solid #f59e0b; background: #fffbeb; padding: 0.85rem 1rem; border-radius: 0 8px 8px 0; margin-bottom: 1rem; }
-
+.quote-box { border-left: 4px solid #8b5cf6; background: #f5f3ff; padding: 0.85rem 1rem; border-radius: 0 8px 8px 0; margin-bottom: 1rem; font-style: italic; }
 .compare-table { width: 100%; border-collapse: collapse; margin-bottom: 1.25rem; font-size: 0.9rem; }
 .compare-table th { background: #1a3a6e; color: #fff; padding: 0.65rem 1rem; text-align: left; }
 .compare-table th:first-child { border-radius: 8px 0 0 0; }
@@ -45,7 +43,6 @@ code { background: #e8e8e4; padding: 2px 5px; border-radius: 3px; font-family: '
 .compare-table tr:last-child td:first-child { border-radius: 0 0 0 8px; }
 .compare-table tr:last-child td:last-child { border-radius: 0 0 8px 0; }
 .dim-label { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; color: #888; letter-spacing: 0.04em; }
-
 .score-bar { background: #e0e0d8; border-radius: 8px; height: 8px; margin-bottom: 1.5rem; overflow: hidden; }
 #scorefill { height: 100%; background: #1a3a6e; border-radius: 8px; width: 0%; transition: width 0.4s; }
 .score-text { font-size: 0.85rem; color: #555; margin-bottom: 0.5rem; }
@@ -62,8 +59,8 @@ code { background: #e8e8e4; padding: 2px 5px; border-radius: 3px; font-family: '
 <body>
 <div class="container">
   <a class="back" href="index.html">← Back</a>
-  <h1>Semiotics: The Study of Signs</h1>
-  <p class="subtitle">Cultural Memory and Photographs · Topic 5 — D. Simpson / Peirce &amp; Saussure</p>
+  <h1>Ways of Seeing: Image, Reproduction &amp; Oil Painting</h1>
+  <p class="subtitle">Cultural Memory and Photographs · Topic 5 — John Berger, Essays 1 &amp; 3</p>
 
   <div class="tabs">
     <button class="tab-btn active" onclick="switchTab('lesson', this)">Lesson</button>
@@ -74,203 +71,160 @@ code { background: #e8e8e4; padding: 2px 5px; border-radius: 3px; font-family: '
   <div id="lesson" class="section active">
 
     <div class="info-box">
-      <strong>Key Thinkers:</strong> <strong>C.S. Peirce</strong> (American pragmatist) and <strong>Ferdinand de Saussure</strong> (Swiss linguist). Semiotics — also called <em>semiology</em> — is the scientific, literary, and philosophical study of signs in all their forms.
+      <strong>Source:</strong> John Berger, <em>Ways of Seeing</em> (1972), based on the BBC television series. Essays 1 and 3. Berger's central claim: "The way we see things is affected by what we know or what we believe."
     </div>
 
-    <h2>1. What Is a Sign?</h2>
+    <!-- ESSAY 1 -->
+    <h2>Essay 1 — Seeing, Knowledge and the Camera</h2>
 
-    <p>The foundational principle of semiotics is: <strong>"A sign is something that stands for something else."</strong> Peirce expanded this: a sign is something that <em>stands to somebody for something in some respect</em>. Umberto Eco offered a more provocative definition:</p>
+    <h3>Seeing Comes Before Words</h3>
+    <p>Berger opens with a foundational claim: <strong>"Seeing comes before words."</strong> The child looks and recognizes before it can speak. But this is not merely a developmental observation — it is philosophical. The relation between what we see and what we know is <em>never settled</em>. We see the sun set each evening; we know the earth is turning away from it. Yet the knowledge never quite fits the sight.</p>
+
+    <div class="quote-box">
+      "We never look at just one thing; we are always looking at the relation between things and ourselves. Our vision is continually active, continually moving, continually holding things in a circle around itself."
+    </div>
+
+    <h3>The Image and Its Meaning</h3>
+    <div class="grid2">
+      <div class="card blue">
+        <div class="card-title">What Is an Image?</div>
+        <p>An image is <strong>a sight which has been recreated or reproduced</strong> — detached from the place and time in which it first appeared and preserved. Every image embodies a way of seeing, even a photograph.</p>
+      </div>
+      <div class="card teal">
+        <div class="card-title">What Images Were For</div>
+        <p>Images were first made to <strong>conjure up the appearances of something absent</strong>. Gradually it became evident an image could outlast what it represented — and thus showed how something had once looked.</p>
+      </div>
+    </div>
+
+    <h3>The Camera and Mechanical Reproduction</h3>
+    <p>The invention of the camera fundamentally changed how humans see — and how they see paintings made long before the camera existed. Before photography, perspective organized the visual field so that <strong>every drawing or painting proposed to the spectator that he was the unique centre of the world</strong>. The camera destroyed this fiction.</p>
 
     <div class="warning-box">
-      <strong>Eco's Definition:</strong> "A sign is anything that can be used to tell a lie." — If a sign can misrepresent, it has the full power of meaning. This foregrounds the conventional, arbitrary nature of all signs.
+      <strong>Key Shift:</strong> The camera showed that there was no single centre of vision. The movie camera — moving through space and time — demonstrated that "what you saw depended upon where you were when." The visible became relative to position in time and space.
     </div>
 
-    <p>Peirce also made a sweeping claim about the pervasiveness of signs:</p>
+    <p>This shattered the convention of perspective and immediately affected painting: the Impressionists made the visible <em>fugitive</em>; the Cubists showed the <em>totality of possible views</em> rather than the single fixed viewpoint.</p>
+
+    <h3>Reproduction and the Loss of Uniqueness</h3>
+    <p>When a camera reproduces a painting, it <strong>destroys the uniqueness of its image</strong>. As a result its meaning changes — or more exactly, it <em>multiplies and fragments</em> into many meanings. The painting now travels to the spectator rather than the spectator to the painting.</p>
+
+    <div class="grid2">
+      <div class="card amber">
+        <div class="card-title">The Original Before Reproduction</div>
+        <p>The original work's meaning lay in what it <em>uniquely said</em> — in its image and its specific presence in a specific place, often as part of a building's life.</p>
+      </div>
+      <div class="card coral">
+        <div class="card-title">The Original After Reproduction</div>
+        <p>Now its uniqueness lies in being the <em>original of a reproduction</em>. Its first meaning is no longer what it shows — but what it <em>is</em>: a relic. Its value is defined by rarity and market price.</p>
+      </div>
+    </div>
+
+    <h3>Mystification and Bogus Religiosity</h3>
+    <p>Berger argues that the cult of the original work has become <strong>"bogus religiosity"</strong> — works of art are discussed as holy relics, their value affirmed by market price yet dressed in spiritual language. This mystification serves a social function: it excludes the majority and preserves art as the property of a privileged class.</p>
+
+    <div class="quote-box">
+      "A people or a class which is cut off from its own past is far less free to choose and to act as a people or class than one that has been able to situate itself in history."
+    </div>
+
+    <p>Berger references <strong>Walter Benjamin's</strong> essay <em>The Work of Art in the Age of Mechanical Reproduction</em> (1936) as the intellectual foundation for these ideas. What reproduction destroys is the "aura" — the unique presence of the original in time and space. What it creates is a new democratic potential: images can now reach everyone, be used by anyone.</p>
+
+    <h3>Assumptions Around Art</h3>
+    <p>When an image is presented as a work of art, viewers bring a series of learnt assumptions: Beauty, Truth, Genius, Civilization, Form, Status, Taste. These assumptions <strong>mystify rather than clarify</strong> — they make art unnecessarily remote and deprive people of a history that belongs to them.</p>
+
+    <!-- ESSAY 3 -->
+    <h2>Essay 3 — Oil Painting, Property and Capitalism</h2>
+
+    <h3>What Oil Painting Is</h3>
+    <p>The term "oil painting" refers to more than a technique — it defines an art form with its own <em>way of seeing</em>, dominant from roughly <strong>1500 to 1900</strong>. Oil paint's defining property is its ability to render tangibility, texture, lustre, solidity. It defines the real as <strong>that which you can put your hands on</strong>.</p>
 
     <div class="info-box">
-      <strong>Peirce:</strong> "The entire universe is perfused with signs, if it is not composed exclusively of signs." Once human consciousness emerges, everything becomes charged with potential significance.
+      <strong>Lévi-Strauss (quoted by Berger):</strong> "It is this avid and ambitious desire to take possession of the object for the benefit of the owner or even of the spectator which seems to me to constitute one of the outstandingly original features of the art of Western civilization."
     </div>
 
-    <h2>2. Sign Components: Signifier and Signified</h2>
+    <h3>Oil Painting and Property</h3>
+    <p>The central argument of Essay 3: <strong>oil painting did to appearances what capital did to social relations</strong>. It reduced everything to the equality of objects. Everything became exchangeable because everything became a commodity.</p>
 
-    <div class="grid2">
-      <div class="card blue">
-        <div class="card-title">Signifier</div>
-        <p>The <strong>physical, material form</strong> of the sign — the perceptible vehicle that carries meaning.</p>
-        <ul>
-          <li>A wooden cross</li>
-          <li>A red traffic light</li>
-          <li>A checkered flag at a race</li>
-        </ul>
-      </div>
-      <div class="card teal">
-        <div class="card-title">Signified</div>
-        <p>The <strong>mental concept</strong> or idea that the signifier calls up in the mind of an interpreter.</p>
-        <ul>
-          <li>Christianity / sacrifice</li>
-          <li>Stop / danger</li>
-          <li>Race ended / victory</li>
-        </ul>
-      </div>
+    <div class="quote-box">
+      "Oil painting conveyed a vision of total exteriority." — The medium could not represent the soul, only surfaces and possessions.
     </div>
 
-    <h2>3. Denotation vs. Connotation</h2>
+    <p>Rich Italian merchants of the Renaissance looked upon painters as agents "who allowed them to confirm their possession of all that was beautiful and desirable in the world." A collection of paintings was a <em>microcosm</em> — the proprietor had recreated within reach all the features of the world to which he was attached.</p>
 
-    <div class="grid2">
-      <div class="card amber">
-        <div class="card-title">Denotation</div>
-        <p>The <strong>explicit, referential meaning</strong> of a sign — what it literally points to.</p>
-        <p><em>Example:</em> "Hollywood" denotes a specific district in Los Angeles.</p>
-      </div>
-      <div class="card coral">
-        <div class="card-title">Connotation</div>
-        <p>The <strong>social, cultural, and emotional associations</strong> that attach to a sign beyond its literal meaning.</p>
-        <p><em>Example:</em> "Hollywood" connotes glamour, celebrity, the film industry, stardom.</p>
-      </div>
-    </div>
-
-    <h2>4. Codes: The Social Contract of Signs</h2>
-
-    <p>A <strong>code</strong> is a social contract — a shared agreement within a community about the relationship between signifiers and their signifieds. Without shared codes, communication fails.</p>
-
-    <div class="grid2">
-      <div class="card blue">
-        <div class="card-title">Highway Codes</div>
-        <ul>
-          <li>Traffic signs, signals, painted lines</li>
-          <li>Stoplights and lane markings</li>
-          <li>Universally agreed meanings within a jurisdiction</li>
-        </ul>
-      </div>
-      <div class="card teal">
-        <div class="card-title">Body Language</div>
-        <ul>
-          <li>Facial expressions, hand signals, posture</li>
-          <li>Proximity between speakers</li>
-          <li>Often culturally variable in meaning</li>
-        </ul>
-      </div>
-      <div class="card amber">
-        <div class="card-title">Clothing &amp; Fashion</div>
-        <ul>
-          <li>Conveys wealth, occupation, group affiliation</li>
-          <li>Fashion as a system of status symbols</li>
-          <li>Dress codes for institutions (uniforms, mourning attire)</li>
-        </ul>
-      </div>
-      <div class="card coral">
-        <div class="card-title">Personal Possessions</div>
-        <ul>
-          <li>Automobiles, jewelry as identity markers</li>
-          <li>Consumer goods communicate values and taste</li>
-          <li>Objects become signs in a consumer culture</li>
-        </ul>
-      </div>
-    </div>
-
-    <h2>5. The Three Branches of Semiotics</h2>
+    <h3>Genres of Oil Painting as Property Relations</h3>
 
     <table class="compare-table">
       <thead>
-        <tr>
-          <th>Branch</th>
-          <th>Focus</th>
-          <th>Example Question</th>
-        </tr>
+        <tr><th>Genre</th><th>What It Showed</th><th>Social Function</th></tr>
       </thead>
       <tbody>
         <tr>
-          <td><span class="dim-label">Syntactics</span></td>
-          <td>How signs are <strong>combined and structured</strong> — the rules for constructing sign systems</td>
-          <td>What grammar governs this visual layout?</td>
+          <td><span class="dim-label">Portraits</span></td>
+          <td>The individual sitter's presence and wealth</td>
+          <td>Confirmed the owner's social status; face became a mask of costume</td>
         </tr>
         <tr>
-          <td><span class="dim-label">Semantics</span></td>
-          <td>The <strong>meanings</strong> of signs — what they stand for</td>
-          <td>What does this image mean?</td>
+          <td><span class="dim-label">Still Life</span></td>
+          <td>Edible goods, luxury objects, merchandise</td>
+          <td>Demonstrated wealth and habitual style of living</td>
         </tr>
         <tr>
-          <td><span class="dim-label">Pragmatics</span></td>
-          <td>The <strong>practical uses and effects</strong> of signs in real communicative situations</td>
-          <td>How does this message affect its audience?</td>
+          <td><span class="dim-label">Animals</span></td>
+          <td>Livestock with emphasized pedigree</td>
+          <td>Proof of the owner's breeding stock's value — "animals painted like pieces of furniture"</td>
+        </tr>
+        <tr>
+          <td><span class="dim-label">Buildings / Landscape</span></td>
+          <td>Landed property, estates</td>
+          <td>Celebrated ownership of land; Mr &amp; Mrs Andrews as proud landowners</td>
+        </tr>
+        <tr>
+          <td><span class="dim-label">Mythological / History</span></td>
+          <td>Classical scenes, idealized figures</td>
+          <td>Supplied a cultural guise for the owner's own power — a garment of nobility to wear</td>
+        </tr>
+        <tr>
+          <td><span class="dim-label">"Genre" (low life)</span></td>
+          <td>Scenes of the poor, taverns, daily life</td>
+          <td>Proved virtue = success; reassured the bourgeoisie of their moral worth</td>
         </tr>
       </tbody>
     </table>
 
-    <h2>6. Guidelines for Effective Semiotic Communication</h2>
-
-    <ol>
-      <li style="margin-bottom:0.6rem;"><strong>Avoid semiotic overload.</strong> Too many competing signs impede rather than facilitate communication. Human attention is limited; clutter defeats meaning.</li>
-      <li style="margin-bottom:0.6rem;"><strong>Principle of brevity.</strong> Present messages clearly and concisely without unnecessary repetition. Trust audiences to interpret actively.</li>
-      <li style="margin-bottom:0.6rem;"><strong>Strategic redundancy.</strong> In noisy environments or when feedback is unavailable, appropriate repetition becomes necessary to ensure the message gets through.</li>
-      <li style="margin-bottom:0.6rem;"><strong>Visual dominance.</strong> Images and sounds command significantly more attention than surrounding text. Visual elements should carry the main point.</li>
-      <li style="margin-bottom:0.6rem;"><strong>Code comprehension.</strong> Misunderstanding codes causes serious communication failures. Cultural and contextual knowledge is essential for accurate interpretation.</li>
-    </ol>
-
-    <h2>7. Code Misinterpretation: Cross-Cultural Examples</h2>
+    <h3>Holbein's Ambassadors (1533)</h3>
+    <p>Berger uses this painting as a case study. The two ambassadors are surrounded by instruments of navigation (for the slave trade and ocean routes), a globe charting Magellan's voyage, books of arithmetic and a hymn book — tools of colonization: Christianity and accounting. Their gaze is <strong>aloof and wary, expecting no reciprocity</strong>. They are convinced the world exists to furnish their residence in it.</p>
 
     <div class="warning-box">
-      <strong>The Same Gesture, Different Meanings:</strong> A circle made with thumb and index finger signals "OK" in the United States, means "zero" in parts of France, and was an obscene gesture in ancient Athens. The physical form (signifier) is identical; the code — and therefore the meaning — differs entirely.
+      <strong>The Skull:</strong> In the foreground is a highly distorted skull — a memento mori. Significantly, it is painted in a different optical system from everything else. If it had been painted like the rest, "it would have become an object like everything else." The medium's materialism made metaphysical symbols unconvincing.
     </div>
 
-    <div class="grid2">
-      <div class="card blue">
-        <div class="card-title">Fur Coat Example</div>
-        <p>A woman wearing a fur coat communicates <strong>luxury and status</strong> to fashion-oriented audiences but communicates <strong>cruelty and ethical violation</strong> to animal rights activists. Same signifier; radically different codes produce radically different signifieds.</p>
-      </div>
-      <div class="card coral">
-        <div class="card-title">Sexual Identity Codes</div>
-        <p>Dress, body language, and speech patterns used to signal sexual identity are <strong>ambiguous and easily misread</strong> across social contexts — demonstrating how codes for identity are fragile, contested, and culturally specific.</p>
-      </div>
+    <h3>The Exceptional vs. The Average</h3>
+    <p>Berger distinguishes between the average work (produced more or less cynically, serving the market) and the exceptional work (where the painter struggled against the tradition's own language). The great artists — Rembrandt, Vermeer, Turner — are acclaimed as the tradition's supreme representatives, yet their work was <strong>diametrically opposed to its values</strong>.</p>
+
+    <div class="quote-box">
+      "The oil painting did to appearances what capital did to social relations. It reduced everything to the equality of objects." — Berger's core thesis on Essay 3.
     </div>
 
-    <h2>8. Semiotics Applied: Sports, Media, and Culture</h2>
+    <h3>The Safe in the Wall</h3>
+    <p>The tradition's own image of itself is a framed window open onto the world. Berger's counter-image: <strong>"a safe let into the wall, a safe in which the visible has been deposited."</strong> The oil painting did not open a view — it enclosed and possessed a view for its owner.</p>
 
-    <div class="grid3">
-      <div class="card blue">
-        <div class="card-title">Sports Events</div>
-        <p>Football games are dense semiotic systems: uniforms signal team allegiance, play-signals coordinate action, officiating gestures mark rule violations, and field markings structure the game's space.</p>
-      </div>
-      <div class="card teal">
-        <div class="card-title">Mass Media</div>
-        <p>Film, advertising, television, and online media orchestrate images, words, and sounds into layered sign systems. Reading media critically requires decoding both denotation and connotation simultaneously.</p>
-      </div>
-      <div class="card amber">
-        <div class="card-title">Daily Life</div>
-        <p>Traffic congestion, fashion choices, and consumer goods all function as sign systems — encoding identity, values, and social position through the objects and behaviors we display publicly.</p>
-      </div>
-    </div>
-
-    <h2>9. Historical and Philosophical Context</h2>
-
-    <p>The Genesis account of Adam <em>naming</em> the animals functions as a mythological origin story for semiotics — language as the power to assign meaning. The New Testament concept of <em>logos</em> (primordial reason or word) extends this: language and meaning are not merely human tools but fundamental structures of reality.</p>
-
-    <div class="info-box">
-      <strong>Why This Matters for Photography:</strong> Every photograph is a semiotic object. Its subject is the signifier; what the image culturally <em>means</em> — dignity, poverty, heroism, threat — is the signified. Photographic meaning is not natural or automatic: it is always produced through codes (genre conventions, framing, caption, context) and read differently by audiences operating under different cultural agreements.
-    </div>
-
-    <h2>10. Exam-Style Questions</h2>
+    <h2>Exam-Style Questions</h2>
 
     <div class="card blue">
-      <div class="card-title">Question 1 — Sign, Signifier, Signified</div>
-      <p><strong>Q:</strong> Using Saussure's framework, explain the concepts of signifier and signified. How does a red traffic light function as a sign? How does Peirce's definition add to or differ from Saussure's?</p>
-      <div class="success-box" style="margin-top:0.75rem; margin-bottom:0;">
-        <strong>Model Answer:</strong> For Saussure, a sign is the union of two inseparable components: the <em>signifier</em> (the material, perceptible form — the physical red light) and the <em>signified</em> (the mental concept it produces — "stop" or "danger"). The relationship is arbitrary: there is nothing inherently "stop-like" about the color red; the link is established by social convention (the highway code).<br><br>
-        Peirce's definition — "something that stands to somebody for something in some respect" — emphasizes the interpretive dimension: meaning is not simply encoded in the sign but produced in the act of interpretation by a person within a context. This makes Peirce's model triadic (sign, object, interpretant) rather than Saussure's dyadic (signifier, signified), and foregrounds the social and contextual variability of meaning.
+      <div class="card-title">Question 1 — The Camera and Uniqueness</div>
+      <p><strong>Q:</strong> According to Berger (following Benjamin), how did the invention of the camera change the way we see paintings? What happens to the "uniqueness" of the original work after mechanical reproduction?</p>
+      <div class="success-box" style="margin-top:0.75rem;margin-bottom:0;">
+        <strong>Model Answer:</strong> The camera destroyed the original work's uniqueness by making its image reproducible and transmittable. Before photography, a painting's meaning was inseparable from its unique presence in a specific place — it was part of a building's life, addressed to those who came to it. After reproduction, the painting travels to the spectator rather than the spectator to it. In doing so, its meaning multiplies and fragments — the same image can be surrounded by different contexts (a family's wallpaper, a museum, a textbook) each producing different meanings.<br><br>
+        The original's uniqueness now lies not in what it says but in what it <em>is</em>: the original of a reproduction. This transforms it into a relic whose value is measured by rarity and market price, dressed in the language of spiritual worth. Berger calls this "bogus religiosity" — a mystification that serves to exclude most people from the art that belongs to their history.
       </div>
     </div>
 
     <div class="card blue" style="margin-top:1rem;">
-      <div class="card-title">Question 2 — Codes and Cross-Cultural Misreading</div>
-      <p><strong>Q:</strong> What is a "code" in semiotics? Using the cross-cultural gesture example, explain why code comprehension is essential and what happens when codes are misread.</p>
-      <div class="success-box" style="margin-top:0.75rem; margin-bottom:0;">
-        <strong>Model Answer:</strong> A code is a social contract — a shared agreement within a community that links specific signifiers to specific signifieds. Codes are not universal; they are culturally and contextually constructed.<br><br>
-        The circle gesture (thumb and index finger) illustrates this perfectly: the physical form of the gesture is identical across cultures, yet it signifies "OK" in the U.S., "zero" in parts of France, and obscenity in ancient Athens. A traveler applying American code while in a French context will produce a miscommunication; the <em>signifier</em> is shared but the <em>code</em> — the social agreement about what it means — is not. When codes are misread, communication fails entirely, regardless of how clearly the signifier is presented.
+      <div class="card-title">Question 2 — Oil Painting and Property</div>
+      <p><strong>Q:</strong> Berger argues that oil painting "did to appearances what capital did to social relations." Explain this claim using at least two genres of oil painting as examples.</p>
+      <div class="success-box" style="margin-top:0.75rem;margin-bottom:0;">
+        <strong>Model Answer:</strong> Berger's claim is that oil painting's unique technical ability — rendering the tactile reality of objects (their texture, lustre, solidity) — made it the perfect medium for a culture organized around private property. Just as capitalism reduced all human relations to the exchange value of commodities, oil painting reduced all visible reality to the appearance of ownable objects.<br><br>
+        The <strong>portrait</strong> confirmed the sitter's social status and wealth — the subject's face eventually became a mask of costume, while the surrounding objects (clothes, furniture, land) did the real communicative work. <strong>Still life</strong> paintings of food, game and luxury goods demonstrated the owner's wealth and style of living. <strong>Landscape</strong> paintings of landed estates — like Gainsborough's Mr and Mrs Andrews — depicted landowners whose proprietary attitude is visible in their very stance and expression. In each genre the medium did not open a window onto the world but locked the world into a "safe" for the owner's possession.
       </div>
-    </div>
-
-    <div class="warning-box" style="margin-top:1rem;">
-      <strong>Key Concept to Remember:</strong> Denotation and connotation always coexist in a sign. A photograph of a refugee camp <em>denotes</em> people living in tents; it <em>connotes</em> — depending on the code the viewer brings — humanitarian crisis, political failure, human resilience, or threat. Semiotics asks us to examine which codes activate which connotations, and who controls them.
     </div>
 
   </div>
@@ -293,169 +247,169 @@ function switchTab(id, btn) {
 
 const questions = [
   {
-    q: "What is the foundational principle of semiotics?",
+    q: "What is the opening claim of Berger's Ways of Seeing, Essay 1?",
     opts: [
-      "A sign is a written symbol used to encode language",
-      "A sign is something that stands for something else",
-      "A sign is any visual image produced for communication",
-      "A sign is a cultural artifact from a specific historical period"
+      "Art is a form of political propaganda",
+      "Seeing comes before words",
+      "Images are always more truthful than language",
+      "The camera destroyed the meaning of art"
     ],
     ans: 1,
-    exp: "The core definition in semiotics: 'a sign is something that stands for something else.' Peirce elaborated that it stands to somebody for something in some respect."
+    exp: "'Seeing comes before words. The child looks and recognizes before it can speak.' This foundational claim establishes that visual experience precedes and exceeds language."
   },
   {
-    q: "According to Umberto Eco, what reveals the full power of a sign?",
+    q: "According to Berger, what did the invention of the camera destroy?",
     opts: [
-      "A sign's ability to convey exact scientific measurements",
-      "A sign's capacity to unite an entire community around one meaning",
-      "A sign's ability to be used to tell a lie",
-      "A sign's material durability across time"
+      "The market value of original paintings",
+      "The tradition of oil painting entirely",
+      "The idea that perspective made the single eye the centre of the visible world",
+      "The ability of painters to create realistic images"
     ],
     ans: 2,
-    exp: "Eco defined a sign as 'anything that can be used to tell a lie.' If a sign can misrepresent reality, it has genuine semiotic power — it is not merely mechanical but meaningful."
+    exp: "Perspective had proposed a single, fixed centre of vision. The camera — especially the movie camera — showed there was no centre: what you saw depended on where and when you were."
   },
   {
-    q: "Which term refers to the physical, material form of a sign?",
+    q: "What happens to a painting's meaning when it is mechanically reproduced?",
     opts: [
-      "Signified",
-      "Referent",
-      "Code",
-      "Signifier"
-    ],
-    ans: 3,
-    exp: "The signifier is the perceptible, material vehicle of the sign — a wooden cross, a red light, a checkered flag. The signified is the mental concept it evokes."
-  },
-  {
-    q: "What does 'denotation' mean in semiotic analysis?",
-    opts: [
-      "The emotional and cultural associations attached to a sign",
-      "The process by which a community agrees on a code",
-      "The explicit, referential meaning of a sign",
-      "The physical material from which a sign is made"
+      "It becomes fixed and universal",
+      "It disappears entirely",
+      "It multiplies and fragments into many meanings depending on context",
+      "It returns to its original meaning as the artist intended"
     ],
     ans: 2,
-    exp: "Denotation is the literal, explicit meaning — what a sign directly refers to. 'Hollywood' denotes a district in Los Angeles. Connotation is the layer of cultural associations on top of this."
+    exp: "Reproduction detaches the image from its original place. Surrounded by different contexts (a family room, a museum, a textbook), the same image produces different meanings for different viewers."
   },
   {
-    q: "If 'Hollywood' connotes glamour and celebrity, what semiotic concept is being described?",
+    q: "What does Berger mean by 'bogus religiosity' surrounding original works of art?",
     opts: [
-      "Denotation",
-      "Syntactics",
-      "Pragmatics",
-      "Connotation"
+      "That art museums function as literal religious spaces",
+      "That artists were historically motivated by religious faith",
+      "That original works are treated as holy relics whose value is defined by market price dressed in spiritual language",
+      "That religious painting is inherently dishonest"
     ],
-    ans: 3,
-    exp: "Connotation refers to the social, cultural, and emotional associations that surround a sign beyond its literal referent. Hollywood connotes the film industry and stardom."
+    ans: 2,
+    exp: "Once reproduction made images available everywhere, the uniqueness of the original shifted to its rarity and market value. This rarity is then dressed in spiritual language — the work is treated as a relic — which Berger calls bogus religiosity."
   },
   {
-    q: "In semiotics, a 'code' is best defined as:",
+    q: "Which thinker's essay does Berger explicitly acknowledge as the foundation for Essay 1?",
     opts: [
-      "A secret cipher used to encrypt messages",
-      "A social contract about the relationship between signifiers and signifieds",
-      "The physical structure of a written language",
-      "A government regulation governing communication"
+      "Roland Barthes — Mythologies",
+      "Walter Benjamin — The Work of Art in the Age of Mechanical Reproduction",
+      "Susan Sontag — On Photography",
+      "Michel Foucault — The Order of Things"
     ],
     ans: 1,
-    exp: "A code is a shared social agreement within a community that links signifiers to signifieds. Without a shared code, communication between parties breaks down."
+    exp: "Berger notes at the end of Essay 1 that many of its ideas derive from Walter Benjamin's 1936 essay on mechanical reproduction, available in the collection Illuminations."
   },
   {
-    q: "Which branch of semiotics is concerned with how signs are combined and structured?",
+    q: "What does Berger mean when he says the oil painting is not 'a framed window open on to the world' but 'a safe let into the wall'?",
     opts: [
-      "Semantics",
-      "Pragmatics",
-      "Syntactics",
-      "Hermeneutics"
-    ],
-    ans: 2,
-    exp: "Syntactics examines the rules for constructing and combining signs — the grammar of sign systems. Semantics concerns meaning; pragmatics concerns practical use and effect."
-  },
-  {
-    q: "The semiotic guideline 'avoid semiotic overload' refers to:",
-    opts: [
-      "Avoiding the use of more than three colors in a design",
-      "Not using signs from foreign cultural codes",
-      "Limiting repetition to exactly one instance per sign",
-      "Not using too many competing signs that exceed the audience's attention capacity"
-    ],
-    ans: 3,
-    exp: "Semiotic overload occurs when too many competing signs are present simultaneously. This impedes rather than facilitates communication because the audience cannot attend to all signs at once."
-  },
-  {
-    q: "When is 'strategic redundancy' in communication justified?",
-    opts: [
-      "Always — repetition always strengthens a message",
-      "In noisy environments or when there is no opportunity for audience feedback",
-      "Only when using visual media rather than written text",
-      "When the audience is highly educated and can process multiple signals"
+      "That oil paintings were physically built into walls of houses",
+      "That oil painting enclosed and possessed a view rather than opening onto the world freely",
+      "That oil paintings were kept secret by their owners",
+      "That the technique of oil paint was used to hide valuables"
     ],
     ans: 1,
-    exp: "Strategic redundancy is appropriate when communication occurs in a noisy context or when the sender cannot receive feedback. In such situations, repetition helps ensure the message is received correctly."
+    exp: "The 'safe' metaphor captures the possessive logic of oil painting: rather than offering a view outward, it locked the visible world into a form that could be owned, stored, and displayed as property."
   },
   {
-    q: "Why does the 'visual dominance' guideline recommend that images carry the main point of a message?",
+    q: "Berger quotes Lévi-Strauss on Western art. What feature of Western civilization does Lévi-Strauss identify as outstandingly original?",
     opts: [
-      "Because text is less reliable than images",
-      "Because images are cheaper to produce than text",
-      "Because images and sounds command significantly more attention than surrounding text",
-      "Because audiences prefer aesthetics over information"
+      "The use of perspective to simulate three-dimensional space",
+      "The tradition of religious painting and church patronage",
+      "The desire to take possession of the object for the benefit of the owner or spectator",
+      "The invention of canvas as a portable painting surface"
     ],
     ans: 2,
-    exp: "Visual dominance is a semiotic principle: images and sounds command far more audience attention than text. Therefore, the main communicative point should be conveyed visually."
+    exp: "Lévi-Strauss identified this acquisitive desire — to take possession of the visible world through art — as a distinctively Western feature, which Berger uses to ground his argument about oil painting and property."
   },
   {
-    q: "A circle made with the thumb and index finger means 'OK' in the U.S. but 'zero' in parts of France. This illustrates:",
+    q: "What does Berger argue oil painting 'did to appearances'?",
     opts: [
-      "That gestures are always universal across cultures",
-      "That signifiers are unstable and break down under scrutiny",
-      "That the same signifier can carry different meanings under different codes",
-      "That French culture is more literal than American culture"
-    ],
-    ans: 2,
-    exp: "This example shows that meaning is not in the physical form (signifier) alone — it is produced by the code (social agreement) applied to that form. Different communities apply different codes to the same gesture."
-  },
-  {
-    q: "A woman wearing a fur coat is read as 'luxury' by one viewer and 'cruelty' by another. This demonstrates:",
-    opts: [
-      "That the sign has no stable denotation",
-      "That connotation can vary radically depending on the code the viewer applies",
-      "That fashion is always a politically neutral sign system",
-      "That signs only carry meaning for their intended audience"
+      "It spiritualized appearances, lifting them above material concerns",
+      "It did to appearances what capital did to social relations — reduced everything to the equality of objects",
+      "It democratized appearances by making them available to all viewers",
+      "It abstracted appearances away from real-world objects"
     ],
     ans: 1,
-    exp: "The fur coat has the same denotative form for both viewers, but the connotations differ because the viewers operate under different codes — fashion code vs. animal-rights code."
+    exp: "This is Berger's core thesis in Essay 3: the logic of oil painting — rendering everything as a possessable object with tactile reality — mirrors the logic of capitalism."
   },
   {
-    q: "Peirce's statement that 'the entire universe is perfused with signs' means:",
+    q: "In the portrait tradition, what eventually happened to the painted face of the sitter?",
     opts: [
-      "All objects in the universe carry a factory-assigned label",
-      "Scientific laws can be written as semiotic systems",
-      "Once human consciousness emerges, everything becomes charged with potential significance",
-      "Signs are only meaningful in linguistic contexts"
-    ],
-    ans: 2,
-    exp: "Peirce's claim is that signification is not limited to language. Human consciousness transforms the entire world into a potential sign system — every object, event, or phenomenon can stand for something."
-  },
-  {
-    q: "Which semiotic concept does Saussure's term 'semiology' most closely align with?",
-    opts: [
-      "The study of signs in natural languages only",
-      "The study of signs in all their forms — Peirce's semiotics under a different name",
-      "The anthropological study of cultural rituals",
-      "The branch of linguistics dealing with grammar"
+      "It became increasingly lifelike and psychologically complex",
+      "It became more generalized — a mask that went with the costume",
+      "It disappeared entirely in favour of symbolic objects",
+      "It was replaced by text listing the sitter's accomplishments"
     ],
     ans: 1,
-    exp: "Semiology is Saussure's term for the same discipline Peirce called semiotics. Both terms refer to the systematic study of signs — letters, images, gestures, symbols — across all domains."
+    exp: "As the portrait tradition continued, the sitter's face became more and more generalized — a mask accompanying the costume and surrounding objects. Berger sees the modern politician's 'puppet TV appearance' as the final stage of this development."
   },
   {
-    q: "Why is semiotics especially relevant to the analysis of photographs?",
+    q: "What is Berger's analysis of 'genre' paintings depicting the poor?",
     opts: [
-      "Because photographs are purely objective records with no cultural bias",
-      "Because photographs are too complex for verbal description",
-      "Because photographs are sign systems where meaning is produced through codes, not automatically by the image itself",
-      "Because photography is a recent technology that requires new semiotic frameworks"
+      "They were honest social documents revealing inequality",
+      "They proved that the poor are happy and that the better-off are a source of hope — a sentimental lie confirming bourgeois virtue",
+      "They were produced by working-class artists to represent their own experience",
+      "They challenged the tradition of oil painting by rejecting its focus on property"
+    ],
+    ans: 1,
+    exp: "'Genre' pictures showed smiling poor people to confirm that virtue is rewarded by financial success. They were reassuring — the painted poor smile to ingratiate themselves, confirming the moral worth of the viewers who could afford to buy them."
+  },
+  {
+    q: "What does Holbein's The Ambassadors (1533) represent in Berger's argument?",
+    opts: [
+      "An exception to the property-focused tradition because of its spiritual symbolism",
+      "The beginning of the tradition: men who believe the world exists to furnish their residence in it, surrounded by instruments of trade and colonization",
+      "A purely decorative work with no political significance",
+      "The first European painting to challenge the convention of perspective"
+    ],
+    ans: 1,
+    exp: "The ambassadors are surrounded by instruments of navigation (slave trade routes), a globe of Magellan's voyage, and books of arithmetic and religion — the tools of colonization. Their gaze expects no reciprocity. They embody a class 'convinced that the world was there to furnish their residence in it.'"
+  },
+  {
+    q: "Why did the average religious painting of the oil tradition appear 'hypocritical' according to Berger?",
+    opts: [
+      "Because the painters were not genuinely religious",
+      "Because the paint's material focus on tangible objects undermined the spiritual claims of the religious subject",
+      "Because religious subjects were only chosen for their commercial appeal",
+      "Because the Church rejected most religious paintings as theologically incorrect"
+    ],
+    ans: 1,
+    exp: "Oil paint's propensity to render tactile, possessable surfaces made spiritual content unconvincing. The Mary Magdalene example: she is painted as 'first and foremost a takeable and desirable woman' — the renunciation the story requires is made impossible by the painting method."
+  },
+  {
+    q: "How does Berger characterize the relationship between 'exceptional' artists (Rembrandt, Vermeer) and the tradition they worked in?",
+    opts: [
+      "They were loyal representatives who perfected the tradition's values",
+      "They worked outside the tradition entirely in isolation",
+      "Their work was diametrically opposed to the tradition's values, yet they are paradoxically acclaimed as its supreme representatives",
+      "They were commercial failures because they rejected the open art market"
     ],
     ans: 2,
-    exp: "A photograph is a semiotic object: its subject is the signifier, but what the image culturally means — heroism, poverty, threat — is produced through codes (framing, genre, caption, context). Meaning is not natural; it is coded and therefore interpretable, contestable, and variable."
+    exp: "This is one of Berger's key insights: the exceptional artists struggled against the tradition's language from within it. After their death, the tradition closed around their work as if nothing had been disturbed — allowing their radicalism to be absorbed and neutralized."
+  },
+  {
+    q: "According to Berger, a painting that has been reproduced and used in a film or essay changes in what way?",
+    opts: [
+      "It loses all meaning because its material presence is absent",
+      "It retains its original authority unchanged",
+      "It becomes material for the filmmaker's or writer's argument — lending authority to someone else's conclusion",
+      "It becomes more accessible and therefore more democratic"
+    ],
+    ans: 2,
+    exp: "When a painting is reproduced in a film, the film's sequence of images constructs an irreversible argument. The painting lends authority to the filmmaker's conclusions. Berger acknowledges this at the end of Essay 1: 'The words have quoted the paintings to confirm their own verbal authority.'"
+  },
+  {
+    q: "What is Berger's political conclusion at the end of Essay 1?",
+    opts: [
+      "Museums should be abolished and replaced by digital archives",
+      "Art is fundamentally private and cannot be shared without distortion",
+      "The art of the past has become a political issue because a class cut off from its past is less free to act",
+      "Reproduction has made art meaningless and therefore politically irrelevant"
+    ],
+    ans: 2,
+    exp: "Berger argues: 'A people or a class which is cut off from its own past is far less free to choose and to act.' This is why the entire art of the past has become a political issue — who controls its meaning, who has access to it, determines who can situate themselves in history."
   }
 ];
 

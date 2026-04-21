@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Topic 7 — Ways of Seeing: The Male Gaze &amp; Publicity</title>
+<title>Topic 7 — Semiotics: The Study of Signs</title>
 <style>
 * { box-sizing: border-box; margin: 0; padding: 0; }
 body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f5f5f0; color: #1a1a1a; padding: 2rem 1rem; }
@@ -17,11 +17,13 @@ h1 { font-size: 1.5rem; font-weight: 700; color: #1a3a6e; }
 .tab-btn.active { color: #1a3a6e; border-bottom-color: #1a3a6e; }
 .section { display: none; }
 .section.active { display: block; }
+
 h2 { font-size: 1.15rem; font-weight: 600; color: #1a3a6e; margin: 1.5rem 0 0.75rem; }
 h3 { font-size: 1rem; font-weight: 600; color: #333; margin: 1rem 0 0.5rem; }
 p { line-height: 1.65; margin-bottom: 0.75rem; color: #333; }
 ul, ol { padding-left: 1.5rem; margin-bottom: 0.75rem; }
 li { line-height: 1.6; margin-bottom: 0.25rem; }
+code { background: #e8e8e4; padding: 2px 5px; border-radius: 3px; font-family: 'SF Mono', monospace; font-size: 0.85em; }
 .card { background: #fff; border: 1px solid #e0e0d8; border-radius: 10px; padding: 1.1rem 1.25rem; margin-bottom: 1rem; }
 .card-title { font-weight: 600; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem; }
 .blue .card-title { color: #1a3a6e; }
@@ -33,7 +35,7 @@ li { line-height: 1.6; margin-bottom: 0.25rem; }
 .info-box { border-left: 4px solid #3b82f6; background: #eff6ff; padding: 0.85rem 1rem; border-radius: 0 8px 8px 0; margin-bottom: 1rem; }
 .success-box { border-left: 4px solid #4caf50; background: #f0fdf4; padding: 0.85rem 1rem; border-radius: 0 8px 8px 0; margin-bottom: 1rem; }
 .warning-box { border-left: 4px solid #f59e0b; background: #fffbeb; padding: 0.85rem 1rem; border-radius: 0 8px 8px 0; margin-bottom: 1rem; }
-.quote-box { border-left: 4px solid #8b5cf6; background: #f5f3ff; padding: 0.85rem 1rem; border-radius: 0 8px 8px 0; margin-bottom: 1rem; font-style: italic; }
+
 .compare-table { width: 100%; border-collapse: collapse; margin-bottom: 1.25rem; font-size: 0.9rem; }
 .compare-table th { background: #1a3a6e; color: #fff; padding: 0.65rem 1rem; text-align: left; }
 .compare-table th:first-child { border-radius: 8px 0 0 0; }
@@ -43,6 +45,7 @@ li { line-height: 1.6; margin-bottom: 0.25rem; }
 .compare-table tr:last-child td:first-child { border-radius: 0 0 0 8px; }
 .compare-table tr:last-child td:last-child { border-radius: 0 0 8px 0; }
 .dim-label { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; color: #888; letter-spacing: 0.04em; }
+
 .score-bar { background: #e0e0d8; border-radius: 8px; height: 8px; margin-bottom: 1.5rem; overflow: hidden; }
 #scorefill { height: 100%; background: #1a3a6e; border-radius: 8px; width: 0%; transition: width 0.4s; }
 .score-text { font-size: 0.85rem; color: #555; margin-bottom: 0.5rem; }
@@ -59,8 +62,8 @@ li { line-height: 1.6; margin-bottom: 0.25rem; }
 <body>
 <div class="container">
   <a class="back" href="index.html">← Back</a>
-  <h1>Ways of Seeing: The Male Gaze &amp; Publicity</h1>
-  <p class="subtitle">Cultural Memory and Photographs · Topic 7 — John Berger, Essays 5 &amp; 7</p>
+  <h1>Semiotics: The Study of Signs</h1>
+  <p class="subtitle">Cultural Memory and Photographs · Topic 7 — D. Simpson / Peirce &amp; Saussure</p>
 
   <div class="tabs">
     <button class="tab-btn active" onclick="switchTab('lesson', this)">Lesson</button>
@@ -71,206 +74,203 @@ li { line-height: 1.6; margin-bottom: 0.25rem; }
   <div id="lesson" class="section active">
 
     <div class="info-box">
-      <strong>Source:</strong> John Berger, <em>Ways of Seeing</em> (1972), Essays 5 and 7. Essay 5 concerns the representation of women in European painting; Essay 7 concerns the language of publicity and its relationship to oil painting.
+      <strong>Key Thinkers:</strong> <strong>C.S. Peirce</strong> (American pragmatist) and <strong>Ferdinand de Saussure</strong> (Swiss linguist). Semiotics — also called <em>semiology</em> — is the scientific, literary, and philosophical study of signs in all their forms.
     </div>
 
-    <!-- ESSAY 5 -->
-    <h2>Essay 5 — Women, the Gaze, and the Nude</h2>
+    <h2>1. What Is a Sign?</h2>
 
-    <h3>The Split Self: Surveyor and Surveyed</h3>
-    <p>Berger opens with a structural observation about gender: <strong>a woman's social presence is fundamentally different from a man's</strong>. A man's presence projects outward — what he is capable of doing to or for others. A woman's presence expresses her attitude to <em>herself</em>, and defines what can and cannot be done to her.</p>
+    <p>The foundational principle of semiotics is: <strong>"A sign is something that stands for something else."</strong> Peirce expanded this: a sign is something that <em>stands to somebody for something in some respect</em>. Umberto Eco offered a more provocative definition:</p>
 
-    <div class="quote-box">
-      "A woman must continually watch herself. She is almost continually accompanied by her own image of herself... From earliest childhood she has been taught and persuaded to survey herself continually."
+    <div class="warning-box">
+      <strong>Eco's Definition:</strong> "A sign is anything that can be used to tell a lie." — If a sign can misrepresent, it has the full power of meaning. This foregrounds the conventional, arbitrary nature of all signs.
     </div>
 
-    <p>This produces a <strong>split identity</strong>: the woman becomes both the surveyor and the surveyed within herself. Her sense of being in herself is supplanted by a sense of <em>being seen</em>. The surveyor within her is male; the surveyed is female.</p>
+    <p>Peirce also made a sweeping claim about the pervasiveness of signs:</p>
+
+    <div class="info-box">
+      <strong>Peirce:</strong> "The entire universe is perfused with signs, if it is not composed exclusively of signs." Once human consciousness emerges, everything becomes charged with potential significance.
+    </div>
+
+    <h2>2. Sign Components: Signifier and Signified</h2>
 
     <div class="grid2">
       <div class="card blue">
-        <div class="card-title">Man's Presence</div>
+        <div class="card-title">Signifier</div>
+        <p>The <strong>physical, material form</strong> of the sign — the perceptible vehicle that carries meaning.</p>
         <ul>
-          <li>Projects outward toward others</li>
-          <li>Defined by power he can exercise</li>
-          <li>His actions are expressions of himself</li>
-          <li><em>Men act</em></li>
+          <li>A wooden cross</li>
+          <li>A red traffic light</li>
+          <li>A checkered flag at a race</li>
+        </ul>
+      </div>
+      <div class="card teal">
+        <div class="card-title">Signified</div>
+        <p>The <strong>mental concept</strong> or idea that the signifier calls up in the mind of an interpreter.</p>
+        <ul>
+          <li>Christianity / sacrifice</li>
+          <li>Stop / danger</li>
+          <li>Race ended / victory</li>
+        </ul>
+      </div>
+    </div>
+
+    <h2>3. Denotation vs. Connotation</h2>
+
+    <div class="grid2">
+      <div class="card amber">
+        <div class="card-title">Denotation</div>
+        <p>The <strong>explicit, referential meaning</strong> of a sign — what it literally points to.</p>
+        <p><em>Example:</em> "Hollywood" denotes a specific district in Los Angeles.</p>
+      </div>
+      <div class="card coral">
+        <div class="card-title">Connotation</div>
+        <p>The <strong>social, cultural, and emotional associations</strong> that attach to a sign beyond its literal meaning.</p>
+        <p><em>Example:</em> "Hollywood" connotes glamour, celebrity, the film industry, stardom.</p>
+      </div>
+    </div>
+
+    <h2>4. Codes: The Social Contract of Signs</h2>
+
+    <p>A <strong>code</strong> is a social contract — a shared agreement within a community about the relationship between signifiers and their signifieds. Without shared codes, communication fails.</p>
+
+    <div class="grid2">
+      <div class="card blue">
+        <div class="card-title">Highway Codes</div>
+        <ul>
+          <li>Traffic signs, signals, painted lines</li>
+          <li>Stoplights and lane markings</li>
+          <li>Universally agreed meanings within a jurisdiction</li>
+        </ul>
+      </div>
+      <div class="card teal">
+        <div class="card-title">Body Language</div>
+        <ul>
+          <li>Facial expressions, hand signals, posture</li>
+          <li>Proximity between speakers</li>
+          <li>Often culturally variable in meaning</li>
+        </ul>
+      </div>
+      <div class="card amber">
+        <div class="card-title">Clothing &amp; Fashion</div>
+        <ul>
+          <li>Conveys wealth, occupation, group affiliation</li>
+          <li>Fashion as a system of status symbols</li>
+          <li>Dress codes for institutions (uniforms, mourning attire)</li>
         </ul>
       </div>
       <div class="card coral">
-        <div class="card-title">Woman's Presence</div>
+        <div class="card-title">Personal Possessions</div>
         <ul>
-          <li>Directed inward, toward herself</li>
-          <li>Defined by how she appears to others</li>
-          <li>Her actions are read as indications of how she wishes to be treated</li>
-          <li><em>Women appear</em></li>
+          <li>Automobiles, jewelry as identity markers</li>
+          <li>Consumer goods communicate values and taste</li>
+          <li>Objects become signs in a consumer culture</li>
         </ul>
       </div>
     </div>
 
-    <div class="quote-box">
-      "Men act and women appear. Men look at women. Women watch themselves being looked at. This determines not only most relations between men and women but also the relation of women to themselves."
-    </div>
-
-    <h3>Naked vs. Nude</h3>
-    <p>Berger draws a sharp distinction, building on Kenneth Clark's <em>The Nude</em>:</p>
-
-    <div class="grid2">
-      <div class="card teal">
-        <div class="card-title">To Be Naked</div>
-        <p>To be <strong>oneself</strong>. Nakedness reveals itself. To be naked is to be without disguise — the body in its own right, expressing its own feelings and reality.</p>
-      </div>
-      <div class="card amber">
-        <div class="card-title">To Be Nude</div>
-        <p>To be <strong>seen naked by others and yet not recognized for oneself</strong>. The nude is an object — placed on display for a spectator. "Nudity is a form of dress." The nude is condemned to never being naked.</p>
-      </div>
-    </div>
-
-    <div class="warning-box">
-      <strong>Key Point:</strong> "In the average European oil painting of the nude the principal protagonist is never painted. He is the spectator in front of the picture and he is presumed to be a man. Everything is addressed to him. Everything must appear to be the result of his being there."
-    </div>
-
-    <h3>The European Nude Tradition</h3>
-    <p>The first nudes in the tradition depicted Adam and Eve. In Genesis, nakedness was created in the <em>mind of the beholder</em> — "they knew that they were naked." The woman is then punished by being made subservient to the man, who becomes the agent of God. This mythological structure — the male as judge, the female as the judged — runs through the tradition.</p>
-
-    <ul>
-      <li><strong>The mirror as symbol</strong>: Often used as a symbol of female vanity. But Berger argues its real function was to <em>make the woman connive in treating herself as a sight</em> — she joins the spectators of herself.</li>
-      <li><strong>The Judgement of Paris</strong>: Paris awards the apple to the woman he finds most beautiful. Beauty becomes competitive; the prize is to be owned by a judge.</li>
-      <li><strong>Susannah and the Elders</strong>: "We join the Elders to spy on Susannah taking her bath. She looks back at us looking at her." The viewer is positioned as voyeur.</li>
-    </ul>
-
-    <div class="quote-box">
-      "You painted a naked woman because you enjoyed looking at her, you put a mirror in her hand and you called the painting Vanity, thus morally condemning the woman whose nakedness you had depicted for your own pleasure."
-    </div>
-
-    <h3>The Spectator-Owner</h3>
-    <p>The imagined viewer of the traditional nude is <strong>the spectator-owner</strong> — a man, with his clothes still on, for whom the woman has assumed her nudity. Almost all post-Renaissance European sexual imagery is frontal because the sexual protagonist <em>is</em> the spectator-owner looking at it. Even when a male lover appears in the painting, the woman's attention is directed past him toward the spectator.</p>
-
-    <h3>The Exceptional: Paintings of Loved Women</h3>
-    <p>Among hundreds of thousands of nudes, Berger identifies perhaps a hundred exceptions: <strong>paintings of loved women</strong>, more or less naked, where the painter's personal vision is so strong it makes no allowance for the spectator. He uses Rubens's portrait of his young wife Hélène Fourment as an example.</p>
-
-    <p>In the Rubens, her body contains a deliberate anatomical impossibility — her upper and lower body cannot physically meet as painted. This formal distortion "permits the body to become impossibly dynamic. Its coherence is no longer within itself but within the experience of the painter." She is naked as he sees her, not as the spectator-owner demands.</p>
-
-    <h3>Today's Continuation</h3>
-    <p>The tradition of the nude has given way to other media — advertising, journalism, television — but the essential way of seeing women has not changed.</p>
-
-    <div class="quote-box">
-      "Women are depicted in a quite different way from men — not because the feminine is different from the masculine — but because the 'ideal' spectator is always assumed to be male and the image of the woman is designed to flatter him."
-    </div>
-
-    <!-- ESSAY 7 -->
-    <h2>Essay 7 — Publicity, Glamour and the Language of Oil Painting</h2>
-
-    <h3>What Publicity Is</h3>
-    <p>In cities we see hundreds of publicity images every day. No other kind of image confronts us so frequently. Publicity <strong>belongs to the moment</strong> — it must be continually renewed — but it never speaks of the present. It always speaks of the future.</p>
-
-    <div class="info-box">
-      <strong>Publicity's single proposal:</strong> "It proposes to each of us that we transform ourselves, or our lives, by buying something more. This more, it proposes, will make us in some way richer — even though we will be poorer by having spent our money."
-    </div>
-
-    <h3>Glamour and Envy</h3>
-    <p>Publicity persuades through transformation by showing people who have apparently been transformed and are, as a result, <strong>enviable</strong>. The state of being envied is what constitutes <em>glamour</em>. Publicity is the process of manufacturing glamour.</p>
-
-    <div class="quote-box">
-      "Being envied is a solitary form of reassurance. It depends precisely upon not sharing your experience with those who envy you."
-    </div>
-
-    <p>The spectator-buyer is meant to <strong>envy herself as she will become</strong> if she buys the product. Publicity steals her love of herself as she is and offers it back to her for the price of the product.</p>
-
-    <h3>Publicity vs. Pleasure</h3>
-    <p>Berger distinguishes publicity from the actual pleasure of the things it advertises. Publicity begins with a real appetite for pleasure — clothes, food, cars, sunshine — but it cannot offer the real object of pleasure.</p>
-
-    <div class="warning-box">
-      <strong>The Paradox:</strong> The more convincingly publicity conveys the pleasure of bathing in a warm, distant sea, the more the spectator-buyer becomes aware that she is hundreds of miles away. Publicity is never a celebration of a pleasure-in-itself. It is always about the <em>future buyer</em>, not the present experience.
-    </div>
-
-    <p><strong>"Publicity is about social relations, not objects."</strong> Its promise is not of pleasure but of happiness — happiness as judged from the outside by others.</p>
-
-    <h3>Oil Painting and Publicity: A Direct Continuity</h3>
-    <p>Berger's central claim in Essay 7: there is a <strong>direct continuity</strong> between the language of oil painting and the language of publicity. Both speak in the same voice about the same things.</p>
+    <h2>5. The Three Branches of Semiotics</h2>
 
     <table class="compare-table">
       <thead>
-        <tr><th>Dimension</th><th>Oil Painting (1500–1900)</th><th>Publicity (Today)</th></tr>
+        <tr>
+          <th>Branch</th>
+          <th>Focus</th>
+          <th>Example Question</th>
+        </tr>
       </thead>
       <tbody>
         <tr>
-          <td><span class="dim-label">Spectator</span></td>
-          <td>Spectator-owner: already possessing</td>
-          <td>Spectator-buyer: desiring to possess</td>
+          <td><span class="dim-label">Syntactics</span></td>
+          <td>How signs are <strong>combined and structured</strong> — the rules for constructing sign systems</td>
+          <td>What grammar governs this visual layout?</td>
         </tr>
         <tr>
-          <td><span class="dim-label">Promise</span></td>
-          <td>Confirms and enhances what the owner already has</td>
-          <td>Offers an improved alternative to what the buyer currently is</td>
+          <td><span class="dim-label">Semantics</span></td>
+          <td>The <strong>meanings</strong> of signs — what they stand for</td>
+          <td>What does this image mean?</td>
         </tr>
         <tr>
-          <td><span class="dim-label">Technique</span></td>
-          <td>Oil paint renders tactile reality of objects</td>
-          <td>Colour photography (the modern equivalent) renders texture and tangibility</td>
-        </tr>
-        <tr>
-          <td><span class="dim-label">Tense</span></td>
-          <td>Began with facts — what the owner already enjoyed</td>
-          <td>Speaks of the future — what the buyer might become</td>
-        </tr>
-        <tr>
-          <td><span class="dim-label">Core logic</span></td>
-          <td>You are what you have (property)</td>
-          <td>You are what you have (commodity)</td>
-        </tr>
-        <tr>
-          <td><span class="dim-label">Social anxiety</span></td>
-          <td>Status and position in a hierarchy</td>
-          <td>"All publicity works upon anxiety. The sum of everything is money."</td>
+          <td><span class="dim-label">Pragmatics</span></td>
+          <td>The <strong>practical uses and effects</strong> of signs in real communicative situations</td>
+          <td>How does this message affect its audience?</td>
         </tr>
       </tbody>
     </table>
 
-    <h3>Why Publicity Uses Oil Painting's Language</h3>
+    <h2>6. Guidelines for Effective Semiotic Communication</h2>
+
     <ol>
-      <li style="margin-bottom:0.5rem;"><strong>Authority and prestige:</strong> A work of art quoted in an advertisement says two almost contradictory things simultaneously — it denotes wealth and implies spirituality. Luxury + cultural value at once.</li>
-      <li style="margin-bottom:0.5rem;"><strong>Nostalgia:</strong> Publicity is essentially nostalgic — it must sell the past to the future. It cannot supply the standards of its own claims, so all references to quality are retrospective and traditional.</li>
-      <li style="margin-bottom:0.5rem;"><strong>Technical development:</strong> Cheap colour photography (developed roughly 15 years before the book's publication in 1972) can reproduce the colour, texture and tangibility of objects as only oil paint had previously been able to do.</li>
+      <li style="margin-bottom:0.6rem;"><strong>Avoid semiotic overload.</strong> Too many competing signs impede rather than facilitate communication. Human attention is limited; clutter defeats meaning.</li>
+      <li style="margin-bottom:0.6rem;"><strong>Principle of brevity.</strong> Present messages clearly and concisely without unnecessary repetition. Trust audiences to interpret actively.</li>
+      <li style="margin-bottom:0.6rem;"><strong>Strategic redundancy.</strong> In noisy environments or when feedback is unavailable, appropriate repetition becomes necessary to ensure the message gets through.</li>
+      <li style="margin-bottom:0.6rem;"><strong>Visual dominance.</strong> Images and sounds command significantly more attention than surrounding text. Visual elements should carry the main point.</li>
+      <li style="margin-bottom:0.6rem;"><strong>Code comprehension.</strong> Misunderstanding codes causes serious communication failures. Cultural and contextual knowledge is essential for accurate interpretation.</li>
     </ol>
 
-    <h3>Glamour Is Modern</h3>
+    <h2>7. Code Misinterpretation: Cross-Cultural Examples</h2>
+
+    <div class="warning-box">
+      <strong>The Same Gesture, Different Meanings:</strong> A circle made with thumb and index finger signals "OK" in the United States, means "zero" in parts of France, and was an obscene gesture in ancient Athens. The physical form (signifier) is identical; the code — and therefore the meaning — differs entirely.
+    </div>
+
     <div class="grid2">
       <div class="card blue">
-        <div class="card-title">Oil Painting — Grace &amp; Authority</div>
-        <p>Earlier ideals of grace, elegance, and authority were qualities intrinsic to the person. Gainsborough's Mrs Siddons is wealthy and beautiful — but "her qualities are her own and have been recognized as such." She is not glamorous.</p>
+        <div class="card-title">Fur Coat Example</div>
+        <p>A woman wearing a fur coat communicates <strong>luxury and status</strong> to fashion-oriented audiences but communicates <strong>cruelty and ethical violation</strong> to animal rights activists. Same signifier; radically different codes produce radically different signifieds.</p>
       </div>
       <div class="card coral">
-        <div class="card-title">Publicity — Glamour &amp; Envy</div>
-        <p>Glamour is a modern invention. It depends on envy — being seen as enviable by others. Andy Warhol's Marilyn Monroe is its emblem: she is purely the creature of others' envy, not a person recognized for her own qualities.</p>
+        <div class="card-title">Sexual Identity Codes</div>
+        <p>Dress, body language, and speech patterns used to signal sexual identity are <strong>ambiguous and easily misread</strong> across social contexts — demonstrating how codes for identity are fragile, contested, and culturally specific.</p>
       </div>
     </div>
 
-    <h3>Publicity's Political Function</h3>
-    <div class="quote-box">
-      "Capitalism survives by forcing the majority, whom it exploits, to define their own interests as narrowly as possible. This was once achieved by extensive deprivation. Today in the developed countries it is being achieved by imposing a false standard of what is and what is not desirable."
+    <h2>8. Semiotics Applied: Sports, Media, and Culture</h2>
+
+    <div class="grid3">
+      <div class="card blue">
+        <div class="card-title">Sports Events</div>
+        <p>Football games are dense semiotic systems: uniforms signal team allegiance, play-signals coordinate action, officiating gestures mark rule violations, and field markings structure the game's space.</p>
+      </div>
+      <div class="card teal">
+        <div class="card-title">Mass Media</div>
+        <p>Film, advertising, television, and online media orchestrate images, words, and sounds into layered sign systems. Reading media critically requires decoding both denotation and connotation simultaneously.</p>
+      </div>
+      <div class="card amber">
+        <div class="card-title">Daily Life</div>
+        <p>Traffic congestion, fashion choices, and consumer goods all function as sign systems — encoding identity, values, and social position through the objects and behaviors we display publicly.</p>
+      </div>
     </div>
 
-    <p>Publicity is "the life of this culture — in so far as without publicity capitalism could not survive — and at the same time publicity is its dream." It excludes the present entirely: publicity is <strong>eventless</strong>. All real events happen outside it. Experience is impossible within it. All that it offers is the act of acquiring.</p>
+    <h2>9. Historical and Philosophical Context</h2>
 
-    <h2>Exam-Style Questions</h2>
+    <p>The Genesis account of Adam <em>naming</em> the animals functions as a mythological origin story for semiotics — language as the power to assign meaning. The New Testament concept of <em>logos</em> (primordial reason or word) extends this: language and meaning are not merely human tools but fundamental structures of reality.</p>
+
+    <div class="info-box">
+      <strong>Why This Matters for Photography:</strong> Every photograph is a semiotic object. Its subject is the signifier; what the image culturally <em>means</em> — dignity, poverty, heroism, threat — is the signified. Photographic meaning is not natural or automatic: it is always produced through codes (genre conventions, framing, caption, context) and read differently by audiences operating under different cultural agreements.
+    </div>
+
+    <h2>10. Exam-Style Questions</h2>
 
     <div class="card blue">
-      <div class="card-title">Question 1 — Men Act, Women Appear</div>
-      <p><strong>Q:</strong> Explain Berger's claim that "men act and women appear" in the context of Essay 5. How does the concept of the surveyor/surveyed split illuminate the European nude tradition?</p>
-      <div class="success-box" style="margin-top:0.75rem;margin-bottom:0;">
-        <strong>Model Answer:</strong> Berger argues that a structural asymmetry governs how men and women relate to their own self-image. A man's presence projects outward — toward what he can do to others. A woman's presence is directed inward — toward how she appears. From earliest childhood she is taught to survey herself continuously, producing a split identity: the surveyor within her (male) and the surveyed (female).<br><br>
-        This structure directly shapes the European nude tradition. In the average nude, the principal protagonist who is never painted is the male spectator-owner — everything in the image is arranged for his gaze. The woman does not look at herself as she is; she looks outward toward an imagined male viewer. The mirror, used as a symbol of female "vanity," in fact performs this function: it makes the woman join the spectators of herself. The result: to be nude is to be seen naked by others without being recognized for oneself. Nudity is placed on display; nakedness reveals itself. The nude is condemned to never being naked.
+      <div class="card-title">Question 1 — Sign, Signifier, Signified</div>
+      <p><strong>Q:</strong> Using Saussure's framework, explain the concepts of signifier and signified. How does a red traffic light function as a sign? How does Peirce's definition add to or differ from Saussure's?</p>
+      <div class="success-box" style="margin-top:0.75rem; margin-bottom:0;">
+        <strong>Model Answer:</strong> For Saussure, a sign is the union of two inseparable components: the <em>signifier</em> (the material, perceptible form — the physical red light) and the <em>signified</em> (the mental concept it produces — "stop" or "danger"). The relationship is arbitrary: there is nothing inherently "stop-like" about the color red; the link is established by social convention (the highway code).<br><br>
+        Peirce's definition — "something that stands to somebody for something in some respect" — emphasizes the interpretive dimension: meaning is not simply encoded in the sign but produced in the act of interpretation by a person within a context. This makes Peirce's model triadic (sign, object, interpretant) rather than Saussure's dyadic (signifier, signified), and foregrounds the social and contextual variability of meaning.
       </div>
     </div>
 
     <div class="card blue" style="margin-top:1rem;">
-      <div class="card-title">Question 2 — Oil Painting and Publicity</div>
-      <p><strong>Q:</strong> Berger argues there is a "direct continuity" between the language of oil painting and the language of modern publicity. What is the nature of this continuity, and where does it break down?</p>
-      <div class="success-box" style="margin-top:0.75rem;margin-bottom:0;">
-        <strong>Model Answer:</strong> The continuity is rooted in a shared core logic: "you are what you have." Oil painting rendered the tactile reality of possessable objects with unprecedented conviction — its medium was designed to make surfaces feel real, desirable, acquirable. Modern colour photography performs the same function for publicity: both media play upon the spectator's sense that they can almost touch what is shown, reminding them how they might possess the real thing.<br><br>
-        Both speak the same visual language: romanticized nature, the glamour of materials (fur, leather, polished metal), frontal arrangement of figures for the spectator's benefit, and the use of classical or historical references to lend authority and cultural prestige.<br><br>
-        But the break is equally important: oil painting addressed the spectator-owner — someone already possessing — and consolidated their sense of their own value, beginning from facts. Publicity addresses the spectator-buyer — someone constituted by dissatisfaction — and makes them marginally dissatisfied with their present life in order to propose a transformed future self. Oil painting spoke from the present tense of possession; publicity speaks from the perpetually deferred future of desire.
+      <div class="card-title">Question 2 — Codes and Cross-Cultural Misreading</div>
+      <p><strong>Q:</strong> What is a "code" in semiotics? Using the cross-cultural gesture example, explain why code comprehension is essential and what happens when codes are misread.</p>
+      <div class="success-box" style="margin-top:0.75rem; margin-bottom:0;">
+        <strong>Model Answer:</strong> A code is a social contract — a shared agreement within a community that links specific signifiers to specific signifieds. Codes are not universal; they are culturally and contextually constructed.<br><br>
+        The circle gesture (thumb and index finger) illustrates this perfectly: the physical form of the gesture is identical across cultures, yet it signifies "OK" in the U.S., "zero" in parts of France, and obscenity in ancient Athens. A traveler applying American code while in a French context will produce a miscommunication; the <em>signifier</em> is shared but the <em>code</em> — the social agreement about what it means — is not. When codes are misread, communication fails entirely, regardless of how clearly the signifier is presented.
       </div>
+    </div>
+
+    <div class="warning-box" style="margin-top:1rem;">
+      <strong>Key Concept to Remember:</strong> Denotation and connotation always coexist in a sign. A photograph of a refugee camp <em>denotes</em> people living in tents; it <em>connotes</em> — depending on the code the viewer brings — humanitarian crisis, political failure, human resilience, or threat. Semiotics asks us to examine which codes activate which connotations, and who controls them.
     </div>
 
   </div>
@@ -293,169 +293,169 @@ function switchTab(id, btn) {
 
 const questions = [
   {
-    q: "According to Berger, what is the fundamental difference between a man's social presence and a woman's?",
+    q: "What is the foundational principle of semiotics?",
     opts: [
-      "A man's presence is emotional; a woman's presence is rational",
-      "A man's presence projects outward toward what he can do to others; a woman's presence is directed toward how she appears",
-      "A man's presence is fixed by birth; a woman's presence can be changed through education",
-      "There is no fundamental difference — both are determined by class"
+      "A sign is a written symbol used to encode language",
+      "A sign is something that stands for something else",
+      "A sign is any visual image produced for communication",
+      "A sign is a cultural artifact from a specific historical period"
     ],
     ans: 1,
-    exp: "Berger argues the man's presence suggests what he is capable of doing to you or for you. The woman's presence expresses her attitude to herself and defines what can and cannot be done to her — it is constituted by being seen, not by acting."
+    exp: "The core definition in semiotics: 'a sign is something that stands for something else.' Peirce elaborated that it stands to somebody for something in some respect."
   },
   {
-    q: "What does Berger mean by the 'surveyor/surveyed' split in women's identity?",
+    q: "According to Umberto Eco, what reveals the full power of a sign?",
     opts: [
-      "Women are professionally employed to survey and assess property",
-      "Women are taught from childhood to watch themselves continuously, producing an internal split between the part that watches (male) and the part that is watched (female)",
-      "Women in oil paintings are shown looking at landscape rather than at other figures",
-      "Women develop a split personality as a result of social exclusion"
-    ],
-    ans: 1,
-    exp: "Berger argues that social conditioning teaches women to survey themselves as men survey them. The surveyor within her is male; the surveyed is female. This produces a form of self-objectification built into her identity."
-  },
-  {
-    q: "Berger's most famous formulation in Essay 5 is:",
-    opts: [
-      "Women see; men are seen",
-      "Women own; men desire",
-      "Men act and women appear",
-      "Men speak and women listen"
+      "A sign's ability to convey exact scientific measurements",
+      "A sign's capacity to unite an entire community around one meaning",
+      "A sign's ability to be used to tell a lie",
+      "A sign's material durability across time"
     ],
     ans: 2,
-    exp: "'Men act and women appear. Men look at women. Women watch themselves being looked at.' This determines not only relations between men and women but also the relation of women to themselves."
+    exp: "Eco defined a sign as 'anything that can be used to tell a lie.' If a sign can misrepresent reality, it has genuine semiotic power — it is not merely mechanical but meaningful."
   },
   {
-    q: "According to Berger, what is the difference between being naked and being nude?",
+    q: "Which term refers to the physical, material form of a sign?",
     opts: [
-      "Nakedness is a temporary state; nudity is a permanent artistic category",
-      "Nakedness is to be oneself; nudity is to be seen naked by others yet not recognized for oneself — displayed as an object",
-      "Nakedness is private; nudity is appropriate in public art contexts",
-      "There is no meaningful difference — Berger uses both terms interchangeably"
+      "Signified",
+      "Referent",
+      "Code",
+      "Signifier"
     ],
-    ans: 1,
-    exp: "'To be naked is to be oneself. To be nude is to be seen naked by others and yet not recognized for oneself.' The nude is placed on display; nakedness reveals itself. Nudity is a form of dress."
+    ans: 3,
+    exp: "The signifier is the perceptible, material vehicle of the sign — a wooden cross, a red light, a checkered flag. The signified is the mental concept it evokes."
   },
   {
-    q: "Who is the 'principal protagonist' of the average European nude painting, according to Berger?",
+    q: "What does 'denotation' mean in semiotic analysis?",
     opts: [
-      "The female figure depicted in the painting",
-      "The painter who created the work",
-      "The male spectator-owner in front of the picture, who is never painted but for whom everything is arranged",
-      "The patron who commissioned the work"
-    ],
-    ans: 2,
-    exp: "Berger argues the male spectator-owner is the invisible but structuring presence. Everything — the figure's pose, her gaze, her display — is addressed to him. 'He, by definition, is a stranger — with his clothes still on.'"
-  },
-  {
-    q: "What was the 'real function' of the mirror in paintings where a nude woman holds one, according to Berger?",
-    opts: [
-      "To symbolize the artist's skill in rendering reflective surfaces",
-      "To symbolize female wisdom and self-knowledge",
-      "To make the woman connive in treating herself as, first and foremost, a sight — joining the spectators of herself",
-      "To create a moral warning about the dangers of self-love"
+      "The emotional and cultural associations attached to a sign",
+      "The process by which a community agrees on a code",
+      "The explicit, referential meaning of a sign",
+      "The physical material from which a sign is made"
     ],
     ans: 2,
-    exp: "Though the moralizing caption called it 'Vanity,' the mirror's real function was to fold the woman into the logic of the gaze — making her police her own image from the outside, as men do. She becomes her own spectator."
+    exp: "Denotation is the literal, explicit meaning — what a sign directly refers to. 'Hollywood' denotes a district in Los Angeles. Connotation is the layer of cultural associations on top of this."
   },
   {
-    q: "What does the Genesis story of Adam and Eve reveal about the origins of the nude tradition, according to Berger?",
+    q: "If 'Hollywood' connotes glamour and celebrity, what semiotic concept is being described?",
     opts: [
-      "That nakedness is sinful and must be covered in public art",
-      "That nakedness was created in the mind of the beholder — and the woman is punished by being made subservient to the male as the agent of God",
-      "That the nude tradition originates in religious devotion rather than sexual interest",
-      "That early medieval art was the true origin of the European nude"
+      "Denotation",
+      "Syntactics",
+      "Pragmatics",
+      "Connotation"
+    ],
+    ans: 3,
+    exp: "Connotation refers to the social, cultural, and emotional associations that surround a sign beyond its literal referent. Hollywood connotes the film industry and stardom."
+  },
+  {
+    q: "In semiotics, a 'code' is best defined as:",
+    opts: [
+      "A secret cipher used to encrypt messages",
+      "A social contract about the relationship between signifiers and signifieds",
+      "The physical structure of a written language",
+      "A government regulation governing communication"
     ],
     ans: 1,
-    exp: "Berger reads Genesis semiologically: 'Nakedness was created in the mind of the beholder.' The woman is blamed and the man becomes the agent of God. This mythological structure — male as judge, female as judged — persists throughout the tradition."
+    exp: "A code is a shared social agreement within a community that links signifiers to signifieds. Without a shared code, communication between parties breaks down."
   },
   {
-    q: "What makes Rubens's painting of Hélène Fourment an 'exceptional' nude according to Berger?",
+    q: "Which branch of semiotics is concerned with how signs are combined and structured?",
     opts: [
-      "It was painted with greater technical skill than other nudes of the period",
-      "It depicted a clothed woman rather than a naked one",
-      "The painter's personal vision is so strong — including a formal bodily distortion — that the painting makes no allowance for the external spectator; her coherence is within his experience of her",
-      "It was the first nude to show a woman with her eyes open and looking directly at the viewer"
+      "Semantics",
+      "Pragmatics",
+      "Syntactics",
+      "Hermeneutics"
     ],
     ans: 2,
-    exp: "Rubens painted Hélène Fourment with an anatomical impossibility — her upper and lower body cannot physically connect as painted. This distortion makes the body 'impossibly dynamic,' its coherence within the painter's subjectivity rather than within convention or the spectator's gaze."
+    exp: "Syntactics examines the rules for constructing and combining signs — the grammar of sign systems. Semantics concerns meaning; pragmatics concerns practical use and effect."
   },
   {
-    q: "What is Berger's single summary of publicity's proposal to each of us?",
+    q: "The semiotic guideline 'avoid semiotic overload' refers to:",
     opts: [
-      "That you deserve happiness and beauty regardless of your income",
-      "That buying more things will connect you to your community",
-      "That you should transform yourself, or your life, by buying something more",
-      "That the products you buy define your national and cultural identity"
+      "Avoiding the use of more than three colors in a design",
+      "Not using signs from foreign cultural codes",
+      "Limiting repetition to exactly one instance per sign",
+      "Not using too many competing signs that exceed the audience's attention capacity"
+    ],
+    ans: 3,
+    exp: "Semiotic overload occurs when too many competing signs are present simultaneously. This impedes rather than facilitates communication because the audience cannot attend to all signs at once."
+  },
+  {
+    q: "When is 'strategic redundancy' in communication justified?",
+    opts: [
+      "Always — repetition always strengthens a message",
+      "In noisy environments or when there is no opportunity for audience feedback",
+      "Only when using visual media rather than written text",
+      "When the audience is highly educated and can process multiple signals"
+    ],
+    ans: 1,
+    exp: "Strategic redundancy is appropriate when communication occurs in a noisy context or when the sender cannot receive feedback. In such situations, repetition helps ensure the message is received correctly."
+  },
+  {
+    q: "Why does the 'visual dominance' guideline recommend that images carry the main point of a message?",
+    opts: [
+      "Because text is less reliable than images",
+      "Because images are cheaper to produce than text",
+      "Because images and sounds command significantly more attention than surrounding text",
+      "Because audiences prefer aesthetics over information"
     ],
     ans: 2,
-    exp: "Publicity makes one single proposal regardless of the specific product: that transformation is possible through purchase. 'This more, it proposes, will make us in some way richer — even though we will be poorer by having spent our money.'"
+    exp: "Visual dominance is a semiotic principle: images and sounds command far more audience attention than text. Therefore, the main communicative point should be conveyed visually."
   },
   {
-    q: "According to Berger, what constitutes 'glamour'?",
+    q: "A circle made with the thumb and index finger means 'OK' in the U.S. but 'zero' in parts of France. This illustrates:",
     opts: [
-      "Physical beauty as judged by objective aesthetic standards",
-      "The state of being envied — manufactured by publicity to drive consumption",
-      "The cultural authority associated with aristocratic taste",
-      "The pleasure derived from wearing luxury goods"
-    ],
-    ans: 1,
-    exp: "'The state of being envied is what constitutes glamour. And publicity is the process of manufacturing glamour.' Glamour is not an intrinsic quality but a social relation — it requires others' envy to exist."
-  },
-  {
-    q: "What does publicity 'steal' from the spectator-buyer, and what does it offer in return?",
-    opts: [
-      "It steals their time and offers entertainment in return",
-      "It steals their money and offers a fantasy of prestige in return",
-      "It steals their love of themselves as they are, and offers it back to them for the price of the product",
-      "It steals their attention and offers false information in return"
+      "That gestures are always universal across cultures",
+      "That signifiers are unstable and break down under scrutiny",
+      "That the same signifier can carry different meanings under different codes",
+      "That French culture is more literal than American culture"
     ],
     ans: 2,
-    exp: "Berger's precise formulation: 'The publicity image steals her love of herself as she is, and offers it back to her for the price of the product.' The buyer must purchase her own self-approval."
+    exp: "This example shows that meaning is not in the physical form (signifier) alone — it is produced by the code (social agreement) applied to that form. Different communities apply different codes to the same gesture."
   },
   {
-    q: "What is the key difference between the spectator-owner of oil painting and the spectator-buyer of publicity?",
+    q: "A woman wearing a fur coat is read as 'luxury' by one viewer and 'cruelty' by another. This demonstrates:",
     opts: [
-      "The spectator-owner was aristocratic; the spectator-buyer is middle class",
-      "The spectator-owner already possessed and was confirmed in that possession; the spectator-buyer is constituted by dissatisfaction and the desire to become",
-      "The spectator-owner was religious; the spectator-buyer is secular",
-      "The spectator-owner looked at paintings; the spectator-buyer looks at photographs"
+      "That the sign has no stable denotation",
+      "That connotation can vary radically depending on the code the viewer applies",
+      "That fashion is always a politically neutral sign system",
+      "That signs only carry meaning for their intended audience"
     ],
     ans: 1,
-    exp: "Oil painting began from facts — what the owner already enjoyed. Publicity makes the spectator-buyer marginally dissatisfied with their present way of life, proposing an improved future self. One confirms; the other creates desire."
+    exp: "The fur coat has the same denotative form for both viewers, but the connotations differ because the viewers operate under different codes — fashion code vs. animal-rights code."
   },
   {
-    q: "Why does publicity rely on the visual language of oil painting, according to Berger?",
+    q: "Peirce's statement that 'the entire universe is perfused with signs' means:",
     opts: [
-      "Because oil painting is the most technically sophisticated visual art form",
-      "Because publicity needs historical authority, a language of quality and tactile desirability, and colour photography now performs the same tactile function as oil paint",
-      "Because modern designers are trained in art history at university",
-      "Because legal regulations require publicity to reference canonical artworks"
-    ],
-    ans: 1,
-    exp: "Three reasons: (1) Oil painting carries authority and prestige; (2) Publicity is nostalgic and needs historical references to quality; (3) Colour photography now renders texture and tangibility as oil paint once did — 'Colour photography is to the spectator-buyer what oil paint was to the spectator-owner.'"
-  },
-  {
-    q: "Berger argues that publicity is 'eventless.' What does this mean?",
-    opts: [
-      "That publicity images never depict specific events or occasions",
-      "That publicity extends as though nothing else is happening — it excludes the present, experience is impossible within it, and all real events happen outside it",
-      "That publicity is boring and fails to capture the viewer's imagination",
-      "That publicity campaigns have no measurable effect on behaviour"
-    ],
-    ans: 1,
-    exp: "Publicity exists in a perpetually deferred future. It cannot accommodate the present — real events (joyous or tragic) are always 'exceptional and happen only to strangers.' Experience is impossible within it; only acquisition exists."
-  },
-  {
-    q: "What is Berger's political conclusion about publicity and capitalism?",
-    opts: [
-      "Publicity is essentially neutral — it reflects rather than shapes social values",
-      "Publicity will eventually be replaced by more honest forms of communication",
-      "Capitalism survives by forcing the majority to define their interests as narrowly as possible; today this is achieved by imposing a false standard of what is desirable through publicity",
-      "Publicity is a form of artistic expression that should be protected as free speech"
+      "All objects in the universe carry a factory-assigned label",
+      "Scientific laws can be written as semiotic systems",
+      "Once human consciousness emerges, everything becomes charged with potential significance",
+      "Signs are only meaningful in linguistic contexts"
     ],
     ans: 2,
-    exp: "Berger's conclusion: 'Capitalism survives by forcing the majority, whom it exploits, to define their own interests as narrowly as possible. Today in the developed countries it is being achieved by imposing a false standard of what is and what is not desirable.' Publicity is the cultural mechanism of this narrowing."
+    exp: "Peirce's claim is that signification is not limited to language. Human consciousness transforms the entire world into a potential sign system — every object, event, or phenomenon can stand for something."
+  },
+  {
+    q: "Which semiotic concept does Saussure's term 'semiology' most closely align with?",
+    opts: [
+      "The study of signs in natural languages only",
+      "The study of signs in all their forms — Peirce's semiotics under a different name",
+      "The anthropological study of cultural rituals",
+      "The branch of linguistics dealing with grammar"
+    ],
+    ans: 1,
+    exp: "Semiology is Saussure's term for the same discipline Peirce called semiotics. Both terms refer to the systematic study of signs — letters, images, gestures, symbols — across all domains."
+  },
+  {
+    q: "Why is semiotics especially relevant to the analysis of photographs?",
+    opts: [
+      "Because photographs are purely objective records with no cultural bias",
+      "Because photographs are too complex for verbal description",
+      "Because photographs are sign systems where meaning is produced through codes, not automatically by the image itself",
+      "Because photography is a recent technology that requires new semiotic frameworks"
+    ],
+    ans: 2,
+    exp: "A photograph is a semiotic object: its subject is the signifier, but what the image culturally means — heroism, poverty, threat — is produced through codes (framing, genre, caption, context). Meaning is not natural; it is coded and therefore interpretable, contestable, and variable."
   }
 ];
 
