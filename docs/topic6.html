@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Topic 6 — Ways of Seeing: Image, Reproduction & Oil Painting</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f5f5f0; color: #1a1a1a; padding: 2rem 1rem; }
+.container { max-width: 880px; margin: 0 auto; }
+.back { display: inline-block; color: #1a3a6e; text-decoration: none; font-size: 0.9rem; margin-bottom: 1.5rem; }
+.back:hover { text-decoration: underline; }
+h1 { font-size: 1.5rem; font-weight: 700; color: #1a3a6e; }
+.subtitle { color: #555; font-size: 0.9rem; margin: 0.3rem 0 1.5rem; }
+.tabs { display: flex; gap: 8px; margin-bottom: 1.5rem; border-bottom: 2px solid #e0e0d8; padding-bottom: 0; }
+.tab-btn { padding: 0.5rem 1.25rem; border: none; background: none; cursor: pointer; font-size: 0.9rem; color: #666; border-bottom: 2px solid transparent; margin-bottom: -2px; font-weight: 500; }
+.tab-btn.active { color: #1a3a6e; border-bottom-color: #1a3a6e; }
+.section { display: none; }
+.section.active { display: block; }
+h2 { font-size: 1.15rem; font-weight: 600; color: #1a3a6e; margin: 1.5rem 0 0.75rem; }
+h3 { font-size: 1rem; font-weight: 600; color: #333; margin: 1rem 0 0.5rem; }
+p { line-height: 1.65; margin-bottom: 0.75rem; color: #333; }
+ul, ol { padding-left: 1.5rem; margin-bottom: 0.75rem; }
+li { line-height: 1.6; margin-bottom: 0.25rem; }
+.card { background: #fff; border: 1px solid #e0e0d8; border-radius: 10px; padding: 1.1rem 1.25rem; margin-bottom: 1rem; }
+.card-title { font-weight: 600; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem; }
+.blue .card-title { color: #1a3a6e; }
+.teal .card-title { color: #0f766e; }
+.amber .card-title { color: #92400e; }
+.coral .card-title { color: #c2410c; }
+.grid2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin-bottom: 1rem; }
+.grid3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-bottom: 1rem; }
+.info-box { border-left: 4px solid #3b82f6; background: #eff6ff; padding: 0.85rem 1rem; border-radius: 0 8px 8px 0; margin-bottom: 1rem; }
+.success-box { border-left: 4px solid #4caf50; background: #f0fdf4; padding: 0.85rem 1rem; border-radius: 0 8px 8px 0; margin-bottom: 1rem; }
+.warning-box { border-left: 4px solid #f59e0b; background: #fffbeb; padding: 0.85rem 1rem; border-radius: 0 8px 8px 0; margin-bottom: 1rem; }
+.quote-box { border-left: 4px solid #8b5cf6; background: #f5f3ff; padding: 0.85rem 1rem; border-radius: 0 8px 8px 0; margin-bottom: 1rem; font-style: italic; }
+.compare-table { width: 100%; border-collapse: collapse; margin-bottom: 1.25rem; font-size: 0.9rem; }
+.compare-table th { background: #1a3a6e; color: #fff; padding: 0.65rem 1rem; text-align: left; }
+.compare-table th:first-child { border-radius: 8px 0 0 0; }
+.compare-table th:last-child { border-radius: 0 8px 0 0; }
+.compare-table td { padding: 0.6rem 1rem; border-bottom: 1px solid #e0e0d8; background: #fff; vertical-align: top; }
+.compare-table tr:last-child td { border-bottom: none; }
+.compare-table tr:last-child td:first-child { border-radius: 0 0 0 8px; }
+.compare-table tr:last-child td:last-child { border-radius: 0 0 8px 0; }
+.dim-label { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; color: #888; letter-spacing: 0.04em; }
+.score-bar { background: #e0e0d8; border-radius: 8px; height: 8px; margin-bottom: 1.5rem; overflow: hidden; }
+#scorefill { height: 100%; background: #1a3a6e; border-radius: 8px; width: 0%; transition: width 0.4s; }
+.score-text { font-size: 0.85rem; color: #555; margin-bottom: 0.5rem; }
+.q-block { background: #fff; border: 1px solid #e0e0d8; border-radius: 10px; padding: 1.1rem 1.25rem; margin-bottom: 1rem; }
+.q-text { font-weight: 500; margin-bottom: 0.75rem; font-size: 0.95rem; }
+.opt { padding: 0.6rem 0.9rem; border: 1px solid #e0e0d8; border-radius: 7px; margin-bottom: 0.4rem; cursor: pointer; font-size: 0.9rem; transition: background 0.1s; }
+.opt:hover:not(.correct):not(.wrong) { background: #f0f0eb; }
+.opt.correct { background: #d1fae5; border-color: #4caf50; color: #065f46; pointer-events: none; }
+.opt.wrong { background: #fee2e2; border-color: #ef4444; color: #991b1b; pointer-events: none; }
+.opt.disabled { pointer-events: none; color: #aaa; }
+.explanation { margin-top: 0.6rem; font-size: 0.85rem; color: #555; background: #f5f5f0; padding: 0.6rem 0.8rem; border-radius: 6px; display: none; }
+</style>
+</head>
+<body>
+<div class="container">
+  <a class="back" href="index.html">← Back</a>
+  <h1>Ways of Seeing: Image, Reproduction &amp; Oil Painting</h1>
+  <p class="subtitle">Cultural Memory and Photographs · Topic 6 — John Berger, Essays 1 &amp; 3</p>
+
+  <div class="tabs">
+    <button class="tab-btn active" onclick="switchTab('lesson', this)">Lesson</button>
+    <button class="tab-btn" onclick="switchTab('quiz', this)">Quiz (15 Q)</button>
+  </div>
+
+  <!-- ═══ LESSON SECTION ═══ -->
+  <div id="lesson" class="section active">
+
+    <div class="info-box">
+      <strong>Source:</strong> John Berger, <em>Ways of Seeing</em> (1972), based on the BBC television series. Essays 1 and 3. Berger's central claim: "The way we see things is affected by what we know or what we believe."
+    </div>
+
+    <!-- ESSAY 1 -->
+    <h2>Essay 1 — Seeing, Knowledge and the Camera</h2>
+
+    <h3>Seeing Comes Before Words</h3>
+    <p>Berger opens with a foundational claim: <strong>"Seeing comes before words."</strong> The child looks and recognizes before it can speak. But this is not merely a developmental observation — it is philosophical. The relation between what we see and what we know is <em>never settled</em>. We see the sun set each evening; we know the earth is turning away from it. Yet the knowledge never quite fits the sight.</p>
+
+    <div class="quote-box">
+      "We never look at just one thing; we are always looking at the relation between things and ourselves. Our vision is continually active, continually moving, continually holding things in a circle around itself."
+    </div>
+
+    <h3>The Image and Its Meaning</h3>
+    <div class="grid2">
+      <div class="card blue">
+        <div class="card-title">What Is an Image?</div>
+        <p>An image is <strong>a sight which has been recreated or reproduced</strong> — detached from the place and time in which it first appeared and preserved. Every image embodies a way of seeing, even a photograph.</p>
+      </div>
+      <div class="card teal">
+        <div class="card-title">What Images Were For</div>
+        <p>Images were first made to <strong>conjure up the appearances of something absent</strong>. Gradually it became evident an image could outlast what it represented — and thus showed how something had once looked.</p>
+      </div>
+    </div>
+
+    <h3>The Camera and Mechanical Reproduction</h3>
+    <p>The invention of the camera fundamentally changed how humans see — and how they see paintings made long before the camera existed. Before photography, perspective organized the visual field so that <strong>every drawing or painting proposed to the spectator that he was the unique centre of the world</strong>. The camera destroyed this fiction.</p>
+
+    <div class="warning-box">
+      <strong>Key Shift:</strong> The camera showed that there was no single centre of vision. The movie camera — moving through space and time — demonstrated that "what you saw depended upon where you were when." The visible became relative to position in time and space.
+    </div>
+
+    <p>This shattered the convention of perspective and immediately affected painting: the Impressionists made the visible <em>fugitive</em>; the Cubists showed the <em>totality of possible views</em> rather than the single fixed viewpoint.</p>
+
+    <h3>Reproduction and the Loss of Uniqueness</h3>
+    <p>When a camera reproduces a painting, it <strong>destroys the uniqueness of its image</strong>. As a result its meaning changes — or more exactly, it <em>multiplies and fragments</em> into many meanings. The painting now travels to the spectator rather than the spectator to the painting.</p>
+
+    <div class="grid2">
+      <div class="card amber">
+        <div class="card-title">The Original Before Reproduction</div>
+        <p>The original work's meaning lay in what it <em>uniquely said</em> — in its image and its specific presence in a specific place, often as part of a building's life.</p>
+      </div>
+      <div class="card coral">
+        <div class="card-title">The Original After Reproduction</div>
+        <p>Now its uniqueness lies in being the <em>original of a reproduction</em>. Its first meaning is no longer what it shows — but what it <em>is</em>: a relic. Its value is defined by rarity and market price.</p>
+      </div>
+    </div>
+
+    <h3>Mystification and Bogus Religiosity</h3>
+    <p>Berger argues that the cult of the original work has become <strong>"bogus religiosity"</strong> — works of art are discussed as holy relics, their value affirmed by market price yet dressed in spiritual language. This mystification serves a social function: it excludes the majority and preserves art as the property of a privileged class.</p>
+
+    <div class="quote-box">
+      "A people or a class which is cut off from its own past is far less free to choose and to act as a people or class than one that has been able to situate itself in history."
+    </div>
+
+    <p>Berger references <strong>Walter Benjamin's</strong> essay <em>The Work of Art in the Age of Mechanical Reproduction</em> (1936) as the intellectual foundation for these ideas. What reproduction destroys is the "aura" — the unique presence of the original in time and space. What it creates is a new democratic potential: images can now reach everyone, be used by anyone.</p>
+
+    <h3>Assumptions Around Art</h3>
+    <p>When an image is presented as a work of art, viewers bring a series of learnt assumptions: Beauty, Truth, Genius, Civilization, Form, Status, Taste. These assumptions <strong>mystify rather than clarify</strong> — they make art unnecessarily remote and deprive people of a history that belongs to them.</p>
+
+    <!-- ESSAY 3 -->
+    <h2>Essay 3 — Oil Painting, Property and Capitalism</h2>
+
+    <h3>What Oil Painting Is</h3>
+    <p>The term "oil painting" refers to more than a technique — it defines an art form with its own <em>way of seeing</em>, dominant from roughly <strong>1500 to 1900</strong>. Oil paint's defining property is its ability to render tangibility, texture, lustre, solidity. It defines the real as <strong>that which you can put your hands on</strong>.</p>
+
+    <div class="info-box">
+      <strong>Lévi-Strauss (quoted by Berger):</strong> "It is this avid and ambitious desire to take possession of the object for the benefit of the owner or even of the spectator which seems to me to constitute one of the outstandingly original features of the art of Western civilization."
+    </div>
+
+    <h3>Oil Painting and Property</h3>
+    <p>The central argument of Essay 3: <strong>oil painting did to appearances what capital did to social relations</strong>. It reduced everything to the equality of objects. Everything became exchangeable because everything became a commodity.</p>
+
+    <div class="quote-box">
+      "Oil painting conveyed a vision of total exteriority." — The medium could not represent the soul, only surfaces and possessions.
+    </div>
+
+    <p>Rich Italian merchants of the Renaissance looked upon painters as agents "who allowed them to confirm their possession of all that was beautiful and desirable in the world." A collection of paintings was a <em>microcosm</em> — the proprietor had recreated within reach all the features of the world to which he was attached.</p>
+
+    <h3>Genres of Oil Painting as Property Relations</h3>
+
+    <table class="compare-table">
+      <thead>
+        <tr><th>Genre</th><th>What It Showed</th><th>Social Function</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="dim-label">Portraits</span></td>
+          <td>The individual sitter's presence and wealth</td>
+          <td>Confirmed the owner's social status; face became a mask of costume</td>
+        </tr>
+        <tr>
+          <td><span class="dim-label">Still Life</span></td>
+          <td>Edible goods, luxury objects, merchandise</td>
+          <td>Demonstrated wealth and habitual style of living</td>
+        </tr>
+        <tr>
+          <td><span class="dim-label">Animals</span></td>
+          <td>Livestock with emphasized pedigree</td>
+          <td>Proof of the owner's breeding stock's value — "animals painted like pieces of furniture"</td>
+        </tr>
+        <tr>
+          <td><span class="dim-label">Buildings / Landscape</span></td>
+          <td>Landed property, estates</td>
+          <td>Celebrated ownership of land; Mr &amp; Mrs Andrews as proud landowners</td>
+        </tr>
+        <tr>
+          <td><span class="dim-label">Mythological / History</span></td>
+          <td>Classical scenes, idealized figures</td>
+          <td>Supplied a cultural guise for the owner's own power — a garment of nobility to wear</td>
+        </tr>
+        <tr>
+          <td><span class="dim-label">"Genre" (low life)</span></td>
+          <td>Scenes of the poor, taverns, daily life</td>
+          <td>Proved virtue = success; reassured the bourgeoisie of their moral worth</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Holbein's Ambassadors (1533)</h3>
+    <p>Berger uses this painting as a case study. The two ambassadors are surrounded by instruments of navigation (for the slave trade and ocean routes), a globe charting Magellan's voyage, books of arithmetic and a hymn book — tools of colonization: Christianity and accounting. Their gaze is <strong>aloof and wary, expecting no reciprocity</strong>. They are convinced the world exists to furnish their residence in it.</p>
+
+    <div class="warning-box">
+      <strong>The Skull:</strong> In the foreground is a highly distorted skull — a memento mori. Significantly, it is painted in a different optical system from everything else. If it had been painted like the rest, "it would have become an object like everything else." The medium's materialism made metaphysical symbols unconvincing.
+    </div>
+
+    <h3>The Exceptional vs. The Average</h3>
+    <p>Berger distinguishes between the average work (produced more or less cynically, serving the market) and the exceptional work (where the painter struggled against the tradition's own language). The great artists — Rembrandt, Vermeer, Turner — are acclaimed as the tradition's supreme representatives, yet their work was <strong>diametrically opposed to its values</strong>.</p>
+
+    <div class="quote-box">
+      "The oil painting did to appearances what capital did to social relations. It reduced everything to the equality of objects." — Berger's core thesis on Essay 3.
+    </div>
+
+    <h3>The Safe in the Wall</h3>
+    <p>The tradition's own image of itself is a framed window open onto the world. Berger's counter-image: <strong>"a safe let into the wall, a safe in which the visible has been deposited."</strong> The oil painting did not open a view — it enclosed and possessed a view for its owner.</p>
+
+    <h2>Exam-Style Questions</h2>
+
+    <div class="card blue">
+      <div class="card-title">Question 1 — The Camera and Uniqueness</div>
+      <p><strong>Q:</strong> According to Berger (following Benjamin), how did the invention of the camera change the way we see paintings? What happens to the "uniqueness" of the original work after mechanical reproduction?</p>
+      <div class="success-box" style="margin-top:0.75rem;margin-bottom:0;">
+        <strong>Model Answer:</strong> The camera destroyed the original work's uniqueness by making its image reproducible and transmittable. Before photography, a painting's meaning was inseparable from its unique presence in a specific place — it was part of a building's life, addressed to those who came to it. After reproduction, the painting travels to the spectator rather than the spectator to it. In doing so, its meaning multiplies and fragments — the same image can be surrounded by different contexts (a family's wallpaper, a museum, a textbook) each producing different meanings.<br><br>
+        The original's uniqueness now lies not in what it says but in what it <em>is</em>: the original of a reproduction. This transforms it into a relic whose value is measured by rarity and market price, dressed in the language of spiritual worth. Berger calls this "bogus religiosity" — a mystification that serves to exclude most people from the art that belongs to their history.
+      </div>
+    </div>
+
+    <div class="card blue" style="margin-top:1rem;">
+      <div class="card-title">Question 2 — Oil Painting and Property</div>
+      <p><strong>Q:</strong> Berger argues that oil painting "did to appearances what capital did to social relations." Explain this claim using at least two genres of oil painting as examples.</p>
+      <div class="success-box" style="margin-top:0.75rem;margin-bottom:0;">
+        <strong>Model Answer:</strong> Berger's claim is that oil painting's unique technical ability — rendering the tactile reality of objects (their texture, lustre, solidity) — made it the perfect medium for a culture organized around private property. Just as capitalism reduced all human relations to the exchange value of commodities, oil painting reduced all visible reality to the appearance of ownable objects.<br><br>
+        The <strong>portrait</strong> confirmed the sitter's social status and wealth — the subject's face eventually became a mask of costume, while the surrounding objects (clothes, furniture, land) did the real communicative work. <strong>Still life</strong> paintings of food, game and luxury goods demonstrated the owner's wealth and style of living. <strong>Landscape</strong> paintings of landed estates — like Gainsborough's Mr and Mrs Andrews — depicted landowners whose proprietary attitude is visible in their very stance and expression. In each genre the medium did not open a window onto the world but locked the world into a "safe" for the owner's possession.
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ═══ QUIZ SECTION ═══ -->
+  <div id="quiz" class="section">
+    <p class="score-text">Score: <span id="scorenum">0</span> / 15</p>
+    <div class="score-bar"><div id="scorefill"></div></div>
+    <div id="quiz-container"></div>
+  </div>
+</div>
+
+<script>
+function switchTab(id, btn) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+}
+
+const questions = [
+  {
+    q: "What is the opening claim of Berger's Ways of Seeing, Essay 1?",
+    opts: [
+      "Art is a form of political propaganda",
+      "Seeing comes before words",
+      "Images are always more truthful than language",
+      "The camera destroyed the meaning of art"
+    ],
+    ans: 1,
+    exp: "'Seeing comes before words. The child looks and recognizes before it can speak.' This foundational claim establishes that visual experience precedes and exceeds language."
+  },
+  {
+    q: "According to Berger, what did the invention of the camera destroy?",
+    opts: [
+      "The market value of original paintings",
+      "The tradition of oil painting entirely",
+      "The idea that perspective made the single eye the centre of the visible world",
+      "The ability of painters to create realistic images"
+    ],
+    ans: 2,
+    exp: "Perspective had proposed a single, fixed centre of vision. The camera — especially the movie camera — showed there was no centre: what you saw depended on where and when you were."
+  },
+  {
+    q: "What happens to a painting's meaning when it is mechanically reproduced?",
+    opts: [
+      "It becomes fixed and universal",
+      "It disappears entirely",
+      "It multiplies and fragments into many meanings depending on context",
+      "It returns to its original meaning as the artist intended"
+    ],
+    ans: 2,
+    exp: "Reproduction detaches the image from its original place. Surrounded by different contexts (a family room, a museum, a textbook), the same image produces different meanings for different viewers."
+  },
+  {
+    q: "What does Berger mean by 'bogus religiosity' surrounding original works of art?",
+    opts: [
+      "That art museums function as literal religious spaces",
+      "That artists were historically motivated by religious faith",
+      "That original works are treated as holy relics whose value is defined by market price dressed in spiritual language",
+      "That religious painting is inherently dishonest"
+    ],
+    ans: 2,
+    exp: "Once reproduction made images available everywhere, the uniqueness of the original shifted to its rarity and market value. This rarity is then dressed in spiritual language — the work is treated as a relic — which Berger calls bogus religiosity."
+  },
+  {
+    q: "Which thinker's essay does Berger explicitly acknowledge as the foundation for Essay 1?",
+    opts: [
+      "Roland Barthes — Mythologies",
+      "Walter Benjamin — The Work of Art in the Age of Mechanical Reproduction",
+      "Susan Sontag — On Photography",
+      "Michel Foucault — The Order of Things"
+    ],
+    ans: 1,
+    exp: "Berger notes at the end of Essay 1 that many of its ideas derive from Walter Benjamin's 1936 essay on mechanical reproduction, available in the collection Illuminations."
+  },
+  {
+    q: "What does Berger mean when he says the oil painting is not 'a framed window open on to the world' but 'a safe let into the wall'?",
+    opts: [
+      "That oil paintings were physically built into walls of houses",
+      "That oil painting enclosed and possessed a view rather than opening onto the world freely",
+      "That oil paintings were kept secret by their owners",
+      "That the technique of oil paint was used to hide valuables"
+    ],
+    ans: 1,
+    exp: "The 'safe' metaphor captures the possessive logic of oil painting: rather than offering a view outward, it locked the visible world into a form that could be owned, stored, and displayed as property."
+  },
+  {
+    q: "Berger quotes Lévi-Strauss on Western art. What feature of Western civilization does Lévi-Strauss identify as outstandingly original?",
+    opts: [
+      "The use of perspective to simulate three-dimensional space",
+      "The tradition of religious painting and church patronage",
+      "The desire to take possession of the object for the benefit of the owner or spectator",
+      "The invention of canvas as a portable painting surface"
+    ],
+    ans: 2,
+    exp: "Lévi-Strauss identified this acquisitive desire — to take possession of the visible world through art — as a distinctively Western feature, which Berger uses to ground his argument about oil painting and property."
+  },
+  {
+    q: "What does Berger argue oil painting 'did to appearances'?",
+    opts: [
+      "It spiritualized appearances, lifting them above material concerns",
+      "It did to appearances what capital did to social relations — reduced everything to the equality of objects",
+      "It democratized appearances by making them available to all viewers",
+      "It abstracted appearances away from real-world objects"
+    ],
+    ans: 1,
+    exp: "This is Berger's core thesis in Essay 3: the logic of oil painting — rendering everything as a possessable object with tactile reality — mirrors the logic of capitalism."
+  },
+  {
+    q: "In the portrait tradition, what eventually happened to the painted face of the sitter?",
+    opts: [
+      "It became increasingly lifelike and psychologically complex",
+      "It became more generalized — a mask that went with the costume",
+      "It disappeared entirely in favour of symbolic objects",
+      "It was replaced by text listing the sitter's accomplishments"
+    ],
+    ans: 1,
+    exp: "As the portrait tradition continued, the sitter's face became more and more generalized — a mask accompanying the costume and surrounding objects. Berger sees the modern politician's 'puppet TV appearance' as the final stage of this development."
+  },
+  {
+    q: "What is Berger's analysis of 'genre' paintings depicting the poor?",
+    opts: [
+      "They were honest social documents revealing inequality",
+      "They proved that the poor are happy and that the better-off are a source of hope — a sentimental lie confirming bourgeois virtue",
+      "They were produced by working-class artists to represent their own experience",
+      "They challenged the tradition of oil painting by rejecting its focus on property"
+    ],
+    ans: 1,
+    exp: "'Genre' pictures showed smiling poor people to confirm that virtue is rewarded by financial success. They were reassuring — the painted poor smile to ingratiate themselves, confirming the moral worth of the viewers who could afford to buy them."
+  },
+  {
+    q: "What does Holbein's The Ambassadors (1533) represent in Berger's argument?",
+    opts: [
+      "An exception to the property-focused tradition because of its spiritual symbolism",
+      "The beginning of the tradition: men who believe the world exists to furnish their residence in it, surrounded by instruments of trade and colonization",
+      "A purely decorative work with no political significance",
+      "The first European painting to challenge the convention of perspective"
+    ],
+    ans: 1,
+    exp: "The ambassadors are surrounded by instruments of navigation (slave trade routes), a globe of Magellan's voyage, and books of arithmetic and religion — the tools of colonization. Their gaze expects no reciprocity. They embody a class 'convinced that the world was there to furnish their residence in it.'"
+  },
+  {
+    q: "Why did the average religious painting of the oil tradition appear 'hypocritical' according to Berger?",
+    opts: [
+      "Because the painters were not genuinely religious",
+      "Because the paint's material focus on tangible objects undermined the spiritual claims of the religious subject",
+      "Because religious subjects were only chosen for their commercial appeal",
+      "Because the Church rejected most religious paintings as theologically incorrect"
+    ],
+    ans: 1,
+    exp: "Oil paint's propensity to render tactile, possessable surfaces made spiritual content unconvincing. The Mary Magdalene example: she is painted as 'first and foremost a takeable and desirable woman' — the renunciation the story requires is made impossible by the painting method."
+  },
+  {
+    q: "How does Berger characterize the relationship between 'exceptional' artists (Rembrandt, Vermeer) and the tradition they worked in?",
+    opts: [
+      "They were loyal representatives who perfected the tradition's values",
+      "They worked outside the tradition entirely in isolation",
+      "Their work was diametrically opposed to the tradition's values, yet they are paradoxically acclaimed as its supreme representatives",
+      "They were commercial failures because they rejected the open art market"
+    ],
+    ans: 2,
+    exp: "This is one of Berger's key insights: the exceptional artists struggled against the tradition's language from within it. After their death, the tradition closed around their work as if nothing had been disturbed — allowing their radicalism to be absorbed and neutralized."
+  },
+  {
+    q: "According to Berger, a painting that has been reproduced and used in a film or essay changes in what way?",
+    opts: [
+      "It loses all meaning because its material presence is absent",
+      "It retains its original authority unchanged",
+      "It becomes material for the filmmaker's or writer's argument — lending authority to someone else's conclusion",
+      "It becomes more accessible and therefore more democratic"
+    ],
+    ans: 2,
+    exp: "When a painting is reproduced in a film, the film's sequence of images constructs an irreversible argument. The painting lends authority to the filmmaker's conclusions. Berger acknowledges this at the end of Essay 1: 'The words have quoted the paintings to confirm their own verbal authority.'"
+  },
+  {
+    q: "What is Berger's political conclusion at the end of Essay 1?",
+    opts: [
+      "Museums should be abolished and replaced by digital archives",
+      "Art is fundamentally private and cannot be shared without distortion",
+      "The art of the past has become a political issue because a class cut off from its past is less free to act",
+      "Reproduction has made art meaningless and therefore politically irrelevant"
+    ],
+    ans: 2,
+    exp: "Berger argues: 'A people or a class which is cut off from its own past is far less free to choose and to act.' This is why the entire art of the past has become a political issue — who controls its meaning, who has access to it, determines who can situate themselves in history."
+  }
+];
+
+let answered = Array(questions.length).fill(false);
+let score = 0;
+
+function answer(qi, oi) {
+  if (answered[qi]) return;
+  answered[qi] = true;
+  const block = document.querySelectorAll('.q-block')[qi];
+  const opts = block.querySelectorAll('.opt');
+  opts.forEach((o, i) => {
+    if (i === questions[qi].ans) o.classList.add('correct');
+    else o.classList.add(i === oi ? 'wrong' : 'disabled');
+  });
+  block.querySelector('.explanation').style.display = 'block';
+  if (oi === questions[qi].ans) score++;
+  document.getElementById('scorenum').textContent = score;
+  document.getElementById('scorefill').style.width = (answered.filter(Boolean).length / questions.length * 100) + '%';
+}
+
+function buildQuiz() {
+  const c = document.getElementById('quiz-container');
+  questions.forEach((q, qi) => {
+    c.innerHTML += `<div class="q-block">
+      <div class="q-text">${qi + 1}. ${q.q}</div>
+      ${q.opts.map((o, oi) => `<div class="opt" onclick="answer(${qi},${oi})">${o}</div>`).join('')}
+      <div class="explanation">&#128161; ${q.exp}</div>
+    </div>`;
+  });
+}
+buildQuiz();
+</script>
+</body>
+</html>

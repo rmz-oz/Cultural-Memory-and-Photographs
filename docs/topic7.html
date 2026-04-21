@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Topic 7 — Ways of Seeing: The Male Gaze &amp; Publicity</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f5f5f0; color: #1a1a1a; padding: 2rem 1rem; }
+.container { max-width: 880px; margin: 0 auto; }
+.back { display: inline-block; color: #1a3a6e; text-decoration: none; font-size: 0.9rem; margin-bottom: 1.5rem; }
+.back:hover { text-decoration: underline; }
+h1 { font-size: 1.5rem; font-weight: 700; color: #1a3a6e; }
+.subtitle { color: #555; font-size: 0.9rem; margin: 0.3rem 0 1.5rem; }
+.tabs { display: flex; gap: 8px; margin-bottom: 1.5rem; border-bottom: 2px solid #e0e0d8; padding-bottom: 0; }
+.tab-btn { padding: 0.5rem 1.25rem; border: none; background: none; cursor: pointer; font-size: 0.9rem; color: #666; border-bottom: 2px solid transparent; margin-bottom: -2px; font-weight: 500; }
+.tab-btn.active { color: #1a3a6e; border-bottom-color: #1a3a6e; }
+.section { display: none; }
+.section.active { display: block; }
+h2 { font-size: 1.15rem; font-weight: 600; color: #1a3a6e; margin: 1.5rem 0 0.75rem; }
+h3 { font-size: 1rem; font-weight: 600; color: #333; margin: 1rem 0 0.5rem; }
+p { line-height: 1.65; margin-bottom: 0.75rem; color: #333; }
+ul, ol { padding-left: 1.5rem; margin-bottom: 0.75rem; }
+li { line-height: 1.6; margin-bottom: 0.25rem; }
+.card { background: #fff; border: 1px solid #e0e0d8; border-radius: 10px; padding: 1.1rem 1.25rem; margin-bottom: 1rem; }
+.card-title { font-weight: 600; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem; }
+.blue .card-title { color: #1a3a6e; }
+.teal .card-title { color: #0f766e; }
+.amber .card-title { color: #92400e; }
+.coral .card-title { color: #c2410c; }
+.grid2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin-bottom: 1rem; }
+.grid3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-bottom: 1rem; }
+.info-box { border-left: 4px solid #3b82f6; background: #eff6ff; padding: 0.85rem 1rem; border-radius: 0 8px 8px 0; margin-bottom: 1rem; }
+.success-box { border-left: 4px solid #4caf50; background: #f0fdf4; padding: 0.85rem 1rem; border-radius: 0 8px 8px 0; margin-bottom: 1rem; }
+.warning-box { border-left: 4px solid #f59e0b; background: #fffbeb; padding: 0.85rem 1rem; border-radius: 0 8px 8px 0; margin-bottom: 1rem; }
+.quote-box { border-left: 4px solid #8b5cf6; background: #f5f3ff; padding: 0.85rem 1rem; border-radius: 0 8px 8px 0; margin-bottom: 1rem; font-style: italic; }
+.compare-table { width: 100%; border-collapse: collapse; margin-bottom: 1.25rem; font-size: 0.9rem; }
+.compare-table th { background: #1a3a6e; color: #fff; padding: 0.65rem 1rem; text-align: left; }
+.compare-table th:first-child { border-radius: 8px 0 0 0; }
+.compare-table th:last-child { border-radius: 0 8px 0 0; }
+.compare-table td { padding: 0.6rem 1rem; border-bottom: 1px solid #e0e0d8; background: #fff; vertical-align: top; }
+.compare-table tr:last-child td { border-bottom: none; }
+.compare-table tr:last-child td:first-child { border-radius: 0 0 0 8px; }
+.compare-table tr:last-child td:last-child { border-radius: 0 0 8px 0; }
+.dim-label { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; color: #888; letter-spacing: 0.04em; }
+.score-bar { background: #e0e0d8; border-radius: 8px; height: 8px; margin-bottom: 1.5rem; overflow: hidden; }
+#scorefill { height: 100%; background: #1a3a6e; border-radius: 8px; width: 0%; transition: width 0.4s; }
+.score-text { font-size: 0.85rem; color: #555; margin-bottom: 0.5rem; }
+.q-block { background: #fff; border: 1px solid #e0e0d8; border-radius: 10px; padding: 1.1rem 1.25rem; margin-bottom: 1rem; }
+.q-text { font-weight: 500; margin-bottom: 0.75rem; font-size: 0.95rem; }
+.opt { padding: 0.6rem 0.9rem; border: 1px solid #e0e0d8; border-radius: 7px; margin-bottom: 0.4rem; cursor: pointer; font-size: 0.9rem; transition: background 0.1s; }
+.opt:hover:not(.correct):not(.wrong) { background: #f0f0eb; }
+.opt.correct { background: #d1fae5; border-color: #4caf50; color: #065f46; pointer-events: none; }
+.opt.wrong { background: #fee2e2; border-color: #ef4444; color: #991b1b; pointer-events: none; }
+.opt.disabled { pointer-events: none; color: #aaa; }
+.explanation { margin-top: 0.6rem; font-size: 0.85rem; color: #555; background: #f5f5f0; padding: 0.6rem 0.8rem; border-radius: 6px; display: none; }
+</style>
+</head>
+<body>
+<div class="container">
+  <a class="back" href="index.html">← Back</a>
+  <h1>Ways of Seeing: The Male Gaze &amp; Publicity</h1>
+  <p class="subtitle">Cultural Memory and Photographs · Topic 7 — John Berger, Essays 5 &amp; 7</p>
+
+  <div class="tabs">
+    <button class="tab-btn active" onclick="switchTab('lesson', this)">Lesson</button>
+    <button class="tab-btn" onclick="switchTab('quiz', this)">Quiz (15 Q)</button>
+  </div>
+
+  <!-- ═══ LESSON SECTION ═══ -->
+  <div id="lesson" class="section active">
+
+    <div class="info-box">
+      <strong>Source:</strong> John Berger, <em>Ways of Seeing</em> (1972), Essays 5 and 7. Essay 5 concerns the representation of women in European painting; Essay 7 concerns the language of publicity and its relationship to oil painting.
+    </div>
+
+    <!-- ESSAY 5 -->
+    <h2>Essay 5 — Women, the Gaze, and the Nude</h2>
+
+    <h3>The Split Self: Surveyor and Surveyed</h3>
+    <p>Berger opens with a structural observation about gender: <strong>a woman's social presence is fundamentally different from a man's</strong>. A man's presence projects outward — what he is capable of doing to or for others. A woman's presence expresses her attitude to <em>herself</em>, and defines what can and cannot be done to her.</p>
+
+    <div class="quote-box">
+      "A woman must continually watch herself. She is almost continually accompanied by her own image of herself... From earliest childhood she has been taught and persuaded to survey herself continually."
+    </div>
+
+    <p>This produces a <strong>split identity</strong>: the woman becomes both the surveyor and the surveyed within herself. Her sense of being in herself is supplanted by a sense of <em>being seen</em>. The surveyor within her is male; the surveyed is female.</p>
+
+    <div class="grid2">
+      <div class="card blue">
+        <div class="card-title">Man's Presence</div>
+        <ul>
+          <li>Projects outward toward others</li>
+          <li>Defined by power he can exercise</li>
+          <li>His actions are expressions of himself</li>
+          <li><em>Men act</em></li>
+        </ul>
+      </div>
+      <div class="card coral">
+        <div class="card-title">Woman's Presence</div>
+        <ul>
+          <li>Directed inward, toward herself</li>
+          <li>Defined by how she appears to others</li>
+          <li>Her actions are read as indications of how she wishes to be treated</li>
+          <li><em>Women appear</em></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="quote-box">
+      "Men act and women appear. Men look at women. Women watch themselves being looked at. This determines not only most relations between men and women but also the relation of women to themselves."
+    </div>
+
+    <h3>Naked vs. Nude</h3>
+    <p>Berger draws a sharp distinction, building on Kenneth Clark's <em>The Nude</em>:</p>
+
+    <div class="grid2">
+      <div class="card teal">
+        <div class="card-title">To Be Naked</div>
+        <p>To be <strong>oneself</strong>. Nakedness reveals itself. To be naked is to be without disguise — the body in its own right, expressing its own feelings and reality.</p>
+      </div>
+      <div class="card amber">
+        <div class="card-title">To Be Nude</div>
+        <p>To be <strong>seen naked by others and yet not recognized for oneself</strong>. The nude is an object — placed on display for a spectator. "Nudity is a form of dress." The nude is condemned to never being naked.</p>
+      </div>
+    </div>
+
+    <div class="warning-box">
+      <strong>Key Point:</strong> "In the average European oil painting of the nude the principal protagonist is never painted. He is the spectator in front of the picture and he is presumed to be a man. Everything is addressed to him. Everything must appear to be the result of his being there."
+    </div>
+
+    <h3>The European Nude Tradition</h3>
+    <p>The first nudes in the tradition depicted Adam and Eve. In Genesis, nakedness was created in the <em>mind of the beholder</em> — "they knew that they were naked." The woman is then punished by being made subservient to the man, who becomes the agent of God. This mythological structure — the male as judge, the female as the judged — runs through the tradition.</p>
+
+    <ul>
+      <li><strong>The mirror as symbol</strong>: Often used as a symbol of female vanity. But Berger argues its real function was to <em>make the woman connive in treating herself as a sight</em> — she joins the spectators of herself.</li>
+      <li><strong>The Judgement of Paris</strong>: Paris awards the apple to the woman he finds most beautiful. Beauty becomes competitive; the prize is to be owned by a judge.</li>
+      <li><strong>Susannah and the Elders</strong>: "We join the Elders to spy on Susannah taking her bath. She looks back at us looking at her." The viewer is positioned as voyeur.</li>
+    </ul>
+
+    <div class="quote-box">
+      "You painted a naked woman because you enjoyed looking at her, you put a mirror in her hand and you called the painting Vanity, thus morally condemning the woman whose nakedness you had depicted for your own pleasure."
+    </div>
+
+    <h3>The Spectator-Owner</h3>
+    <p>The imagined viewer of the traditional nude is <strong>the spectator-owner</strong> — a man, with his clothes still on, for whom the woman has assumed her nudity. Almost all post-Renaissance European sexual imagery is frontal because the sexual protagonist <em>is</em> the spectator-owner looking at it. Even when a male lover appears in the painting, the woman's attention is directed past him toward the spectator.</p>
+
+    <h3>The Exceptional: Paintings of Loved Women</h3>
+    <p>Among hundreds of thousands of nudes, Berger identifies perhaps a hundred exceptions: <strong>paintings of loved women</strong>, more or less naked, where the painter's personal vision is so strong it makes no allowance for the spectator. He uses Rubens's portrait of his young wife Hélène Fourment as an example.</p>
+
+    <p>In the Rubens, her body contains a deliberate anatomical impossibility — her upper and lower body cannot physically meet as painted. This formal distortion "permits the body to become impossibly dynamic. Its coherence is no longer within itself but within the experience of the painter." She is naked as he sees her, not as the spectator-owner demands.</p>
+
+    <h3>Today's Continuation</h3>
+    <p>The tradition of the nude has given way to other media — advertising, journalism, television — but the essential way of seeing women has not changed.</p>
+
+    <div class="quote-box">
+      "Women are depicted in a quite different way from men — not because the feminine is different from the masculine — but because the 'ideal' spectator is always assumed to be male and the image of the woman is designed to flatter him."
+    </div>
+
+    <!-- ESSAY 7 -->
+    <h2>Essay 7 — Publicity, Glamour and the Language of Oil Painting</h2>
+
+    <h3>What Publicity Is</h3>
+    <p>In cities we see hundreds of publicity images every day. No other kind of image confronts us so frequently. Publicity <strong>belongs to the moment</strong> — it must be continually renewed — but it never speaks of the present. It always speaks of the future.</p>
+
+    <div class="info-box">
+      <strong>Publicity's single proposal:</strong> "It proposes to each of us that we transform ourselves, or our lives, by buying something more. This more, it proposes, will make us in some way richer — even though we will be poorer by having spent our money."
+    </div>
+
+    <h3>Glamour and Envy</h3>
+    <p>Publicity persuades through transformation by showing people who have apparently been transformed and are, as a result, <strong>enviable</strong>. The state of being envied is what constitutes <em>glamour</em>. Publicity is the process of manufacturing glamour.</p>
+
+    <div class="quote-box">
+      "Being envied is a solitary form of reassurance. It depends precisely upon not sharing your experience with those who envy you."
+    </div>
+
+    <p>The spectator-buyer is meant to <strong>envy herself as she will become</strong> if she buys the product. Publicity steals her love of herself as she is and offers it back to her for the price of the product.</p>
+
+    <h3>Publicity vs. Pleasure</h3>
+    <p>Berger distinguishes publicity from the actual pleasure of the things it advertises. Publicity begins with a real appetite for pleasure — clothes, food, cars, sunshine — but it cannot offer the real object of pleasure.</p>
+
+    <div class="warning-box">
+      <strong>The Paradox:</strong> The more convincingly publicity conveys the pleasure of bathing in a warm, distant sea, the more the spectator-buyer becomes aware that she is hundreds of miles away. Publicity is never a celebration of a pleasure-in-itself. It is always about the <em>future buyer</em>, not the present experience.
+    </div>
+
+    <p><strong>"Publicity is about social relations, not objects."</strong> Its promise is not of pleasure but of happiness — happiness as judged from the outside by others.</p>
+
+    <h3>Oil Painting and Publicity: A Direct Continuity</h3>
+    <p>Berger's central claim in Essay 7: there is a <strong>direct continuity</strong> between the language of oil painting and the language of publicity. Both speak in the same voice about the same things.</p>
+
+    <table class="compare-table">
+      <thead>
+        <tr><th>Dimension</th><th>Oil Painting (1500–1900)</th><th>Publicity (Today)</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="dim-label">Spectator</span></td>
+          <td>Spectator-owner: already possessing</td>
+          <td>Spectator-buyer: desiring to possess</td>
+        </tr>
+        <tr>
+          <td><span class="dim-label">Promise</span></td>
+          <td>Confirms and enhances what the owner already has</td>
+          <td>Offers an improved alternative to what the buyer currently is</td>
+        </tr>
+        <tr>
+          <td><span class="dim-label">Technique</span></td>
+          <td>Oil paint renders tactile reality of objects</td>
+          <td>Colour photography (the modern equivalent) renders texture and tangibility</td>
+        </tr>
+        <tr>
+          <td><span class="dim-label">Tense</span></td>
+          <td>Began with facts — what the owner already enjoyed</td>
+          <td>Speaks of the future — what the buyer might become</td>
+        </tr>
+        <tr>
+          <td><span class="dim-label">Core logic</span></td>
+          <td>You are what you have (property)</td>
+          <td>You are what you have (commodity)</td>
+        </tr>
+        <tr>
+          <td><span class="dim-label">Social anxiety</span></td>
+          <td>Status and position in a hierarchy</td>
+          <td>"All publicity works upon anxiety. The sum of everything is money."</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Why Publicity Uses Oil Painting's Language</h3>
+    <ol>
+      <li style="margin-bottom:0.5rem;"><strong>Authority and prestige:</strong> A work of art quoted in an advertisement says two almost contradictory things simultaneously — it denotes wealth and implies spirituality. Luxury + cultural value at once.</li>
+      <li style="margin-bottom:0.5rem;"><strong>Nostalgia:</strong> Publicity is essentially nostalgic — it must sell the past to the future. It cannot supply the standards of its own claims, so all references to quality are retrospective and traditional.</li>
+      <li style="margin-bottom:0.5rem;"><strong>Technical development:</strong> Cheap colour photography (developed roughly 15 years before the book's publication in 1972) can reproduce the colour, texture and tangibility of objects as only oil paint had previously been able to do.</li>
+    </ol>
+
+    <h3>Glamour Is Modern</h3>
+    <div class="grid2">
+      <div class="card blue">
+        <div class="card-title">Oil Painting — Grace &amp; Authority</div>
+        <p>Earlier ideals of grace, elegance, and authority were qualities intrinsic to the person. Gainsborough's Mrs Siddons is wealthy and beautiful — but "her qualities are her own and have been recognized as such." She is not glamorous.</p>
+      </div>
+      <div class="card coral">
+        <div class="card-title">Publicity — Glamour &amp; Envy</div>
+        <p>Glamour is a modern invention. It depends on envy — being seen as enviable by others. Andy Warhol's Marilyn Monroe is its emblem: she is purely the creature of others' envy, not a person recognized for her own qualities.</p>
+      </div>
+    </div>
+
+    <h3>Publicity's Political Function</h3>
+    <div class="quote-box">
+      "Capitalism survives by forcing the majority, whom it exploits, to define their own interests as narrowly as possible. This was once achieved by extensive deprivation. Today in the developed countries it is being achieved by imposing a false standard of what is and what is not desirable."
+    </div>
+
+    <p>Publicity is "the life of this culture — in so far as without publicity capitalism could not survive — and at the same time publicity is its dream." It excludes the present entirely: publicity is <strong>eventless</strong>. All real events happen outside it. Experience is impossible within it. All that it offers is the act of acquiring.</p>
+
+    <h2>Exam-Style Questions</h2>
+
+    <div class="card blue">
+      <div class="card-title">Question 1 — Men Act, Women Appear</div>
+      <p><strong>Q:</strong> Explain Berger's claim that "men act and women appear" in the context of Essay 5. How does the concept of the surveyor/surveyed split illuminate the European nude tradition?</p>
+      <div class="success-box" style="margin-top:0.75rem;margin-bottom:0;">
+        <strong>Model Answer:</strong> Berger argues that a structural asymmetry governs how men and women relate to their own self-image. A man's presence projects outward — toward what he can do to others. A woman's presence is directed inward — toward how she appears. From earliest childhood she is taught to survey herself continuously, producing a split identity: the surveyor within her (male) and the surveyed (female).<br><br>
+        This structure directly shapes the European nude tradition. In the average nude, the principal protagonist who is never painted is the male spectator-owner — everything in the image is arranged for his gaze. The woman does not look at herself as she is; she looks outward toward an imagined male viewer. The mirror, used as a symbol of female "vanity," in fact performs this function: it makes the woman join the spectators of herself. The result: to be nude is to be seen naked by others without being recognized for oneself. Nudity is placed on display; nakedness reveals itself. The nude is condemned to never being naked.
+      </div>
+    </div>
+
+    <div class="card blue" style="margin-top:1rem;">
+      <div class="card-title">Question 2 — Oil Painting and Publicity</div>
+      <p><strong>Q:</strong> Berger argues there is a "direct continuity" between the language of oil painting and the language of modern publicity. What is the nature of this continuity, and where does it break down?</p>
+      <div class="success-box" style="margin-top:0.75rem;margin-bottom:0;">
+        <strong>Model Answer:</strong> The continuity is rooted in a shared core logic: "you are what you have." Oil painting rendered the tactile reality of possessable objects with unprecedented conviction — its medium was designed to make surfaces feel real, desirable, acquirable. Modern colour photography performs the same function for publicity: both media play upon the spectator's sense that they can almost touch what is shown, reminding them how they might possess the real thing.<br><br>
+        Both speak the same visual language: romanticized nature, the glamour of materials (fur, leather, polished metal), frontal arrangement of figures for the spectator's benefit, and the use of classical or historical references to lend authority and cultural prestige.<br><br>
+        But the break is equally important: oil painting addressed the spectator-owner — someone already possessing — and consolidated their sense of their own value, beginning from facts. Publicity addresses the spectator-buyer — someone constituted by dissatisfaction — and makes them marginally dissatisfied with their present life in order to propose a transformed future self. Oil painting spoke from the present tense of possession; publicity speaks from the perpetually deferred future of desire.
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ═══ QUIZ SECTION ═══ -->
+  <div id="quiz" class="section">
+    <p class="score-text">Score: <span id="scorenum">0</span> / 15</p>
+    <div class="score-bar"><div id="scorefill"></div></div>
+    <div id="quiz-container"></div>
+  </div>
+</div>
+
+<script>
+function switchTab(id, btn) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+}
+
+const questions = [
+  {
+    q: "According to Berger, what is the fundamental difference between a man's social presence and a woman's?",
+    opts: [
+      "A man's presence is emotional; a woman's presence is rational",
+      "A man's presence projects outward toward what he can do to others; a woman's presence is directed toward how she appears",
+      "A man's presence is fixed by birth; a woman's presence can be changed through education",
+      "There is no fundamental difference — both are determined by class"
+    ],
+    ans: 1,
+    exp: "Berger argues the man's presence suggests what he is capable of doing to you or for you. The woman's presence expresses her attitude to herself and defines what can and cannot be done to her — it is constituted by being seen, not by acting."
+  },
+  {
+    q: "What does Berger mean by the 'surveyor/surveyed' split in women's identity?",
+    opts: [
+      "Women are professionally employed to survey and assess property",
+      "Women are taught from childhood to watch themselves continuously, producing an internal split between the part that watches (male) and the part that is watched (female)",
+      "Women in oil paintings are shown looking at landscape rather than at other figures",
+      "Women develop a split personality as a result of social exclusion"
+    ],
+    ans: 1,
+    exp: "Berger argues that social conditioning teaches women to survey themselves as men survey them. The surveyor within her is male; the surveyed is female. This produces a form of self-objectification built into her identity."
+  },
+  {
+    q: "Berger's most famous formulation in Essay 5 is:",
+    opts: [
+      "Women see; men are seen",
+      "Women own; men desire",
+      "Men act and women appear",
+      "Men speak and women listen"
+    ],
+    ans: 2,
+    exp: "'Men act and women appear. Men look at women. Women watch themselves being looked at.' This determines not only relations between men and women but also the relation of women to themselves."
+  },
+  {
+    q: "According to Berger, what is the difference between being naked and being nude?",
+    opts: [
+      "Nakedness is a temporary state; nudity is a permanent artistic category",
+      "Nakedness is to be oneself; nudity is to be seen naked by others yet not recognized for oneself — displayed as an object",
+      "Nakedness is private; nudity is appropriate in public art contexts",
+      "There is no meaningful difference — Berger uses both terms interchangeably"
+    ],
+    ans: 1,
+    exp: "'To be naked is to be oneself. To be nude is to be seen naked by others and yet not recognized for oneself.' The nude is placed on display; nakedness reveals itself. Nudity is a form of dress."
+  },
+  {
+    q: "Who is the 'principal protagonist' of the average European nude painting, according to Berger?",
+    opts: [
+      "The female figure depicted in the painting",
+      "The painter who created the work",
+      "The male spectator-owner in front of the picture, who is never painted but for whom everything is arranged",
+      "The patron who commissioned the work"
+    ],
+    ans: 2,
+    exp: "Berger argues the male spectator-owner is the invisible but structuring presence. Everything — the figure's pose, her gaze, her display — is addressed to him. 'He, by definition, is a stranger — with his clothes still on.'"
+  },
+  {
+    q: "What was the 'real function' of the mirror in paintings where a nude woman holds one, according to Berger?",
+    opts: [
+      "To symbolize the artist's skill in rendering reflective surfaces",
+      "To symbolize female wisdom and self-knowledge",
+      "To make the woman connive in treating herself as, first and foremost, a sight — joining the spectators of herself",
+      "To create a moral warning about the dangers of self-love"
+    ],
+    ans: 2,
+    exp: "Though the moralizing caption called it 'Vanity,' the mirror's real function was to fold the woman into the logic of the gaze — making her police her own image from the outside, as men do. She becomes her own spectator."
+  },
+  {
+    q: "What does the Genesis story of Adam and Eve reveal about the origins of the nude tradition, according to Berger?",
+    opts: [
+      "That nakedness is sinful and must be covered in public art",
+      "That nakedness was created in the mind of the beholder — and the woman is punished by being made subservient to the male as the agent of God",
+      "That the nude tradition originates in religious devotion rather than sexual interest",
+      "That early medieval art was the true origin of the European nude"
+    ],
+    ans: 1,
+    exp: "Berger reads Genesis semiologically: 'Nakedness was created in the mind of the beholder.' The woman is blamed and the man becomes the agent of God. This mythological structure — male as judge, female as judged — persists throughout the tradition."
+  },
+  {
+    q: "What makes Rubens's painting of Hélène Fourment an 'exceptional' nude according to Berger?",
+    opts: [
+      "It was painted with greater technical skill than other nudes of the period",
+      "It depicted a clothed woman rather than a naked one",
+      "The painter's personal vision is so strong — including a formal bodily distortion — that the painting makes no allowance for the external spectator; her coherence is within his experience of her",
+      "It was the first nude to show a woman with her eyes open and looking directly at the viewer"
+    ],
+    ans: 2,
+    exp: "Rubens painted Hélène Fourment with an anatomical impossibility — her upper and lower body cannot physically connect as painted. This distortion makes the body 'impossibly dynamic,' its coherence within the painter's subjectivity rather than within convention or the spectator's gaze."
+  },
+  {
+    q: "What is Berger's single summary of publicity's proposal to each of us?",
+    opts: [
+      "That you deserve happiness and beauty regardless of your income",
+      "That buying more things will connect you to your community",
+      "That you should transform yourself, or your life, by buying something more",
+      "That the products you buy define your national and cultural identity"
+    ],
+    ans: 2,
+    exp: "Publicity makes one single proposal regardless of the specific product: that transformation is possible through purchase. 'This more, it proposes, will make us in some way richer — even though we will be poorer by having spent our money.'"
+  },
+  {
+    q: "According to Berger, what constitutes 'glamour'?",
+    opts: [
+      "Physical beauty as judged by objective aesthetic standards",
+      "The state of being envied — manufactured by publicity to drive consumption",
+      "The cultural authority associated with aristocratic taste",
+      "The pleasure derived from wearing luxury goods"
+    ],
+    ans: 1,
+    exp: "'The state of being envied is what constitutes glamour. And publicity is the process of manufacturing glamour.' Glamour is not an intrinsic quality but a social relation — it requires others' envy to exist."
+  },
+  {
+    q: "What does publicity 'steal' from the spectator-buyer, and what does it offer in return?",
+    opts: [
+      "It steals their time and offers entertainment in return",
+      "It steals their money and offers a fantasy of prestige in return",
+      "It steals their love of themselves as they are, and offers it back to them for the price of the product",
+      "It steals their attention and offers false information in return"
+    ],
+    ans: 2,
+    exp: "Berger's precise formulation: 'The publicity image steals her love of herself as she is, and offers it back to her for the price of the product.' The buyer must purchase her own self-approval."
+  },
+  {
+    q: "What is the key difference between the spectator-owner of oil painting and the spectator-buyer of publicity?",
+    opts: [
+      "The spectator-owner was aristocratic; the spectator-buyer is middle class",
+      "The spectator-owner already possessed and was confirmed in that possession; the spectator-buyer is constituted by dissatisfaction and the desire to become",
+      "The spectator-owner was religious; the spectator-buyer is secular",
+      "The spectator-owner looked at paintings; the spectator-buyer looks at photographs"
+    ],
+    ans: 1,
+    exp: "Oil painting began from facts — what the owner already enjoyed. Publicity makes the spectator-buyer marginally dissatisfied with their present way of life, proposing an improved future self. One confirms; the other creates desire."
+  },
+  {
+    q: "Why does publicity rely on the visual language of oil painting, according to Berger?",
+    opts: [
+      "Because oil painting is the most technically sophisticated visual art form",
+      "Because publicity needs historical authority, a language of quality and tactile desirability, and colour photography now performs the same tactile function as oil paint",
+      "Because modern designers are trained in art history at university",
+      "Because legal regulations require publicity to reference canonical artworks"
+    ],
+    ans: 1,
+    exp: "Three reasons: (1) Oil painting carries authority and prestige; (2) Publicity is nostalgic and needs historical references to quality; (3) Colour photography now renders texture and tangibility as oil paint once did — 'Colour photography is to the spectator-buyer what oil paint was to the spectator-owner.'"
+  },
+  {
+    q: "Berger argues that publicity is 'eventless.' What does this mean?",
+    opts: [
+      "That publicity images never depict specific events or occasions",
+      "That publicity extends as though nothing else is happening — it excludes the present, experience is impossible within it, and all real events happen outside it",
+      "That publicity is boring and fails to capture the viewer's imagination",
+      "That publicity campaigns have no measurable effect on behaviour"
+    ],
+    ans: 1,
+    exp: "Publicity exists in a perpetually deferred future. It cannot accommodate the present — real events (joyous or tragic) are always 'exceptional and happen only to strangers.' Experience is impossible within it; only acquisition exists."
+  },
+  {
+    q: "What is Berger's political conclusion about publicity and capitalism?",
+    opts: [
+      "Publicity is essentially neutral — it reflects rather than shapes social values",
+      "Publicity will eventually be replaced by more honest forms of communication",
+      "Capitalism survives by forcing the majority to define their interests as narrowly as possible; today this is achieved by imposing a false standard of what is desirable through publicity",
+      "Publicity is a form of artistic expression that should be protected as free speech"
+    ],
+    ans: 2,
+    exp: "Berger's conclusion: 'Capitalism survives by forcing the majority, whom it exploits, to define their own interests as narrowly as possible. Today in the developed countries it is being achieved by imposing a false standard of what is and what is not desirable.' Publicity is the cultural mechanism of this narrowing."
+  }
+];
+
+let answered = Array(questions.length).fill(false);
+let score = 0;
+
+function answer(qi, oi) {
+  if (answered[qi]) return;
+  answered[qi] = true;
+  const block = document.querySelectorAll('.q-block')[qi];
+  const opts = block.querySelectorAll('.opt');
+  opts.forEach((o, i) => {
+    if (i === questions[qi].ans) o.classList.add('correct');
+    else o.classList.add(i === oi ? 'wrong' : 'disabled');
+  });
+  block.querySelector('.explanation').style.display = 'block';
+  if (oi === questions[qi].ans) score++;
+  document.getElementById('scorenum').textContent = score;
+  document.getElementById('scorefill').style.width = (answered.filter(Boolean).length / questions.length * 100) + '%';
+}
+
+function buildQuiz() {
+  const c = document.getElementById('quiz-container');
+  questions.forEach((q, qi) => {
+    c.innerHTML += `<div class="q-block">
+      <div class="q-text">${qi + 1}. ${q.q}</div>
+      ${q.opts.map((o, oi) => `<div class="opt" onclick="answer(${qi},${oi})">${o}</div>`).join('')}
+      <div class="explanation">&#128161; ${q.exp}</div>
+    </div>`;
+  });
+}
+buildQuiz();
+</script>
+</body>
+</html>
