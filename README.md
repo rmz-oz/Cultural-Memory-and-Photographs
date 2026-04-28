@@ -13,5 +13,6 @@
 | 5 · Ways of Seeing: Image, Reproduction & Oil Painting — Berger (Essays 1 & 3) | Ready — 15 Q | [Open](https://rmz-oz.github.io/Cultural-Memory-and-Photographs/topic5.html) |
 | 6 · Ways of Seeing: The Male Gaze & Publicity — Berger (Essays 5 & 7) | Ready — 15 Q | [Open](https://rmz-oz.github.io/Cultural-Memory-and-Photographs/topic6.html) |
 | 7 · Semiotics: The Study of Signs — Peirce & Saussure | Ready — 15 Q | [Open](https://rmz-oz.github.io/Cultural-Memory-and-Photographs/topic7.html) |
+| 8 · Seven Types of Forgetting — Connerton | Ready — 15 Q | [Open](https://rmz-oz.github.io/Cultural-Memory-and-Photographs/topic8.html) |
 
 Each topic includes a **lesson page** and an **interactive quiz** with instant feedback.
