@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Topic 8 — Seven Types of Forgetting — Connerton</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f5f5f0; color: #1a1a1a; padding: 2rem 1rem; }
+.container { max-width: 880px; margin: 0 auto; }
+.back { display: inline-block; color: #1a3a6e; text-decoration: none; font-size: 0.9rem; margin-bottom: 1.5rem; }
+.back:hover { text-decoration: underline; }
+h1 { font-size: 1.5rem; font-weight: 700; color: #1a3a6e; }
+.subtitle { color: #555; font-size: 0.9rem; margin: 0.3rem 0 1.5rem; }
+.tabs { display: flex; gap: 8px; margin-bottom: 1.5rem; border-bottom: 2px solid #e0e0d8; padding-bottom: 0; }
+.tab-btn { padding: 0.5rem 1.25rem; border: none; background: none; cursor: pointer; font-size: 0.9rem; color: #666; border-bottom: 2px solid transparent; margin-bottom: -2px; font-weight: 500; }
+.tab-btn.active { color: #1a3a6e; border-bottom-color: #1a3a6e; }
+.section { display: none; }
+.section.active { display: block; }
+
+h2 { font-size: 1.15rem; font-weight: 600; color: #1a3a6e; margin: 1.5rem 0 0.75rem; }
+h3 { font-size: 1rem; font-weight: 600; color: #333; margin: 1rem 0 0.5rem; }
+p { line-height: 1.65; margin-bottom: 0.75rem; color: #333; }
+ul, ol { padding-left: 1.5rem; margin-bottom: 0.75rem; }
+li { line-height: 1.6; margin-bottom: 0.25rem; }
+code { background: #e8e8e4; padding: 2px 5px; border-radius: 3px; font-family: 'SF Mono', monospace; font-size: 0.85em; }
+.card { background: #fff; border: 1px solid #e0e0d8; border-radius: 10px; padding: 1.1rem 1.25rem; margin-bottom: 1rem; }
+.card-title { font-weight: 600; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem; }
+.blue .card-title { color: #1a3a6e; }
+.teal .card-title { color: #0f766e; }
+.amber .card-title { color: #92400e; }
+.coral .card-title { color: #c2410c; }
+.purple .card-title { color: #6d28d9; }
+.rose .card-title { color: #be185d; }
+.slate .card-title { color: #334155; }
+.grid2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin-bottom: 1rem; }
+.grid3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-bottom: 1rem; }
+.info-box { border-left: 4px solid #3b82f6; background: #eff6ff; padding: 0.85rem 1rem; border-radius: 0 8px 8px 0; margin-bottom: 1rem; }
+.success-box { border-left: 4px solid #4caf50; background: #f0fdf4; padding: 0.85rem 1rem; border-radius: 0 8px 8px 0; margin-bottom: 1rem; }
+.warning-box { border-left: 4px solid #f59e0b; background: #fffbeb; padding: 0.85rem 1rem; border-radius: 0 8px 8px 0; margin-bottom: 1rem; }
+.danger-box { border-left: 4px solid #ef4444; background: #fef2f2; padding: 0.85rem 1rem; border-radius: 0 8px 8px 0; margin-bottom: 1rem; }
+
+.compare-table { width: 100%; border-collapse: collapse; margin-bottom: 1.25rem; font-size: 0.9rem; }
+.compare-table th { background: #1a3a6e; color: #fff; padding: 0.65rem 1rem; text-align: left; }
+.compare-table th:first-child { border-radius: 8px 0 0 0; }
+.compare-table th:last-child { border-radius: 0 8px 0 0; }
+.compare-table td { padding: 0.6rem 1rem; border-bottom: 1px solid #e0e0d8; background: #fff; vertical-align: top; }
+.compare-table tr:last-child td { border-bottom: none; }
+.compare-table tr:last-child td:first-child { border-radius: 0 0 0 8px; }
+.compare-table tr:last-child td:last-child { border-radius: 0 0 8px 0; }
+.dim-label { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; color: #888; letter-spacing: 0.04em; }
+.type-num { display: inline-block; width: 22px; height: 22px; background: #1a3a6e; color: #fff; border-radius: 50%; text-align: center; line-height: 22px; font-size: 0.75rem; font-weight: 700; margin-right: 6px; flex-shrink: 0; }
+
+.score-bar { background: #e0e0d8; border-radius: 8px; height: 8px; margin-bottom: 1.5rem; overflow: hidden; }
+#scorefill { height: 100%; background: #1a3a6e; border-radius: 8px; width: 0%; transition: width 0.4s; }
+.score-text { font-size: 0.85rem; color: #555; margin-bottom: 0.5rem; }
+.q-block { background: #fff; border: 1px solid #e0e0d8; border-radius: 10px; padding: 1.1rem 1.25rem; margin-bottom: 1rem; }
+.q-text { font-weight: 500; margin-bottom: 0.75rem; font-size: 0.95rem; }
+.opt { padding: 0.6rem 0.9rem; border: 1px solid #e0e0d8; border-radius: 7px; margin-bottom: 0.4rem; cursor: pointer; font-size: 0.9rem; transition: background 0.1s; }
+.opt:hover:not(.correct):not(.wrong) { background: #f0f0eb; }
+.opt.correct { background: #d1fae5; border-color: #4caf50; color: #065f46; pointer-events: none; }
+.opt.wrong { background: #fee2e2; border-color: #ef4444; color: #991b1b; pointer-events: none; }
+.opt.disabled { pointer-events: none; color: #aaa; }
+.explanation { margin-top: 0.6rem; font-size: 0.85rem; color: #555; background: #f5f5f0; padding: 0.6rem 0.8rem; border-radius: 6px; display: none; }
+</style>
+</head>
+<body>
+<div class="container">
+  <a class="back" href="index.html">← Back</a>
+  <h1>Seven Types of Forgetting</h1>
+  <p class="subtitle">Cultural Memory and Photographs · Topic 8 — Paul Connerton, <em>Memory Studies</em> (2008)</p>
+
+  <div class="tabs">
+    <button class="tab-btn active" onclick="switchTab('lesson', this)">Lesson</button>
+    <button class="tab-btn" onclick="switchTab('quiz', this)">Quiz (15 Q)</button>
+  </div>
+
+  <!-- ═══ LESSON SECTION ═══ -->
+  <div id="lesson" class="section active">
+
+    <div class="info-box">
+      <strong>Core Argument:</strong> The common assumption that <em>remembering is a virtue</em> and <em>forgetting is necessarily a failure</em> is not self-evidently true. Paul Connerton identifies at least <strong>seven distinct types</strong> of forgetting — some harmful, others neutral, some even necessary and beneficial.
+    </div>
+
+    <div class="warning-box">
+      <strong>Key Quotation (Kundera, via Connerton):</strong> "The struggle of man against power is the struggle of memory against forgetting." — But Connerton's argument pushes back: not all forgetting is a surrender to power; some forgetting is how life, identity, and society become possible at all.
+    </div>
+
+    <h2>Overview: The Seven Types at a Glance</h2>
+
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Type</th>
+          <th>Initiated by</th>
+          <th>Moral Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>1</strong></td>
+          <td>Repressive Erasure</td>
+          <td>State / power</td>
+          <td>Usually harmful</td>
+        </tr>
+        <tr>
+          <td><strong>2</strong></td>
+          <td>Prescriptive Forgetting</td>
+          <td>State / mutual agreement</td>
+          <td>Ambiguous — can be legitimate</td>
+        </tr>
+        <tr>
+          <td><strong>3</strong></td>
+          <td>Constitutive of New Identity</td>
+          <td>Collective social process</td>
+          <td>Necessary / often productive</td>
+        </tr>
+        <tr>
+          <td><strong>4</strong></td>
+          <td>Structural Amnesia</td>
+          <td>Social structure</td>
+          <td>Neutral — systemic</td>
+        </tr>
+        <tr>
+          <td><strong>5</strong></td>
+          <td>Annulment</td>
+          <td>Information overload</td>
+          <td>Complex — sometimes necessary</td>
+        </tr>
+        <tr>
+          <td><strong>6</strong></td>
+          <td>Planned Obsolescence</td>
+          <td>Capitalist consumption</td>
+          <td>Structural — market-driven</td>
+        </tr>
+        <tr>
+          <td><strong>7</strong></td>
+          <td>Humiliated Silence</td>
+          <td>Collective shame</td>
+          <td>Painful — covert</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- TYPE 1 -->
+    <h2><span class="type-num">1</span> Repressive Erasure</h2>
+
+    <p>Forgetting as <em>repressive erasure</em> appears in its most brutal form in totalitarian regimes: images destroyed, statues razed, names removed from inscriptions. Its aim is to cast all memory of a person or event into oblivion.</p>
+
+    <div class="danger-box">
+      <strong>Roman Law — <em>Damnatio Memoriae</em>:</strong> Applied as a punishment to rulers and powerful persons who were declared "enemies of the state" after their death or after a revolution. Every physical trace of their existence was to be eliminated.
+    </div>
+
+    <div class="grid2">
+      <div class="card blue">
+        <div class="card-title">Historical Examples</div>
+        <ul>
+          <li><strong>French Revolution:</strong> abolished monarchical titles and nobility; eliminated "Monsieur," "Madame," "Mademoiselle"; erased regional province names (Burgundy, Provence)</li>
+          <li><strong>English parliamentary debates (17th c.):</strong> repressive erasure used to deny a historical rupture — denying the Norman Conquest ever established new law</li>
+        </ul>
+      </div>
+      <div class="card coral">
+        <div class="card-title">Covert Erasure: Museums</div>
+        <p>Art museums enact a subtle repressive erasure through their <strong>spatial script</strong>. The Metropolitan Museum of Art places Greek/Roman and Egyptian collections in the main hall; non-western and medieval collections are invisible from the entrance. The spatial arrangement is "overt in celebratory remembrance, covert in erasure."</p>
+      </div>
+    </div>
+
+    <div class="warning-box">
+      <strong>The Futurists' Museumophobia:</strong> The Italian Futurists wanted to "free Italy from its infinite number of museums, which covered the country like an infinite number of cemeteries." Their anti-museum stance was itself a fantasy of repressive erasure — destroying every institution that preserved the past.
+    </div>
+
+    <!-- TYPE 2 -->
+    <h2><span class="type-num">2</span> Prescriptive Forgetting</h2>
+
+    <p><em>Prescriptive forgetting</em> is also precipitated by an act of state, but it <strong>differs from repressive erasure</strong> because it is believed to be in the interests of <em>all parties</em> to the previous dispute — and can therefore be acknowledged publicly.</p>
+
+    <div class="grid2">
+      <div class="card teal">
+        <div class="card-title">Ancient Athens — 403 BCE</div>
+        <p>After civil war, Athenian democrats re-entered Athens and proclaimed a general reconciliation. They issued an explicit <strong>interdiction: it was forbidden to remember</strong> all crimes committed during the preceding civil strife. They erected an altar to <em>Lethe</em> (forgetting) on the Acropolis — the injunction to forget was the very foundation of the life of the polis.</p>
+      </div>
+      <div class="card amber">
+        <div class="card-title">Modern Parallels</div>
+        <ul>
+          <li><strong>Treaty of Westphalia (1648):</strong> both sides shall "forgive and forget forever all the violence, injuries and damage" of the Thirty Years' War</li>
+          <li><strong>Charles II (1660):</strong> declared "an act of full and general pardon, indemnity and oblivion"</li>
+          <li><strong>Post-WWII West Germany:</strong> by the early 1950s, prosecution of active Nazis became a forgotten issue — restoring minimum social cohesion required it</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- TYPE 3 -->
+    <h2><span class="type-num">3</span> Forgetting Constitutive of a New Identity</h2>
+
+    <p>Could forgetting be a <em>gain</em> rather than a loss? This type argues yes. Forgetting becomes part of the active process by which <strong>newly shared memories are constructed</strong>. A new identity requires a set of tacitly shared silences.</p>
+
+    <div class="info-box">
+      <strong>Key Insight:</strong> Pieces of knowledge that are not passed on have a "negative significance" — by being forgotten, they allow other images of identity to come to the fore. They are "like pieces of an old jigsaw puzzle that if retained would prevent a new jigsaw puzzle from fitting together properly."
+    </div>
+
+    <div class="grid2">
+      <div class="card blue">
+        <div class="card-title">SE Asian Cognatic Societies</div>
+        <p>In Borneo, Bali, the Philippines, and rural Java, knowledge about ancestors is remarkably absent. Kinship stretches <strong>horizontally</strong> (outward to siblings) rather than <strong>vertically</strong> (backward to predecessors). With high demographic mobility between islands, remembering ancestors from a left-behind island becomes irrelevant. Forgetting is an active part of creating kinship through new ties.</p>
+      </div>
+      <div class="card teal">
+        <div class="card-title">Modernity as Discarding</div>
+        <p>The narrative of modernity requires forgetting. Two interlinked processes: (1) objective transformation of social fabric by capitalism — certain words and concepts must be discarded; (2) subjective emancipation from fixed social hierarchies — details of prior religious/political affiliations must be forgotten. New vocabulary enters (<em>History, Revolution, Liberalism, Modernity</em>); old words vanish (<em>memorious, memorist, mnemonize</em>).</p>
+      </div>
+    </div>
+
+    <!-- TYPE 4 -->
+    <h2><span class="type-num">4</span> Structural Amnesia</h2>
+
+    <p><em>Structural amnesia</em> was identified by anthropologist John Barnes (1947) in his study of genealogies. A person tends to remember only those links in his or her pedigree that are <strong>socially important</strong>.</p>
+
+    <div class="grid2">
+      <div class="card amber">
+        <div class="card-title">Genealogies</div>
+        <p>In the strongly patrilineal British peerage, ascending <strong>male lines</strong> are far more memorable than associated female lines. Among the matrilineal Lamba, conversely, ascending female lines could be traced for three to five generations while male lines could only be traced back one or two. Social structure determines what is remembered and what is forgotten.</p>
+      </div>
+      <div class="card coral">
+        <div class="card-title">Recipes and Cooking</div>
+        <p>Structural amnesia operates in culinary history: the availability of printing systematically affects which recipes are transmitted and which are forgotten. Written recipes are unlimited in number; oral memory has a fixed capacity. <strong>Country recipes acquired by observation</strong> from grandmothers are systematically forgotten; those in cookbooks survive. The attraction of regional cooking is tied to what cannot be printed.</p>
+      </div>
+    </div>
+
+    <!-- TYPE 5 -->
+    <h2><span class="type-num">5</span> Forgetting as Annulment</h2>
+
+    <p>Where structural amnesia results from a <em>deficit</em> of information, forgetting as <em>annulment</em> flows from a <strong>surfeit</strong> of information. Nietzsche gave famous expression to this in <em>The Use and Abuse of History</em>.</p>
+
+    <div class="warning-box">
+      <strong>Nietzsche's Critique:</strong> Antiquarian historical scholarship crushes the "elementary ability to live and act" under "the repugnant spectacle of a blind lust for collecting, of a restless gathering up of everything that once was." In <em>Gargantua and Pantagruel</em>, Rabelais prescribes hellebore — a drug of forgetfulness — to purge Gargantua of scholastic overload.
+    </div>
+
+    <div class="grid2">
+      <div class="card purple">
+        <div class="card-title">The Great Archivalization</div>
+        <p>The formation of the modern state required massive documentation. Habsburg Spain's archive at Simancas (16th–17th c.) was the first and most voluminous in Europe. The British Empire built its administrative core around knowledge-producing institutions (British Museum, Royal Geographical Society, India Survey). These became "a fantasy of knowledge collected in the service of state and empire."</p>
+      </div>
+      <div class="card rose">
+        <div class="card-title">Digital Information Overload</div>
+        <p>New information technologies (mid-1970s to mid-1990s) created a global cultural <strong>surfeit</strong>. "To say that something has been stored — in an archive, in a computer — is tantamount to saying that we can afford to forget it." The concept of <em>discarding</em> may come to occupy a central role in the 21st century as production did in the 19th. In physics (1963), 75% of citations were from writings less than 10 years old — scientists must learn to forget.</p>
+      </div>
+    </div>
+
+    <div class="info-box">
+      <strong>Kuhn's Paradigm Shifts:</strong> Kuhn sees the development of science as one in which every shift in scientific evolution <em>unburdens</em> scientific memory. Every collapse of a paradigm is an act of forgetting of great importance for the economy of scientific effort. A surpassed paradigm is one that can — and must — be forgotten.
+    </div>
+
+    <!-- TYPE 6 -->
+    <h2><span class="type-num">6</span> Forgetting as Planned Obsolescence</h2>
+
+    <p>This type flows from the <em>planned obsolescence</em> built into the capitalist system of consumption. Given limits on the turnover time of material goods, capitalism shifted attention from goods to <strong>services</strong> — accelerating the "product life cycle."</p>
+
+    <div class="grid2">
+      <div class="card slate">
+        <div class="card-title">Consumer Capitalism</div>
+        <ul>
+          <li>Consumer durables (knives, cars, washing machines) have a substantial lifetime; services (concerts, films) have a far shorter one</li>
+          <li>Time control focuses more on <strong>consumer desire</strong> than work discipline</li>
+          <li>Distinction via consumption: acquiring a new item <em>before</em> others matters more than the item itself</li>
+          <li>"The past is a foreign country but now the present is becoming one too" — Alexander Kluge</li>
+        </ul>
+      </div>
+      <div class="card blue">
+        <div class="card-title">Forgetting as Market Mechanism</div>
+        <p>Andreas Huyssen: consumer culture trains the child in "a fascination with the new which includes the foreknowledge of its own obsolescence in its very moment of appearance." Ever-increasing acceleration of innovation generates ever-larger quantities of <em>soon-to-be-obsolete</em> objects — and therefore ever more acts of discarding. <strong>Forgetting is an essential ingredient in the operation of the market.</strong></p>
+      </div>
+    </div>
+
+    <!-- TYPE 7 -->
+    <h2><span class="type-num">7</span> Forgetting as Humiliated Silence</h2>
+
+    <p>The seventh type is not primarily a matter of overt state action. It is manifest in a widespread pattern of behaviour in civil society: <strong>covert, unmarked, and unacknowledged</strong>. Its most salient feature is a <em>humiliated silence</em>.</p>
+
+    <div class="danger-box">
+      <strong>The Paradox:</strong> Humiliation is notoriously difficult to forget — "it is often easier to forget physical pain than to forget humiliation." Yet in the collusive silence brought on by a particular kind of collective shame, there is detectable both a desire to forget and sometimes the actual effect of forgetting.
+    </div>
+
+    <div class="card coral">
+      <div class="card-title">German Cities After WWII Bombing</div>
+      <p>The destruction of German cities left some <strong>130 cities and towns in ruins</strong>; about 600,000 civilians killed; 3.5 million homes destroyed; 7.5 million homeless. Members of occupying powers reported seeing millions of homeless and utterly lethargic people wandering amid ruins. From the war years there survive very few accounts from within the experience of those bombed — because those who endured it fell silent. This is forgetting as humiliated silence: the experience was too shameful, too complex, too entangled with guilt about Nazi crimes to articulate.</p>
+    </div>
+
+    <h2>Why This Taxonomy Matters</h2>
+
+    <div class="grid3">
+      <div class="card blue">
+        <div class="card-title">For Cultural Memory</div>
+        <p>Photography and visual culture <em>participate</em> in all seven types. Museums enact repressive erasure (type 1); post-conflict societies prescribe forgetting (type 2); new national identities require selective silence (type 3).</p>
+      </div>
+      <div class="card teal">
+        <div class="card-title">For Ethics</div>
+        <p>Not all forgetting is morally equal. Repressive erasure by a state differs profoundly from structural amnesia in genealogies. Connerton asks us to resist the reflex that always equates forgetting with failure and remembering with virtue.</p>
+      </div>
+      <div class="card amber">
+        <div class="card-title">For Identity</div>
+        <p>Identity is constructed as much through what is <em>not</em> remembered as through what is. "What is allowed to be forgotten provides living space for present projects." Forgetting is not merely the absence of memory — it is an active, constitutive force.</p>
+      </div>
+    </div>
+
+    <h2>Exam-Style Questions</h2>
+
+    <div class="card blue">
+      <div class="card-title">Question 1 — Repressive vs. Prescriptive</div>
+      <p><strong>Q:</strong> How does Connerton distinguish between repressive erasure and prescriptive forgetting? Illustrate each with a historical example.</p>
+      <div class="success-box" style="margin-top:0.75rem; margin-bottom:0;">
+        <strong>Model Answer:</strong> Both types are initiated by state power, but they differ in whose interests they serve and whether they can be openly acknowledged.<br><br>
+        <em>Repressive erasure</em> destroys memory in the interest of those in power, against the interests of those whose memory is erased. Roman <em>damnatio memoriae</em> — erasing the names and images of "enemies of the state" — is the paradigm case. The French Revolution's elimination of noble titles and provincial names is another: the aim was to cast all memory of the <em>ancien régime</em> into oblivion.<br><br>
+        <em>Prescriptive forgetting</em> is different because it is believed to serve the interests of <em>all</em> parties, including those who suffered under the previous regime. The Athenian amnesty of 403 BCE is the classic example: after civil war, both democrats and oligarchs agreed that it was forbidden to remember past crimes — an altar to Lethe (forgetting) was even erected on the Acropolis. The Treaty of Westphalia (1648) similarly enjoined both sides to "forgive and forget forever." The key difference is acknowledgment: prescriptive forgetting is declared publicly, whereas repressive erasure works by denial.
+      </div>
+    </div>
+
+    <div class="card blue" style="margin-top:1rem;">
+      <div class="card-title">Question 2 — Forgetting and Identity Formation</div>
+      <p><strong>Q:</strong> Using Connerton's third type and the example of South East Asian cognatic societies, explain how forgetting can be constitutive of identity rather than a failure of memory.</p>
+      <div class="success-box" style="margin-top:0.75rem; margin-bottom:0;">
+        <strong>Model Answer:</strong> Connerton argues that forgetting can be an active process of identity-construction rather than a passive lapse. In cognatic societies of South East Asia (Borneo, Bali, the Philippines, rural Java), knowledge of ancestors is strikingly absent. Rather than tracing kinship vertically back through generations, these societies extend kinship <em>horizontally</em> — outward to siblings and new communities. This pattern is not accidental; it is driven by high demographic mobility between islands. When newcomers arrive on a new island, the detailed identity of their previous home becomes irrelevant. Forgetting the ancestors of the island left behind is what makes it possible to form new kinship ties through hospitality, marriage, and children. The forgetting is gradual, implicit, and unacknowledged — but it is nonetheless <em>necessary</em>. As Connerton puts it, "what is allowed to be forgotten provides living space for present projects." Forgetting does not destroy identity; it creates the conditions for a new one.
+      </div>
+    </div>
+
+    <div class="warning-box" style="margin-top:1rem;">
+      <strong>Key Concept to Remember:</strong> Connerton's most provocative claim is that "forgetting is not always, and not always in the same way, something about which we should feel culpable." Reading a photograph, a museum, or a national archive requires asking not only what is remembered but <em>which type of forgetting</em> governs what has been left out — and whether that forgetting is repressive, pragmatic, structural, or something else entirely.
+    </div>
+
+  </div>
+
+  <!-- ═══ QUIZ SECTION ═══ -->
+  <div id="quiz" class="section">
+    <p class="score-text">Score: <span id="scorenum">0</span> / 15</p>
+    <div class="score-bar"><div id="scorefill"></div></div>
+    <div id="quiz-container"></div>
+  </div>
+</div>
+
+<script>
+function switchTab(id, btn) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+}
+
+const questions = [
+  {
+    q: "What is Connerton's central challenge to the conventional view of forgetting?",
+    opts: [
+      "That forgetting is always a political act orchestrated by states",
+      "That forgetting should be encouraged in all social contexts",
+      "That the assumption forgetting is necessarily a failing is not self-evidently true",
+      "That forgetting and remembering are biologically equivalent processes"
+    ],
+    ans: 2,
+    exp: "Connerton argues that the common view — remembering is a virtue, forgetting a failing — is not self-evidently true. Forgetting is not a unitary phenomenon; it might be helpful to disentangle the different meanings that cluster under this single term."
+  },
+  {
+    q: "The Roman legal concept of 'damnatio memoriae' is an example of which type of forgetting?",
+    opts: [
+      "Prescriptive forgetting",
+      "Structural amnesia",
+      "Forgetting as humiliated silence",
+      "Repressive erasure"
+    ],
+    ans: 3,
+    exp: "Damnatio memoriae — the condemnation of memory — was inscribed in Roman criminal and constitutional law as a punishment applied to rulers declared 'enemies of the state.' Images were destroyed, statues razed, names removed from inscriptions. This is repressive erasure in its most direct form."
+  },
+  {
+    q: "How does prescriptive forgetting differ from repressive erasure?",
+    opts: [
+      "Prescriptive forgetting is initiated by individuals, not states",
+      "Prescriptive forgetting is believed to be in the interests of all parties and can be publicly acknowledged",
+      "Prescriptive forgetting only occurs in democratic societies",
+      "Prescriptive forgetting always involves physical destruction of records"
+    ],
+    ans: 1,
+    exp: "Both types are precipitated by an act of state, but prescriptive forgetting differs because it is believed to serve the interests of all parties to the previous dispute, and can therefore be acknowledged publicly — as in the Athenian amnesty of 403 BCE."
+  },
+  {
+    q: "In 403 BCE Athens, what did the Athenian democrats erect on the Acropolis to symbolise prescriptive forgetting?",
+    opts: [
+      "A statue of Mnemosyne, the goddess of memory",
+      "An altar to Lethe, the goddess of forgetting",
+      "A monument to the victims of the civil war",
+      "A library containing all records of the civil strife"
+    ],
+    ans: 1,
+    exp: "The Athenians erected an altar dedicated to Lethe — forgetting — on the Acropolis. The installation meant that the injunction to forget, and the eradication of civil conflict, was seen as the very foundation of the life of the polis."
+  },
+  {
+    q: "What is the 'jigsaw puzzle' metaphor used to illustrate in Connerton's third type of forgetting?",
+    opts: [
+      "How individual memories can be pieced together to reconstruct history",
+      "How old memories, if retained, would prevent a new identity from fitting together properly",
+      "How structural amnesia operates through gaps in genealogical records",
+      "How humiliated silence fragments the collective narrative"
+    ],
+    ans: 1,
+    exp: "Connerton compares old memories to pieces of an old jigsaw puzzle: if retained, they prevent a new jigsaw puzzle from fitting together properly. Forgetting gives 'living space for present projects' and is constitutive of new identities."
+  },
+  {
+    q: "In cognatic societies of South East Asia (Borneo, Bali, the Philippines), why is ancestor knowledge remarkably absent?",
+    opts: [
+      "Because oral tradition was systematically suppressed by colonial powers",
+      "Because high demographic mobility between islands made remembering ancestors from a previous island irrelevant",
+      "Because these societies have no concept of kinship beyond the nuclear family",
+      "Because structural amnesia favors female rather than male lineages in these regions"
+    ],
+    ans: 1,
+    exp: "High demographic mobility between islands means that the identity of ancestors on islands left behind becomes irrelevant to the new community. Forgetting them is part of the active process of forming new kinship ties. Kinship extends horizontally (to siblings) rather than vertically (to ancestors)."
+  },
+  {
+    q: "Structural amnesia, as identified by John Barnes (1947), refers to:",
+    opts: [
+      "The collective forgetting of traumatic events by entire societies",
+      "The tendency to remember only those genealogical or social links that are socially important",
+      "The erasure of structural documents such as legal records and archives",
+      "The forgetting that results from information overload in bureaucratic systems"
+    ],
+    ans: 1,
+    exp: "Barnes identified structural amnesia in his study of genealogies: a person tends to remember only those links in their pedigree that are socially important. In patrilineal societies, male lines are remembered; in matrilineal ones, female lines. Social structure determines what is recalled and what is forgotten."
+  },
+  {
+    q: "How does the culinary history example illustrate structural amnesia?",
+    opts: [
+      "Traditional recipes are suppressed by government authorities to promote modern food culture",
+      "The availability of printing means that only written recipes survive while orally transmitted recipes are systematically forgotten",
+      "Cookbooks enact a repressive erasure of regional food traditions",
+      "Structural amnesia means chefs forget recipes that are no longer fashionable"
+    ],
+    ans: 1,
+    exp: "The number of recipes that can be held in written form is unlimited, whereas the number held in oral memory is limited. Printed recipes survive; recipes acquired by observation from grandmothers are systematically forgotten. The structure of information transmission — written vs. oral — determines what endures."
+  },
+  {
+    q: "Forgetting as annulment is primarily caused by:",
+    opts: [
+      "A deficit of information in premodern societies",
+      "Deliberate state policy to destroy cultural records",
+      "A surfeit of information that makes discarding necessary",
+      "Individual psychological trauma that blocks access to memory"
+    ],
+    ans: 2,
+    exp: "Where structural amnesia results from a deficit of information, forgetting as annulment flows from a surfeit. Nietzsche's critique of antiquarian historical scholarship, and the modern problem of information overload from archivalization and digital technology, are both examples of this type."
+  },
+  {
+    q: "What does Connerton mean when he says that 'storing something in an archive is tantamount to saying we can afford to forget it'?",
+    opts: [
+      "Archives are unreliable and should not be trusted as memory systems",
+      "Only archived information is worth remembering; everything else should be discarded",
+      "Because archived information is in principle always retrievable, it frees active memory — making forgetting not just permissible but necessary",
+      "Archives produce humiliated silence by hiding information from the public"
+    ],
+    ans: 2,
+    exp: "If information is stored and in principle always retrievable, we no longer need to actively hold it in memory. This makes forgetting not a failure but a practical necessity — especially as the burden of stored information grows to overwhelming scale. Discarding becomes as central as producing."
+  },
+  {
+    q: "Thomas Kuhn's theory of paradigm shifts relates to which type of forgetting?",
+    opts: [
+      "Humiliated silence — scientists suppress discredited paradigms",
+      "Repressive erasure — scientific institutions destroy old research",
+      "Prescriptive forgetting — scientific communities collectively agree to abandon old theories",
+      "Annulment — every paradigm collapse is a forgetting that unburdens scientific memory"
+    ],
+    ans: 3,
+    exp: "Connerton invokes Kuhn to illustrate forgetting as annulment: every collapse of a paradigm is an act of forgetting of great importance for the economy of scientific effort. A surpassed paradigm is one that can — and must — be forgotten, so that the new paradigm can function."
+  },
+  {
+    q: "In Connerton's analysis of planned obsolescence, what is the relationship between forgetting and consumer capitalism?",
+    opts: [
+      "Consumer capitalism relies on memory — brand loyalty requires remembering past products",
+      "Forgetting is a side effect of capitalism but not structurally necessary to it",
+      "Forgetting is an essential ingredient in the operation of the market — products must be forgotten for new ones to be desired",
+      "Planned obsolescence applies only to digital goods, not physical consumer products"
+    ],
+    ans: 2,
+    exp: "Connerton argues that forgetting as planned obsolescence is structurally built into consumer capitalism. The ever-increasing acceleration of innovation generates ever-larger quantities of soon-to-be-obsolete objects and therefore ever more acts of discarding. Forgetting is an essential ingredient in the operation of the market."
+  },
+  {
+    q: "What is the key characteristic that distinguishes humiliated silence from the other six types of forgetting?",
+    opts: [
+      "It is always initiated by a state apparatus through overt policy",
+      "It involves the physical destruction of archives and records",
+      "It is covert, unmarked, and unacknowledged — produced by collective shame rather than institutional action",
+      "It only applies to communities that have lost a war"
+    ],
+    ans: 2,
+    exp: "Humiliated silence is not primarily a matter of overt state action. It is manifest in a widespread pattern of behaviour in civil society — covert, unmarked, and unacknowledged. Its salient feature is a humiliated silence produced by collective shame: the desire to forget is felt, not declared."
+  },
+  {
+    q: "Why is the destruction of German cities by Allied bombing during WWII Connerton's example of humiliated silence?",
+    opts: [
+      "Because the German government enacted a law forbidding any public discussion of the bombing",
+      "Because those who endured the bombing fell silent — the experience was too entangled with guilt about Nazi crimes to articulate",
+      "Because the bombing was repressively erased from official history by occupying powers",
+      "Because structural amnesia among the younger generation meant the events were simply forgotten over time"
+    ],
+    ans: 1,
+    exp: "Despite the enormous scale of destruction (130 cities, 600,000 civilians killed, 7.5 million homeless), very few accounts survived from within the experience. The survivors fell silent — not by state order, but because the experience was too complex and too entangled with shame about Nazi crimes to articulate. This is forgetting as humiliated silence."
+  },
+  {
+    q: "Which of the following best captures Connerton's overall conclusion about the moral status of forgetting?",
+    opts: [
+      "All forgetting is a political act and should be resisted",
+      "Forgetting is always a virtue because it allows society to move forward",
+      "Forgetting is a unitary phenomenon that can be evaluated by a single moral standard",
+      "Forgetting takes at least seven distinct forms with different causes, agents, and moral statuses — some harmful, some necessary, some neutral"
+    ],
+    ans: 3,
+    exp: "Connerton's central contribution is to show that 'forgetting' is not a single thing. It encompasses at least seven distinct types with different causes, agents, and moral evaluations. We should not reflexively treat all forgetting as failure — nor all remembering as virtue. The task is to identify which type is at work in any given case."
+  }
+];
+
+let answered = Array(questions.length).fill(false);
+let score = 0;
+
+function answer(qi, oi) {
+  if (answered[qi]) return;
+  answered[qi] = true;
+  const block = document.querySelectorAll('.q-block')[qi];
+  const opts = block.querySelectorAll('.opt');
+  opts.forEach((o, i) => {
+    if (i === questions[qi].ans) o.classList.add('correct');
+    else o.classList.add(i === oi ? 'wrong' : 'disabled');
+  });
+  block.querySelector('.explanation').style.display = 'block';
+  if (oi === questions[qi].ans) score++;
+  document.getElementById('scorenum').textContent = score;
+  document.getElementById('scorefill').style.width = (answered.filter(Boolean).length / questions.length * 100) + '%';
+}
+
+function buildQuiz() {
+  const c = document.getElementById('quiz-container');
+  questions.forEach((q, qi) => {
+    c.innerHTML += `<div class="q-block">
+      <div class="q-text">${qi + 1}. ${q.q}</div>
+      ${q.opts.map((o, oi) => `<div class="opt" onclick="answer(${qi},${oi})">${o}</div>`).join('')}
+      <div class="explanation">&#128161; ${q.exp}</div>
+    </div>`;
+  });
+}
+buildQuiz();
+</script>
+</body>
+</html>
