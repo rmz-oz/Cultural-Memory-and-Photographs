@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Topic 1 — Collective Memory vs. History</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f5f5f0; color: #1a1a1a; padding: 2rem 1rem; }
+.container { max-width: 880px; margin: 0 auto; }
+.back { display: inline-block; color: #1a3a6e; text-decoration: none; font-size: 0.9rem; margin-bottom: 1.5rem; }
+.back:hover { text-decoration: underline; }
+h1 { font-size: 1.5rem; font-weight: 700; color: #1a3a6e; }
+.subtitle { color: #555; font-size: 0.9rem; margin: 0.3rem 0 1.5rem; }
+.tabs { display: flex; gap: 8px; margin-bottom: 1.5rem; border-bottom: 2px solid #e0e0d8; padding-bottom: 0; }
+.tab-btn { padding: 0.5rem 1.25rem; border: none; background: none; cursor: pointer; font-size: 0.9rem; color: #666; border-bottom: 2px solid transparent; margin-bottom: -2px; font-weight: 500; }
+.tab-btn.active { color: #1a3a6e; border-bottom-color: #1a3a6e; }
+.section { display: none; }
+.section.active { display: block; }
+
+/* Lesson content styles */
+h2 { font-size: 1.15rem; font-weight: 600; color: #1a3a6e; margin: 1.5rem 0 0.75rem; }
+h3 { font-size: 1rem; font-weight: 600; color: #333; margin: 1rem 0 0.5rem; }
+p { line-height: 1.65; margin-bottom: 0.75rem; color: #333; }
+ul, ol { padding-left: 1.5rem; margin-bottom: 0.75rem; }
+li { line-height: 1.6; margin-bottom: 0.25rem; }
+code { background: #e8e8e4; padding: 2px 5px; border-radius: 3px; font-family: 'SF Mono', monospace; font-size: 0.85em; }
+.card { background: #fff; border: 1px solid #e0e0d8; border-radius: 10px; padding: 1.1rem 1.25rem; margin-bottom: 1rem; }
+.card-title { font-weight: 600; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem; }
+.blue .card-title { color: #1a3a6e; }
+.teal .card-title { color: #0f766e; }
+.amber .card-title { color: #92400e; }
+.coral .card-title { color: #c2410c; }
+.grid2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin-bottom: 1rem; }
+.grid3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-bottom: 1rem; }
+.info-box { border-left: 4px solid #3b82f6; background: #eff6ff; padding: 0.85rem 1rem; border-radius: 0 8px 8px 0; margin-bottom: 1rem; }
+.success-box { border-left: 4px solid #4caf50; background: #f0fdf4; padding: 0.85rem 1rem; border-radius: 0 8px 8px 0; margin-bottom: 1rem; }
+.warning-box { border-left: 4px solid #f59e0b; background: #fffbeb; padding: 0.85rem 1rem; border-radius: 0 8px 8px 0; margin-bottom: 1rem; }
+
+/* Compare table */
+.compare-table { width: 100%; border-collapse: collapse; margin-bottom: 1.25rem; font-size: 0.9rem; }
+.compare-table th { background: #1a3a6e; color: #fff; padding: 0.65rem 1rem; text-align: left; }
+.compare-table th:first-child { border-radius: 8px 0 0 0; }
+.compare-table th:last-child { border-radius: 0 8px 0 0; }
+.compare-table td { padding: 0.6rem 1rem; border-bottom: 1px solid #e0e0d8; background: #fff; vertical-align: top; }
+.compare-table tr:last-child td { border-bottom: none; }
+.compare-table tr:last-child td:first-child { border-radius: 0 0 0 8px; }
+.compare-table tr:last-child td:last-child { border-radius: 0 0 8px 0; }
+.dim-label { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; color: #888; letter-spacing: 0.04em; }
+
+/* Quiz styles */
+.score-bar { background: #e0e0d8; border-radius: 8px; height: 8px; margin-bottom: 1.5rem; overflow: hidden; }
+#scorefill { height: 100%; background: #1a3a6e; border-radius: 8px; width: 0%; transition: width 0.4s; }
+.score-text { font-size: 0.85rem; color: #555; margin-bottom: 0.5rem; }
+.q-block { background: #fff; border: 1px solid #e0e0d8; border-radius: 10px; padding: 1.1rem 1.25rem; margin-bottom: 1rem; }
+.q-text { font-weight: 500; margin-bottom: 0.75rem; font-size: 0.95rem; }
+.opt { padding: 0.6rem 0.9rem; border: 1px solid #e0e0d8; border-radius: 7px; margin-bottom: 0.4rem; cursor: pointer; font-size: 0.9rem; transition: background 0.1s; }
+.opt:hover:not(.correct):not(.wrong) { background: #f0f0eb; }
+.opt.correct { background: #d1fae5; border-color: #4caf50; color: #065f46; pointer-events: none; }
+.opt.wrong { background: #fee2e2; border-color: #ef4444; color: #991b1b; pointer-events: none; }
+.opt.disabled { pointer-events: none; color: #aaa; }
+.explanation { margin-top: 0.6rem; font-size: 0.85rem; color: #555; background: #f5f5f0; padding: 0.6rem 0.8rem; border-radius: 6px; display: none; }
+</style>
+</head>
+<body>
+<div class="container">
+  <a class="back" href="index.html">← Back</a>
+  <h1>Collective Memory vs. History</h1>
+  <p class="subtitle">Cultural Memory and Photographs · Topic 1 — Maurice Halbwachs</p>
+
+  <div class="tabs">
+    <button class="tab-btn active" onclick="switchTab('lesson', this)">Lesson</button>
+    <button class="tab-btn" onclick="switchTab('quiz', this)">Quiz (15 Q)</button>
+  </div>
+
+  <!-- ═══ LESSON SECTION ═══ -->
+  <div id="lesson" class="section active">
+
+    <div class="info-box">
+      <strong>Key Thinker:</strong> Maurice Halbwachs (1877–1945), French sociologist. His work <em>The Collective Memory</em> (La mémoire collective) establishes the foundational distinction between lived group memory and formal historical narrative.
+    </div>
+
+    <h2>1. Nature and Continuity</h2>
+
+    <div class="grid2">
+      <div class="card blue">
+        <div class="card-title">Collective Memory</div>
+        <ul>
+          <li>A <strong>living, continuous stream</strong> of thought</li>
+          <li>Resides within the consciousness of a specific group</li>
+          <li>Not artificial — retains only what is <strong>still relevant</strong> to the present</li>
+          <li>Moves in an <strong>unbroken movement</strong></li>
+          <li>No sharp chronological divisions</li>
+        </ul>
+      </div>
+      <div class="card coral">
+        <div class="card-title">History</div>
+        <ul>
+          <li>A <strong>formal, written narrative</strong></li>
+          <li>Begins when social memory is already <strong>fading or breaking up</strong></li>
+          <li>Preserves remembrances no longer supported by a living group</li>
+          <li>Introduces <strong>schematization and demarcations</strong></li>
+          <li>Divides past into distinct periods/centuries for didactic purposes</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="warning-box">
+      <strong>Common Mistake:</strong> History does not simply pick up where memory leaves off. According to Halbwachs, history <em>emerges precisely because</em> collective memory has failed — it steps in to preserve what living groups can no longer sustain.
+    </div>
+
+    <h2>2. The Role of the Group</h2>
+
+    <h3>Internal vs. External</h3>
+    <p>Collective memory is <strong>internal</strong> to a group. It requires the support of a specific social milieu delimited in space and time. Once a group loses interest in a fact — or the group itself disappears — that memory begins to erode.</p>
+    <p>History, by contrast, is <strong>external</strong> to social groups. The historian views events through the eyes of a "spectator who never belonged to the groups" they observe.</p>
+
+    <h3>Subjectivity vs. Objectivity</h3>
+    <div class="grid2">
+      <div class="card teal">
+        <div class="card-title">Memory — Subjective</div>
+        <p>Focused on what is <strong>relevant to the group's current identity</strong>. The past is filtered through present concerns and values.</p>
+      </div>
+      <div class="card amber">
+        <div class="card-title">History — Objective</div>
+        <p>The historian strives for <strong>impartiality</strong>, standing outside the viewpoint of living groups to produce a record independent of any specific group judgment.</p>
+      </div>
+    </div>
+
+    <h2>3. Unity and Plurality</h2>
+
+    <div class="info-box">
+      <strong>Halbwachs' claim:</strong> There are <em>"several collective memories"</em> — every group has its own. But there is only <em>one history</em>, which aims to be the universal memory of the human species.
+    </div>
+
+    <h3>Multiple Memories vs. One History</h3>
+    <p>Because every group has its own boundaries, its own memory exists within those limits. History gathers these "partial histories" into a single, total record — it aspires to universality where memory is inherently plural.</p>
+
+    <h3>Focus on Resemblance vs. Difference</h3>
+    <div class="grid2">
+      <div class="card blue">
+        <div class="card-title">Memory — Resemblance</div>
+        <p>Focuses on the <strong>common traits and shared consciousness</strong> that bind a group together. Emphasizes what members have in common.</p>
+      </div>
+      <div class="card coral">
+        <div class="card-title">History — Difference</div>
+        <p>Primarily interested in <strong>differences and contrasts</strong>, highlighting how one period or society differs from another.</p>
+      </div>
+    </div>
+
+    <h2>4. Summary Comparison</h2>
+
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th>Dimension</th>
+          <th>Collective Memory</th>
+          <th>History</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="dim-label">Nature</span></td>
+          <td>Living, fluid, continuous</td>
+          <td>Formal, written, fixed</td>
+        </tr>
+        <tr>
+          <td><span class="dim-label">Origin</span></td>
+          <td>Maintained as long as the group exists</td>
+          <td>Begins when memory fades</td>
+        </tr>
+        <tr>
+          <td><span class="dim-label">Perspective</span></td>
+          <td>Internal (within the group)</td>
+          <td>External (outside observer)</td>
+        </tr>
+        <tr>
+          <td><span class="dim-label">Stance</span></td>
+          <td>Subjective, identity-driven</td>
+          <td>Objective, impartial</td>
+        </tr>
+        <tr>
+          <td><span class="dim-label">Quantity</span></td>
+          <td>Plural — each group has its own</td>
+          <td>Unitary — one universal record</td>
+        </tr>
+        <tr>
+          <td><span class="dim-label">Focus</span></td>
+          <td>Resemblances, shared traits</td>
+          <td>Differences, contrasts</td>
+        </tr>
+        <tr>
+          <td><span class="dim-label">Time structure</span></td>
+          <td>Unbroken movement, no sharp divisions</td>
+          <td>Schematized periods and centuries</td>
+        </tr>
+        <tr>
+          <td><span class="dim-label">Social bond</span></td>
+          <td>Preserves psychological bonds to events</td>
+          <td>Severs psychological bonds</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>5. Exam-Style Questions</h2>
+
+    <div class="card blue">
+      <div class="card-title">Question 1 — The Emergence of History</div>
+      <p><strong>Q:</strong> According to Halbwachs, when does history begin to be written? Explain the fundamental difference between the continuity of collective memory and the "schematizing" structure of history.</p>
+      <div class="success-box" style="margin-top:0.75rem; margin-bottom:0;">
+        <strong>Model Answer:</strong> History enters the scene only when a tradition ends and social memory begins to weaken or fragment. When the memory of an event series no longer has the support of a living group — when those events have become external to it — the only way to preserve them is to construct a written narrative.<br><br>
+        The key difference lies in their temporal structure: collective memory is a natural, living, unbroken stream of thought that retains only the parts still alive in the group's consciousness. History, by contrast, stands outside this living stream and — for didactic purposes — imposes "schematization," dividing the past into sharp demarcations such as centuries or periods. Where memory holds events in a connected flow, history presents them as independent "stages" or "phases."
+      </div>
+    </div>
+
+    <div class="card blue" style="margin-top:1rem;">
+      <div class="card-title">Question 2 — Plurality of Memory vs. Unity of History</div>
+      <p><strong>Q:</strong> Halbwachs argues that collective memory is "plural" while history is "unitary." Compare history's striving for objectivity with memory's focus on "common traits," using these concepts.</p>
+      <div class="success-box" style="margin-top:0.75rem; margin-bottom:0;">
+        <strong>Model Answer:</strong> Because every group has its own boundaries, there are <em>many</em> collective memories — one per group. History, however, aims to be the universal memory of the human species by uniting these partial histories into a single total record, making it unitary.<br><br>
+        These two structures approach events differently: collective memory focuses on the resemblances and shared consciousness that bind a group together. History does the opposite — it is primarily interested in differences and contrasts, highlighting how one era or society diverges from another. The historian, like a "spectator who never belonged" to the observed groups, stands outside them and frames events objectively, severing the psychological bonds that once attached those events to the social groups in which they occurred.
+      </div>
+    </div>
+
+    <div class="warning-box" style="margin-top:1rem;">
+      <strong>Key Quote to Remember:</strong> "While history provides a 'summary vision of the past' by reducing events to comparable terms, it does so by severing the psychological bonds that held those events close to the social groups where they occurred. Collective memory remains a living trust, whereas history is a record of a past that has become external to us." — Halbwachs
+    </div>
+
+  </div>
+
+  <!-- ═══ QUIZ SECTION ═══ -->
+  <div id="quiz" class="section">
+    <p class="score-text">Score: <span id="scorenum">0</span> / 15</p>
+    <div class="score-bar"><div id="scorefill"></div></div>
+    <div id="quiz-container"></div>
+  </div>
+</div>
+
+<script>
+function switchTab(id, btn) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+}
+
+const questions = [
+  {
+    q: "According to Halbwachs, when does formal history typically begin to be written?",
+    opts: [
+      "When events are still fresh in the group's living memory",
+      "When a social memory is already fading or breaking up",
+      "When a group reaches the peak of its cultural influence",
+      "When a new social group forms and needs a founding myth"
+    ],
+    ans: 1,
+    exp: "Halbwachs argues that history enters the scene only when tradition ends and social memory weakens — it preserves what living groups can no longer sustain."
+  },
+  {
+    q: "Which of the following best describes collective memory according to Halbwachs?",
+    opts: [
+      "A formal written narrative produced by professional historians",
+      "An artificial reconstruction of events for educational purposes",
+      "A living, continuous stream of thought within a specific group",
+      "An objective record independent of any social group"
+    ],
+    ans: 2,
+    exp: "Halbwachs defines collective memory as a living, fluid, and continuous thought-stream that is internal to a group and retains only what remains relevant to that group."
+  },
+  {
+    q: "What does Halbwachs mean by 'schematization' in the context of history?",
+    opts: [
+      "Presenting the past through visual diagrams and charts",
+      "Dividing the past into distinct periods and centuries for didactic purposes",
+      "Creating coded language to preserve memories across generations",
+      "Summarizing group experiences into a single narrative voice"
+    ],
+    ans: 1,
+    exp: "History introduces schematization by imposing sharp chronological demarcations — centuries, periods, eras — for pedagogical clarity, something that living memory never requires."
+  },
+  {
+    q: "According to Halbwachs, the historian views events from the position of:",
+    opts: [
+      "An active participant who belongs to the group being studied",
+      "A spectator who never belonged to the groups they observe",
+      "A political leader who shaped the historical events",
+      "A family elder preserving oral tradition within the community"
+    ],
+    ans: 1,
+    exp: "Halbwachs stresses that the historian is an outside observer — a 'spectator who never belonged' — which is precisely what enables the objectivity history aims for."
+  },
+  {
+    q: "Which statement correctly contrasts collective memory and history?",
+    opts: [
+      "Memory is objective; history is subjective",
+      "Memory is external to groups; history is internal",
+      "Memory is internal to a group; history is external to groups",
+      "Memory creates sharp temporal divisions; history maintains fluid continuity"
+    ],
+    ans: 2,
+    exp: "Collective memory is internal — it lives within a group. History is external — it looks at events from outside any particular group's perspective."
+  },
+  {
+    q: "Halbwachs argues that collective memories are plural because:",
+    opts: [
+      "All humans inevitably misremember the same events differently",
+      "Professional historians disagree about historical facts",
+      "Every social group has its own memory bounded by its own limits",
+      "Memory is unreliable and varies between individuals"
+    ],
+    ans: 2,
+    exp: "Since each group is bounded in space and time, each has its own memory. There are as many collective memories as there are social groups — hence plurality."
+  },
+  {
+    q: "What happens to a collective memory when the group that holds it disappears?",
+    opts: [
+      "It transforms automatically into written history",
+      "It is preserved intact by neighboring or successor groups",
+      "It begins to erode without the group's support",
+      "It becomes stronger through nostalgia and longing"
+    ],
+    ans: 2,
+    exp: "Memory requires the living support of a social milieu. Once the group ceases to exist or loses interest, the memory has no foundation and begins to erode."
+  },
+  {
+    q: "What is history's primary analytical focus when comparing different periods or societies?",
+    opts: [
+      "Similarities and shared traits across eras",
+      "Spiritual and emotional connections between peoples",
+      "Differences and contrasts between periods or societies",
+      "Economic causes that drive social change"
+    ],
+    ans: 2,
+    exp: "Unlike memory, which emphasizes commonality within a group, history is primarily interested in what distinguishes one epoch or society from another."
+  },
+  {
+    q: "What does collective memory focus on to maintain group cohesion?",
+    opts: [
+      "The differences and disagreements among group members",
+      "Common traits and shared consciousness that bind the group",
+      "Written archives and official documents",
+      "Objective facts independent of the group's current identity"
+    ],
+    ans: 1,
+    exp: "Collective memory binds a group by highlighting their shared consciousness and common traits — the 'same-ness' that makes them a group."
+  },
+  {
+    q: "According to Halbwachs, history aspires to be the 'universal memory of the human species' because it:",
+    opts: [
+      "Serves the particular interests of one dominant social group",
+      "Preserves only oral traditions from pre-literate societies",
+      "Gathers all partial group histories into a single, total record",
+      "Replaces collective memories by exposing their inaccuracies"
+    ],
+    ans: 2,
+    exp: "History's unitary character comes from this aspiration: it tries to synthesize the partial histories of all groups into one comprehensive, universal account."
+  },
+  {
+    q: "How does Halbwachs describe collective memory's relationship to the flow of time?",
+    opts: [
+      "It divides time into strict centuries and clearly demarcated periods",
+      "It focuses only on the most recent events within living experience",
+      "It moves in an unbroken movement without sharp chronological divisions",
+      "It operates exclusively in a linear, progressive time model"
+    ],
+    ans: 2,
+    exp: "Collective memory flows without artificial breaks — it is the historians who impose schematic divisions on time for didactic purposes."
+  },
+  {
+    q: "Which of the following is NOT a characteristic of history according to Halbwachs?",
+    opts: [
+      "It introduces schematization and demarcations",
+      "It strives for objectivity and impartiality",
+      "It is subjective and tied to the concerns of a living group",
+      "It divides the past into distinct periods for didactic purposes"
+    ],
+    ans: 2,
+    exp: "Being subjective and tied to a living group's current concerns is precisely the characteristic of collective memory, not history."
+  },
+  {
+    q: "What does history do to the psychological bonds between events and the social groups that lived them?",
+    opts: [
+      "It strengthens those bonds by re-animating the past",
+      "It creates new bonds between modern readers and past events",
+      "It severs those bonds by abstracting events into a universal framework",
+      "It has no effect on those bonds"
+    ],
+    ans: 2,
+    exp: "Halbwachs argues this is history's defining cost: by reducing events to comparable, schematic terms, it breaks the living psychological connection between events and the groups that experienced them."
+  },
+  {
+    q: "What makes collective memory 'not artificial' according to Halbwachs?",
+    opts: [
+      "It is always based on verified written records",
+      "It retains only the parts of the past that still live within the group's present consciousness",
+      "It is produced by trained professional historians within institutions",
+      "It exists independently of any particular social group or milieu"
+    ],
+    ans: 1,
+    exp: "Collective memory is organic precisely because it is self-editing — it naturally drops what no longer matters to the group and keeps only what remains alive and relevant."
+  },
+  {
+    q: "What is the key final contrast Halbwachs draws between collective memory and history?",
+    opts: [
+      "Memory uses quantitative data; history relies on qualitative interpretation",
+      "Memory is always more accurate than history",
+      "Collective memory is a living trust; history is a record of a past that has become external to us",
+      "History is more emotionally resonant than collective memory"
+    ],
+    ans: 2,
+    exp: "This is Halbwachs' ultimate distinction: memory is alive and present-tense for the group; history is the crystallized record of a past that no longer has a living community to sustain it."
+  }
+];
+
+let answered = Array(questions.length).fill(false);
+let score = 0;
+
+function answer(qi, oi) {
+  if (answered[qi]) return;
+  answered[qi] = true;
+  const block = document.querySelectorAll('.q-block')[qi];
+  const opts = block.querySelectorAll('.opt');
+  opts.forEach((o, i) => {
+    if (i === questions[qi].ans) o.classList.add('correct');
+    else o.classList.add(i === oi ? 'wrong' : 'disabled');
+  });
+  block.querySelector('.explanation').style.display = 'block';
+  if (oi === questions[qi].ans) score++;
+  document.getElementById('scorenum').textContent = score;
+  document.getElementById('scorefill').style.width = (answered.filter(Boolean).length / questions.length * 100) + '%';
+}
+
+function buildQuiz() {
+  const c = document.getElementById('quiz-container');
+  questions.forEach((q, qi) => {
+    c.innerHTML += `<div class="q-block">
+      <div class="q-text">${qi + 1}. ${q.q}</div>
+      ${q.opts.map((o, oi) => `<div class="opt" onclick="answer(${qi},${oi})">${o}</div>`).join('')}
+      <div class="explanation">&#128161; ${q.exp}</div>
+    </div>`;
+  });
+}
+buildQuiz();
+</script>
+</body>
+</html>

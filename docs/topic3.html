@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Topic 3 — Photography as a Carrier of Cultural Memory</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f5f5f0; color: #1a1a1a; padding: 2rem 1rem; }
+.container { max-width: 880px; margin: 0 auto; }
+.back { display: inline-block; color: #1a3a6e; text-decoration: none; font-size: 0.9rem; margin-bottom: 1.5rem; }
+.back:hover { text-decoration: underline; }
+h1 { font-size: 1.5rem; font-weight: 700; color: #1a3a6e; }
+.subtitle { color: #555; font-size: 0.9rem; margin: 0.3rem 0 1.5rem; }
+.tabs { display: flex; gap: 8px; margin-bottom: 1.5rem; border-bottom: 2px solid #e0e0d8; padding-bottom: 0; }
+.tab-btn { padding: 0.5rem 1.25rem; border: none; background: none; cursor: pointer; font-size: 0.9rem; color: #666; border-bottom: 2px solid transparent; margin-bottom: -2px; font-weight: 500; }
+.tab-btn.active { color: #1a3a6e; border-bottom-color: #1a3a6e; }
+.section { display: none; }
+.section.active { display: block; }
+
+h2 { font-size: 1.15rem; font-weight: 600; color: #1a3a6e; margin: 1.75rem 0 0.75rem; }
+h3 { font-size: 1rem; font-weight: 600; color: #333; margin: 1rem 0 0.5rem; }
+p { line-height: 1.65; margin-bottom: 0.75rem; color: #333; }
+ul, ol { padding-left: 1.5rem; margin-bottom: 0.75rem; }
+li { line-height: 1.6; margin-bottom: 0.3rem; }
+
+.card { background: #fff; border: 1px solid #e0e0d8; border-radius: 10px; padding: 1.1rem 1.25rem; margin-bottom: 1rem; }
+.card-title { font-weight: 600; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.6rem; }
+.blue .card-title { color: #1a3a6e; }
+.teal .card-title { color: #0f766e; }
+.amber .card-title { color: #92400e; }
+.coral .card-title { color: #c2410c; }
+.purple .card-title { color: #6d28d9; }
+
+.grid2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin-bottom: 1rem; }
+.grid4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; margin-bottom: 1rem; }
+
+.info-box { border-left: 4px solid #3b82f6; background: #eff6ff; padding: 0.85rem 1rem; border-radius: 0 8px 8px 0; margin-bottom: 1rem; }
+.success-box { border-left: 4px solid #4caf50; background: #f0fdf4; padding: 0.85rem 1rem; border-radius: 0 8px 8px 0; margin-bottom: 1rem; }
+.warning-box { border-left: 4px solid #f59e0b; background: #fffbeb; padding: 0.85rem 1rem; border-radius: 0 8px 8px 0; margin-bottom: 1rem; }
+
+/* Element cards with number badges */
+.elem-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 1rem; margin-bottom: 1.25rem; }
+.elem-card { background: #fff; border: 1px solid #e0e0d8; border-radius: 10px; padding: 1rem 1.1rem; }
+.elem-num { display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 50%; color: #fff; font-size: 0.8rem; font-weight: 700; margin-bottom: 0.5rem; }
+.e1 .elem-num { background: #1a3a6e; }
+.e2 .elem-num { background: #0f766e; }
+.e3 .elem-num { background: #92400e; }
+.e4 .elem-num { background: #6d28d9; }
+.elem-label { font-weight: 600; font-size: 0.9rem; margin-bottom: 0.4rem; }
+.e1 .elem-label { color: #1a3a6e; }
+.e2 .elem-label { color: #0f766e; }
+.e3 .elem-label { color: #92400e; }
+.e4 .elem-label { color: #6d28d9; }
+.elem-card p { font-size: 0.85rem; margin: 0; color: #555; }
+
+/* Intertextuality diagram */
+.inter-diagram { background: #fff; border: 1px solid #e0e0d8; border-radius: 10px; padding: 1.25rem; margin-bottom: 1rem; }
+.inter-center { text-align: center; background: #1a3a6e; color: #fff; border-radius: 8px; padding: 0.6rem 1rem; font-weight: 600; font-size: 0.95rem; margin: 0 auto 1rem; max-width: 220px; }
+.inter-arrows { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 0.75rem; }
+.inter-node { background: #f5f5f0; border: 1px solid #e0e0d8; border-radius: 7px; padding: 0.6rem 0.75rem; font-size: 0.85rem; text-align: center; }
+.inter-node strong { display: block; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.04em; color: #1a3a6e; margin-bottom: 0.2rem; }
+
+/* Quiz */
+.score-bar { background: #e0e0d8; border-radius: 8px; height: 8px; margin-bottom: 1.5rem; overflow: hidden; }
+#scorefill { height: 100%; background: #1a3a6e; border-radius: 8px; width: 0%; transition: width 0.4s; }
+.score-text { font-size: 0.85rem; color: #555; margin-bottom: 0.5rem; }
+.q-block { background: #fff; border: 1px solid #e0e0d8; border-radius: 10px; padding: 1.1rem 1.25rem; margin-bottom: 1rem; }
+.q-text { font-weight: 500; margin-bottom: 0.75rem; font-size: 0.95rem; }
+.opt { padding: 0.6rem 0.9rem; border: 1px solid #e0e0d8; border-radius: 7px; margin-bottom: 0.4rem; cursor: pointer; font-size: 0.9rem; transition: background 0.1s; }
+.opt:hover:not(.correct):not(.wrong) { background: #f0f0eb; }
+.opt.correct { background: #d1fae5; border-color: #4caf50; color: #065f46; pointer-events: none; }
+.opt.wrong { background: #fee2e2; border-color: #ef4444; color: #991b1b; pointer-events: none; }
+.opt.disabled { pointer-events: none; color: #aaa; }
+.explanation { margin-top: 0.6rem; font-size: 0.85rem; color: #555; background: #f5f5f0; padding: 0.6rem 0.8rem; border-radius: 6px; display: none; }
+</style>
+</head>
+<body>
+<div class="container">
+  <a class="back" href="index.html">← Back</a>
+  <h1>Photography as a Carrier of Cultural Memory</h1>
+  <p class="subtitle">Cultural Memory and Photographs · Topic 3</p>
+
+  <div class="tabs">
+    <button class="tab-btn active" onclick="switchTab('lesson', this)">Lesson</button>
+    <button class="tab-btn" onclick="switchTab('quiz', this)">Quiz (15 Q)</button>
+  </div>
+
+  <!-- ═══ LESSON SECTION ═══ -->
+  <div id="lesson" class="section active">
+
+    <div class="info-box">
+      <strong>Core question:</strong> How does a photograph carry cultural memory — and what determines what it actually <em>means</em>? This topic shows that photographic meaning is never fixed: it emerges from the intersection of four elements and is constantly reshaped by intertextual context.
+    </div>
+
+    <!-- SECTION 1 -->
+    <h2>1. Photography as a Carrier of Cultural Memory</h2>
+
+    <p>Photography does not simply record reality — it <strong>represents what a culture chooses to remember or forget</strong>. Every photograph that enters cultural circulation carries with it the ideals, goals, and values of the society that produced and preserved it.</p>
+
+    <div class="grid2">
+      <div class="card blue">
+        <div class="card-title">What photography represents</div>
+        <ul>
+          <li>The ideals a culture holds up as worth preserving</li>
+          <li>The goals a society projects onto the future</li>
+          <li>The things a culture wants to <strong>remember</strong> — heroes, milestones, beauty</li>
+          <li>The things a culture wants to <strong>forget</strong> — by choosing not to photograph, or by suppressing images</li>
+        </ul>
+      </div>
+      <div class="card teal">
+        <div class="card-title">What photography is NOT</div>
+        <ul>
+          <li>Not a neutral or objective window onto the world</li>
+          <li>Not a fixed record with a single stable meaning</li>
+          <li>Not independent of the social context in which it is taken, circulated, or viewed</li>
+          <li>Not separable from the choices of the photographer and the expectations of the viewer</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="warning-box">
+      <strong>Key principle:</strong> The meaning of a photograph is <strong>open to transformation over time</strong>. The same image can mean radically different things to different audiences, in different eras, and in different display contexts.
+    </div>
+
+    <p>This is what makes photography a <em>carrier</em> of cultural memory rather than a mere document. Like all memory, photographic meaning is reconstructed in the present — shaped by who is looking, what they already know, and where they encounter the image.</p>
+
+    <!-- SECTION 2 -->
+    <h2>2. The Four Elements That Determine Meaning</h2>
+
+    <p>The meaning of any photographic image is the product of <strong>four interacting elements</strong>. No single element determines meaning alone — it is their combination that produces the final interpretation.</p>
+
+    <div class="elem-grid">
+      <div class="elem-card e1">
+        <div class="elem-num">1</div>
+        <div class="elem-label">The Photographer</div>
+        <p>Their identity, background, intentions, and perspective shape every decision: what to frame, what to exclude, when to shoot.</p>
+      </div>
+      <div class="elem-card e2">
+        <div class="elem-num">2</div>
+        <div class="elem-label">The Subject</div>
+        <p>How the subject poses, what accessories they use, and what background they are placed against all communicate meaning — consciously or not.</p>
+      </div>
+      <div class="elem-card e3">
+        <div class="elem-num">3</div>
+        <div class="elem-label">The Viewer</div>
+        <p>The audience's cultural background, prior knowledge, and emotional state determine how the image is received and what associations it triggers.</p>
+      </div>
+      <div class="elem-card e4">
+        <div class="elem-num">4</div>
+        <div class="elem-label">The Mode of Display</div>
+        <p>Where and how an image is shown — museum, family album, textbook, social media — fundamentally changes what it means.</p>
+      </div>
+    </div>
+
+    <h3>Element 1 — The Photographer</h3>
+    <p>The photographer is never a neutral operator of a machine. Their <strong>identity and perspective</strong> are embedded in the image: their social position, cultural assumptions, aesthetic choices, and intended audience all shape what they frame and how. A war photographer embedded with one side of a conflict will produce fundamentally different images than one embedded with the other — even photographing the same events.</p>
+
+    <h3>Element 2 — The Subject</h3>
+    <p>Subjects are not passive. Their <strong>posing, background, and use of accessories</strong> actively construct the message of the image. A subject who chooses formal dress, a national flag in the background, and an upright posture communicates something entirely different from the same person photographed casually at home. Even "candid" photographs are shaped by subjects' awareness of being seen.</p>
+
+    <h3>Element 3 — The Viewer</h3>
+    <p>The viewer brings their entire cultural repertoire to the image. Two people looking at the same photograph may see entirely different things depending on their <strong>prior knowledge, cultural background, and emotional investment</strong>. A family photograph is intimate and personal to the family; to a stranger, it is an ethnographic document. The same image of a political figure reads as heroic to supporters and threatening to opponents.</p>
+
+    <h3>Element 4 — The Mode of Display</h3>
+    <p>Perhaps the most transformative element. <strong>Where an image appears determines what it means:</strong></p>
+
+    <div class="grid2" style="margin-top:0.5rem;">
+      <div class="card amber">
+        <div class="card-title">Museum</div>
+        <p>Frames the image as art or historical artifact. The viewer approaches it with aesthetic distance and scholarly reverence. The image becomes "culturally significant."</p>
+      </div>
+      <div class="card blue">
+        <div class="card-title">Family Album</div>
+        <p>Frames the image as personal memory. The viewer approaches it with emotional intimacy. The image belongs to a private story.</p>
+      </div>
+      <div class="card teal">
+        <div class="card-title">Textbook</div>
+        <p>Frames the image as evidence for an argument. The viewer approaches it as illustration of a historical or social claim. The caption guides interpretation.</p>
+      </div>
+      <div class="card coral">
+        <div class="card-title">News / Social Media</div>
+        <p>Frames the image as current and urgent. The viewer approaches it through the lens of the headline or post surrounding it.</p>
+      </div>
+    </div>
+
+    <!-- SECTION 3 -->
+    <h2>3. Intertextuality — How Images Gain Meaning Through Other Texts</h2>
+
+    <p>Beyond the four elements, images gain additional layers of meaning through <strong>intertextuality</strong> — their relationship with other texts, images, and narratives from the past and present.</p>
+
+    <div class="info-box">
+      <strong>Definition:</strong> Intertextuality is the way in which a text (including an image) derives meaning through its conscious or unconscious references to other texts. No image is an island — every photograph carries traces of other images, cultural conventions, and historical narratives.
+    </div>
+
+    <div class="inter-diagram">
+      <div class="inter-center">Photographic Image</div>
+      <div class="inter-arrows">
+        <div class="inter-node"><strong>Other Images</strong>Visual traditions, iconic photographs, genre conventions</div>
+        <div class="inter-node"><strong>Captions</strong>Written text that guides what the viewer is "meant to see"</div>
+        <div class="inter-node"><strong>Historical Context</strong>When was it taken? What was happening?</div>
+        <div class="inter-node"><strong>Cultural Narratives</strong>Myths, ideologies, collective stories in circulation</div>
+        <div class="inter-node"><strong>Display Context</strong>Other images displayed alongside it</div>
+        <div class="inter-node"><strong>Viewer's Memory</strong>Images the viewer has already seen</div>
+      </div>
+    </div>
+
+    <h3>The Power of Captions</h3>
+    <p>Captions are one of the most powerful intertextual forces on a photograph. They do not merely <em>describe</em> — they <strong>prescribe</strong>: they tell the viewer what they are "meant to see." The same photograph captioned "Refugees fleeing violence" and "Illegal migrants storming the border" will be received as two completely different images, even though the visual content is identical.</p>
+
+    <p>This is why cultural memory scholars pay close attention to how archives are labeled, how museum placards are worded, and how historical photographs are captioned in textbooks — the words surrounding an image shape its entry into cultural memory.</p>
+
+    <h3>Historical Context as Intertextual Frame</h3>
+    <p>An image's meaning also shifts as its historical context becomes better understood — or is forgotten. A photograph taken during a war may be received as propaganda when first published, then as historical evidence a generation later, and finally as iconic art a century later. The image has not changed; the intertextual frame around it has.</p>
+
+    <div class="success-box">
+      <strong>Summary principle:</strong> A photograph does not have a meaning that belongs to it intrinsically. Meaning is always produced at the intersection of the four elements (photographer, subject, viewer, display) and the intertextual web of other texts — including captions, historical context, and prior images — that surround it.
+    </div>
+
+    <!-- SECTION 4: REMEMBERING AND FORGETTING -->
+    <h2>4. Photography and the Politics of Remembering and Forgetting</h2>
+
+    <p>If photography represents what a culture wants to remember <em>or forget</em>, then photographic archives are never innocent. The decision to <strong>preserve, suppress, destroy, or re-caption</strong> an image is a political act with memory consequences.</p>
+
+    <div class="grid2">
+      <div class="card blue">
+        <div class="card-title">Remembering through photography</div>
+        <ul>
+          <li>Official state photography celebrates leaders, victories, national unity</li>
+          <li>Family photography preserves affective bonds and personal identity</li>
+          <li>Documentary photography preserves evidence of injustice or suffering</li>
+          <li>Archival photography becomes the "face" of historical periods</li>
+        </ul>
+      </div>
+      <div class="card coral">
+        <div class="card-title">Forgetting through photography</div>
+        <ul>
+          <li>Images are suppressed or destroyed by regimes who want to erase events</li>
+          <li>Figures are literally removed from photographs (e.g. Soviet-era retouching)</li>
+          <li>Archives are selectively maintained, so some groups leave no photographic trace</li>
+          <li>Captions are changed to alter the memory of what an image documents</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="warning-box">
+      <strong>Critical question to ask of any historical photograph:</strong> Who took this? Who chose to preserve it? Who captioned it? Who decided it represents this era or this people? Whose perspective is absent?
+    </div>
+
+  </div><!-- end lesson -->
+
+  <!-- ═══ QUIZ SECTION ═══ -->
+  <div id="quiz" class="section">
+    <p class="score-text">Score: <span id="scorenum">0</span> / 15</p>
+    <div class="score-bar"><div id="scorefill"></div></div>
+    <div id="quiz-container"></div>
+  </div>
+</div>
+
+<script>
+function switchTab(id, btn) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+}
+
+const questions = [
+  {
+    q: "According to the sources, what does photography represent as a carrier of cultural memory?",
+    opts: [
+      "An objective and neutral record of events as they actually occurred",
+      "The ideals, goals, and things a culture wants to remember or forget",
+      "A purely personal and private form of documentation",
+      "A scientific instrument for preserving factual information"
+    ],
+    ans: 1,
+    exp: "Photography carries cultural memory by representing what a society chooses to preserve — including its ideals and goals — as well as what it chooses to suppress or forget."
+  },
+  {
+    q: "The meaning of a photographic image is described as:",
+    opts: [
+      "Fixed and stable, determined at the moment the photo is taken",
+      "Determined solely by the photographer's intentions",
+      "Open to transformation over time",
+      "Objective and independent of social context"
+    ],
+    ans: 2,
+    exp: "Meaning is not fixed in the image itself — it is reconstructed by viewers in different contexts, eras, and display conditions. The same photograph can mean different things across time."
+  },
+  {
+    q: "How many primary elements combine to determine the meaning of a photograph?",
+    opts: ["Two", "Three", "Four", "Five"],
+    ans: 2,
+    exp: "Four elements interact to produce photographic meaning: the photographer, the subject, the viewer, and the mode of display."
+  },
+  {
+    q: "Which of the following correctly lists the four elements that determine the meaning of a photograph?",
+    opts: [
+      "Camera, lighting, location, and time of day",
+      "Photographer, subject, viewer, and mode of display",
+      "Artist, medium, audience, and historical period",
+      "Caption, color, composition, and context"
+    ],
+    ans: 1,
+    exp: "The four elements are: (1) the photographer's identity and perspective, (2) the subject's posing and accessories, (3) how the viewer perceives the image, and (4) where and how it is displayed."
+  },
+  {
+    q: "According to the sources, what aspects of the photographer shape the meaning of an image?",
+    opts: [
+      "Only the technical quality of their equipment",
+      "Their identity and perspective",
+      "Exclusively the commercial purpose of the shoot",
+      "Only the editing choices made after the photograph is taken"
+    ],
+    ans: 1,
+    exp: "The photographer's identity and perspective are embedded in every framing choice — what is included, excluded, and emphasized all reflect their social position and cultural assumptions."
+  },
+  {
+    q: "When discussing the subject as an element of photographic meaning, the sources specifically mention:",
+    opts: [
+      "The subject's emotional state and private thoughts",
+      "The subject's posing, background, and use of accessories",
+      "The subject's age and biological characteristics",
+      "The subject's relationship to the photographer"
+    ],
+    ans: 1,
+    exp: "Subjects actively construct the image's message through their posing choices, what accessories they use, and what background they are placed against — all of these communicate meaning."
+  },
+  {
+    q: "Why is the viewer considered a primary element in determining photographic meaning?",
+    opts: [
+      "Because viewers always have direct access to the photographer's intentions",
+      "Because the viewer's cultural background and prior knowledge shape how the image is received and what associations it triggers",
+      "Because viewers are legally responsible for interpreting images correctly",
+      "Because the viewer's reaction is recorded alongside the image in archives"
+    ],
+    ans: 1,
+    exp: "The viewer brings their entire cultural repertoire — knowledge, background, emotional investment — to the image. Two viewers can see completely different things in the same photograph."
+  },
+  {
+    q: "The sources give three examples of 'mode of display.' Which of the following is one of those examples?",
+    opts: [
+      "A digital watermark", "A photography studio", "A family album", "A camera roll"
+    ],
+    ans: 2,
+    exp: "The three display contexts mentioned are: a museum, a family album, and a textbook. Each frames the image differently and produces a different meaning."
+  },
+  {
+    q: "How does displaying a photograph in a museum differ from displaying it in a family album, in terms of how the viewer approaches it?",
+    opts: [
+      "Museum viewers respond emotionally; family album viewers respond analytically",
+      "Museum viewers approach it with aesthetic distance and cultural significance; family album viewers approach it with personal intimacy",
+      "There is no difference — the image means the same thing in both contexts",
+      "Family albums are considered more historically reliable than museums"
+    ],
+    ans: 1,
+    exp: "Mode of display transforms meaning: the museum frame signals art or historical artifact (aesthetic distance, reverence), while the family album frame signals personal memory (emotional intimacy, private story)."
+  },
+  {
+    q: "What is intertextuality in the context of photographic meaning?",
+    opts: [
+      "The process of adding written text to the back of a photograph",
+      "The way an image gains meaning through its relationship with other texts from the past and present",
+      "A technique for comparing photographs taken at different time periods",
+      "The legal framework governing the reproduction of copyrighted images"
+    ],
+    ans: 1,
+    exp: "Intertextuality describes how images derive meaning not in isolation, but through their conscious or unconscious connections to other images, narratives, captions, and cultural texts surrounding them."
+  },
+  {
+    q: "According to the sources, what role do captions play in shaping the meaning of a photograph?",
+    opts: [
+      "Captions are neutral descriptions that do not affect interpretation",
+      "Captions tell the viewer what they are 'meant to see,' prescribing an interpretation",
+      "Captions are only relevant for professional photojournalism",
+      "Captions reduce the ambiguity of an image by revealing the photographer's identity"
+    ],
+    ans: 1,
+    exp: "Captions do not merely describe — they prescribe. The same image captioned differently produces radically different readings, making captions one of the most powerful intertextual forces on a photograph."
+  },
+  {
+    q: "Historical context is described as an intertextual frame because:",
+    opts: [
+      "It provides the correct and final interpretation of any photograph",
+      "An image's meaning shifts as its historical context becomes better understood or is forgotten over time",
+      "Historical photographs are always more reliable than contemporary ones",
+      "Context removes subjectivity from photographic interpretation"
+    ],
+    ans: 1,
+    exp: "The same image can be received as propaganda when first published, as historical evidence a generation later, and as iconic art a century later — the image is unchanged, but the intertextual frame around it has evolved."
+  },
+  {
+    q: "What does it mean to say that photography represents what a culture wants to 'forget'?",
+    opts: [
+      "Photography causes people to literally forget events they have witnessed",
+      "Photographs that are badly taken are quickly forgotten by the public",
+      "Cultures actively suppress, destroy, or fail to preserve images of events or groups they want erased from memory",
+      "Forgetting refers to photographs that fade or degrade over time"
+    ],
+    ans: 2,
+    exp: "Forgetting through photography is an active, often political process: suppressing images, removing figures from photographs, selectively maintaining archives, and changing captions are all ways of shaping what enters and what is excluded from cultural memory."
+  },
+  {
+    q: "Which of the following best illustrates how the same photograph can produce different meanings for different viewers?",
+    opts: [
+      "A landscape photograph that looks different depending on the printing quality",
+      "A photograph of a political leader that is seen as heroic by supporters and threatening by opponents",
+      "A historical photograph that becomes more yellow as it ages",
+      "A photograph that is displayed at different sizes in different publications"
+    ],
+    ans: 1,
+    exp: "The viewer element means cultural background, prior knowledge, and emotional investment all shape reception. The visual content is identical — what differs is the interpretive framework each viewer brings."
+  },
+  {
+    q: "Based on the framework in this topic, which critical question is most important to ask when encountering a historical photograph?",
+    opts: [
+      "What camera model was used and what were the technical settings?",
+      "How much did it cost to develop and preserve the photograph?",
+      "Who took this, who chose to preserve it, who captioned it, and whose perspective is absent?",
+      "How many copies of the photograph currently exist in public archives?"
+    ],
+    ans: 2,
+    exp: "These questions address all four elements and the politics of memory: photographer identity, preservation decisions (display/archive), captions (intertextuality), and the absences that reveal what a culture chose to forget."
+  }
+];
+
+let answered = Array(questions.length).fill(false);
+let score = 0;
+
+function answer(qi, oi) {
+  if (answered[qi]) return;
+  answered[qi] = true;
+  const block = document.querySelectorAll('.q-block')[qi];
+  const opts = block.querySelectorAll('.opt');
+  opts.forEach((o, i) => {
+    if (i === questions[qi].ans) o.classList.add('correct');
+    else o.classList.add(i === oi ? 'wrong' : 'disabled');
+  });
+  block.querySelector('.explanation').style.display = 'block';
+  if (oi === questions[qi].ans) score++;
+  document.getElementById('scorenum').textContent = score;
+  document.getElementById('scorefill').style.width = (answered.filter(Boolean).length / questions.length * 100) + '%';
+}
+
+function buildQuiz() {
+  const c = document.getElementById('quiz-container');
+  questions.forEach((q, qi) => {
+    c.innerHTML += `<div class="q-block">
+      <div class="q-text">${qi + 1}. ${q.q}</div>
+      ${q.opts.map((o, oi) => `<div class="opt" onclick="answer(${qi},${oi})">${o}</div>`).join('')}
+      <div class="explanation">&#128161; ${q.exp}</div>
+    </div>`;
+  });
+}
+buildQuiz();
+</script>
+</body>
+</html>

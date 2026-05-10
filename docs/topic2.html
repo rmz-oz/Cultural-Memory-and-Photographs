@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Topic 2 — The Seven Dimensions of Opposition</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f5f5f0; color: #1a1a1a; padding: 2rem 1rem; }
+.container { max-width: 880px; margin: 0 auto; }
+.back { display: inline-block; color: #1a3a6e; text-decoration: none; font-size: 0.9rem; margin-bottom: 1.5rem; }
+.back:hover { text-decoration: underline; }
+h1 { font-size: 1.5rem; font-weight: 700; color: #1a3a6e; }
+.subtitle { color: #555; font-size: 0.9rem; margin: 0.3rem 0 1.5rem; }
+.tabs { display: flex; gap: 8px; margin-bottom: 1.5rem; border-bottom: 2px solid #e0e0d8; padding-bottom: 0; }
+.tab-btn { padding: 0.5rem 1.25rem; border: none; background: none; cursor: pointer; font-size: 0.9rem; color: #666; border-bottom: 2px solid transparent; margin-bottom: -2px; font-weight: 500; }
+.tab-btn.active { color: #1a3a6e; border-bottom-color: #1a3a6e; }
+.section { display: none; }
+.section.active { display: block; }
+
+h2 { font-size: 1.15rem; font-weight: 600; color: #1a3a6e; margin: 2rem 0 0.75rem; }
+h3 { font-size: 1rem; font-weight: 600; color: #333; margin: 1rem 0 0.5rem; }
+p { line-height: 1.65; margin-bottom: 0.75rem; color: #333; }
+ul, ol { padding-left: 1.5rem; margin-bottom: 0.75rem; }
+li { line-height: 1.6; margin-bottom: 0.3rem; }
+
+.card { background: #fff; border: 1px solid #e0e0d8; border-radius: 10px; padding: 1.1rem 1.25rem; margin-bottom: 1rem; }
+.card-title { font-weight: 600; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.6rem; }
+.blue .card-title { color: #1a3a6e; }
+.teal .card-title { color: #0f766e; }
+.amber .card-title { color: #92400e; }
+.coral .card-title { color: #c2410c; }
+.purple .card-title { color: #6d28d9; }
+.green .card-title { color: #065f46; }
+
+.grid2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin-bottom: 1rem; }
+.grid3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-bottom: 1rem; }
+
+.info-box { border-left: 4px solid #3b82f6; background: #eff6ff; padding: 0.85rem 1rem; border-radius: 0 8px 8px 0; margin-bottom: 1rem; }
+.success-box { border-left: 4px solid #4caf50; background: #f0fdf4; padding: 0.85rem 1rem; border-radius: 0 8px 8px 0; margin-bottom: 1rem; }
+.warning-box { border-left: 4px solid #f59e0b; background: #fffbeb; padding: 0.85rem 1rem; border-radius: 0 8px 8px 0; margin-bottom: 1rem; }
+.danger-box { border-left: 4px solid #ef4444; background: #fef2f2; padding: 0.85rem 1rem; border-radius: 0 8px 8px 0; margin-bottom: 1rem; }
+
+/* Dimension badge */
+.dim-header { display: flex; align-items: center; gap: 0.75rem; margin: 2rem 0 0.75rem; }
+.dim-num { width: 32px; height: 32px; background: #1a3a6e; color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; font-weight: 700; flex-shrink: 0; }
+.dim-title { font-size: 1.15rem; font-weight: 600; color: #1a3a6e; }
+
+/* Vs badge */
+.vs-row { display: flex; align-items: stretch; gap: 0; margin-bottom: 1rem; border-radius: 10px; overflow: hidden; border: 1px solid #e0e0d8; }
+.vs-mem { flex: 1; background: #eff6ff; padding: 0.9rem 1rem; }
+.vs-hist { flex: 1; background: #fff7ed; padding: 0.9rem 1rem; }
+.vs-divider { width: 2px; background: #e0e0d8; }
+.vs-label { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.4rem; }
+.vs-mem .vs-label { color: #1d4ed8; }
+.vs-hist .vs-label { color: #c2410c; }
+
+/* Master table */
+.master-table { width: 100%; border-collapse: collapse; margin-bottom: 1.25rem; font-size: 0.875rem; }
+.master-table th { background: #1a3a6e; color: #fff; padding: 0.7rem 1rem; text-align: left; }
+.master-table th:first-child { border-radius: 8px 0 0 0; width: 130px; }
+.master-table th:last-child { border-radius: 0 8px 0 0; }
+.master-table td { padding: 0.65rem 1rem; border-bottom: 1px solid #e0e0d8; background: #fff; vertical-align: top; line-height: 1.5; }
+.master-table tr:last-child td { border-bottom: none; }
+.master-table tr:last-child td:first-child { border-radius: 0 0 0 8px; }
+.master-table tr:last-child td:last-child { border-radius: 0 0 8px 0; }
+.dim-tag { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; color: #888; letter-spacing: 0.04em; }
+.tag-mem { display: inline-block; background: #dbeafe; color: #1e40af; font-size: 0.7rem; font-weight: 600; padding: 1px 6px; border-radius: 10px; margin-right: 4px; }
+.tag-hist { display: inline-block; background: #fed7aa; color: #9a3412; font-size: 0.7rem; font-weight: 600; padding: 1px 6px; border-radius: 10px; margin-right: 4px; }
+
+/* Quiz */
+.score-bar { background: #e0e0d8; border-radius: 8px; height: 8px; margin-bottom: 1.5rem; overflow: hidden; }
+#scorefill { height: 100%; background: #1a3a6e; border-radius: 8px; width: 0%; transition: width 0.4s; }
+.score-text { font-size: 0.85rem; color: #555; margin-bottom: 0.5rem; }
+.q-block { background: #fff; border: 1px solid #e0e0d8; border-radius: 10px; padding: 1.1rem 1.25rem; margin-bottom: 1rem; }
+.q-text { font-weight: 500; margin-bottom: 0.75rem; font-size: 0.95rem; }
+.opt { padding: 0.6rem 0.9rem; border: 1px solid #e0e0d8; border-radius: 7px; margin-bottom: 0.4rem; cursor: pointer; font-size: 0.9rem; transition: background 0.1s; }
+.opt:hover:not(.correct):not(.wrong) { background: #f0f0eb; }
+.opt.correct { background: #d1fae5; border-color: #4caf50; color: #065f46; pointer-events: none; }
+.opt.wrong { background: #fee2e2; border-color: #ef4444; color: #991b1b; pointer-events: none; }
+.opt.disabled { pointer-events: none; color: #aaa; }
+.explanation { margin-top: 0.6rem; font-size: 0.85rem; color: #555; background: #f5f5f0; padding: 0.6rem 0.8rem; border-radius: 6px; display: none; }
+</style>
+</head>
+<body>
+<div class="container">
+  <a class="back" href="index.html">← Back</a>
+  <h1>The Seven Dimensions of Opposition</h1>
+  <p class="subtitle">Cultural Memory and Photographs · Topic 2 — Maurice Halbwachs</p>
+
+  <div class="tabs">
+    <button class="tab-btn active" onclick="switchTab('lesson', this)">Lesson</button>
+    <button class="tab-btn" onclick="switchTab('quiz', this)">Quiz (15 Q)</button>
+  </div>
+
+  <!-- ═══ LESSON SECTION ═══ -->
+  <div id="lesson" class="section active">
+
+    <div class="info-box">
+      <strong>Building on Topic 1:</strong> Topic 1 introduced the basic opposition between collective memory and history. Here we go deeper — analyzing each of the <strong>seven distinct dimensions</strong> along which the two diverge, and understanding the <em>ultimate opposition</em> that underlies them all.
+    </div>
+
+    <!-- DIMENSION 1 -->
+    <div class="dim-header">
+      <div class="dim-num">1</div>
+      <div class="dim-title">Nature — Living Stream vs. Formal Collection</div>
+    </div>
+
+    <div class="vs-row">
+      <div class="vs-mem">
+        <div class="vs-label">Collective Memory</div>
+        <p style="margin:0; font-size:0.9rem;">A <strong>living, continuous stream of thought</strong> that flows within a group. It is organic — it moves, adapts, and breathes with the group's present experience.</p>
+      </div>
+      <div class="vs-divider"></div>
+      <div class="vs-hist">
+        <div class="vs-label">History</div>
+        <p style="margin:0; font-size:0.9rem;">A <strong>formal collection of notable facts</strong>, often written and taught in schools. It is curated and institutionalized — selected, fixed, and transmitted through official channels.</p>
+      </div>
+    </div>
+
+    <p>The word <em>living</em> is not metaphorical for Halbwachs. A living memory is one that is actively practiced, referenced in daily conversation, celebrated in rituals, and adjusted as the group's present circumstances change. It is inseparable from the group that holds it.</p>
+
+    <p>History, by contrast, has been extracted from this living context. It has been transferred onto paper, systematized, and made transmissible to people who were never part of the events. This transformation gives history its reach — but at the cost of vitality. A historical "fact" exists independently of whether any living person cares about it.</p>
+
+    <div class="warning-box">
+      <strong>Key nuance:</strong> Halbwachs does not say history is "false" or inferior. He says it is a <em>different kind</em> of relationship to the past — one that becomes necessary when the living relationship is no longer possible.
+    </div>
+
+    <!-- DIMENSION 2 -->
+    <div class="dim-header">
+      <div class="dim-num">2</div>
+      <div class="dim-title">Temporal Structure — Unbroken Flow vs. Demarcated Periods</div>
+    </div>
+
+    <div class="vs-row">
+      <div class="vs-mem">
+        <div class="vs-label">Collective Memory</div>
+        <p style="margin:0; font-size:0.9rem;">Moves in an <strong>unbroken movement</strong> with <strong>irregular and uncertain boundaries</strong>. There is no clear moment where "the past" begins and "the present" ends — they bleed into each other.</p>
+      </div>
+      <div class="vs-divider"></div>
+      <div class="vs-hist">
+        <div class="vs-label">History</div>
+        <p style="margin:0; font-size:0.9rem;">Uses <strong>clearly etched demarcations</strong> — centuries, periods, dynasties, "acts." These divisions are artificial but pedagogically essential: they make the past teachable and comparable.</p>
+      </div>
+    </div>
+
+    <p>Think of how a family remembers its own history: there is no "pre-modern" or "post-WWII" in the family's felt experience. Grandparents' stories flow into parents' stories without a named rupture. The family simply <em>is</em> continuous. This is collective memory's temporal logic.</p>
+
+    <p>Now think of a history textbook: "Chapter 4 — The Renaissance (1300–1600)." These brackets are imposed by the historian for clarity, not because people living in 1300 experienced themselves as entering a new era. Historical periods are analytical tools, not lived realities.</p>
+
+    <div class="grid2">
+      <div class="card blue">
+        <div class="card-title">Memory's Time</div>
+        <ul>
+          <li>Fluid and continuous</li>
+          <li>Boundaries felt, not measured</li>
+          <li>The "recent past" can span generations</li>
+          <li>Tied to the group's present concerns</li>
+        </ul>
+      </div>
+      <div class="card coral">
+        <div class="card-title">History's Time</div>
+        <ul>
+          <li>Segmented and schematized</li>
+          <li>Boundaries declared by historians</li>
+          <li>Centuries and decades as units</li>
+          <li>Tied to a universal calendar</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- DIMENSION 3 -->
+    <div class="dim-header">
+      <div class="dim-num">3</div>
+      <div class="dim-title">Relationship to Groups — Internal vs. External</div>
+    </div>
+
+    <div class="vs-row">
+      <div class="vs-mem">
+        <div class="vs-label">Collective Memory</div>
+        <p style="margin:0; font-size:0.9rem;"><strong>Internal</strong> — it exists only <em>within</em> the consciousness of the group and is entirely dependent on their support. Without the group, there is no memory.</p>
+      </div>
+      <div class="vs-divider"></div>
+      <div class="vs-hist">
+        <div class="vs-label">History</div>
+        <p style="margin:0; font-size:0.9rem;"><strong>External</strong> — it is situated <em>above</em> groups. It comes into being precisely when the group's internal memory is already fading or has broken apart.</p>
+      </div>
+    </div>
+
+    <p>This is one of Halbwachs' most sociologically radical claims: memory is not a property of individual minds, but of <em>groups</em>. A person remembers because they belong to groups that sustain shared frameworks of interpretation. When those groups dissolve, the memories dissolve with them.</p>
+
+    <p>History steps in from the outside to rescue what the group can no longer sustain. But in doing so, it changes the nature of the relationship to the past — what was once intimate becomes institutional.</p>
+
+    <div class="info-box">
+      <strong>Concrete example:</strong> The memories of a destroyed community (a village erased by war, a diaspora community scattered across continents) cannot survive in their original form. Historians may study and document what that community remembered — but this produces <em>history about a memory</em>, not the memory itself.
+    </div>
+
+    <!-- DIMENSION 4 -->
+    <div class="dim-header">
+      <div class="dim-num">4</div>
+      <div class="dim-title">Quantity &amp; Scope — Plural vs. Unitary</div>
+    </div>
+
+    <div class="vs-row">
+      <div class="vs-mem">
+        <div class="vs-label">Collective Memory</div>
+        <p style="margin:0; font-size:0.9rem;"><strong>Plural</strong> — there are as many collective memories as there are distinct social groups. Every nation, family, class, religion, and profession has its own.</p>
+      </div>
+      <div class="vs-divider"></div>
+      <div class="vs-hist">
+        <div class="vs-label">History</div>
+        <p style="margin:0; font-size:0.9rem;"><strong>Unitary</strong> — history aims to be a single, universal record of the human species, synthesizing all partial group records into one total account.</p>
+      </div>
+    </div>
+
+    <p>The plurality of memory is a direct consequence of Halbwachs' sociology: since memory requires a group, and since groups are many and diverse, memories must be plural. The French working class and the French bourgeoisie in the 19th century lived in the same place at the same time — but they held different collective memories of those same years.</p>
+
+    <p>History's unitary aspiration is not neutral. When it synthesizes "partial histories" into one universal record, it must make choices about what counts as significant — choices that inevitably reflect the perspective of dominant groups, even when the historian believes they are being objective.</p>
+
+    <div class="warning-box">
+      <strong>Critical implication:</strong> The claim that "there is only one history" is itself a position. Multiple groups may write competing histories of the same events. The aspiration to unity does not guarantee that it is achieved.
+    </div>
+
+    <!-- DIMENSION 5 -->
+    <div class="dim-header">
+      <div class="dim-num">5</div>
+      <div class="dim-title">Primary Focus — Resemblance vs. Difference</div>
+    </div>
+
+    <div class="vs-row">
+      <div class="vs-mem">
+        <div class="vs-label">Collective Memory</div>
+        <p style="margin:0; font-size:0.9rem;">Focuses on <strong>resemblances and common traits</strong> that maintain a <strong>shared consciousness</strong>. It emphasizes what binds the group across time — the continuity of identity.</p>
+      </div>
+      <div class="vs-divider"></div>
+      <div class="vs-hist">
+        <div class="vs-label">History</div>
+        <p style="margin:0; font-size:0.9rem;">Focuses on <strong>differences and contrasts</strong> between various periods and societies. It asks: what makes this era distinct from that one? What changed?</p>
+      </div>
+    </div>
+
+    <p>A national collective memory tends to emphasize the <em>sameness</em> of the nation across time: "We have always been a people who value freedom." The founding moment, the great wars, the heroes — all are remembered in ways that reinforce current national identity. Discontinuities, shameful episodes, or complexity that disrupts the narrative tend to fade.</p>
+
+    <p>The historian, by contrast, is professionally committed to noticing change. Their craft demands that they show how the "France of 1789" was genuinely different from the "France of 1750." This orientation toward difference is what makes history analytically powerful — and what makes it feel less emotionally resonant than memory.</p>
+
+    <div class="grid3">
+      <div class="card teal">
+        <div class="card-title">Memory asks:</div>
+        <p>"What have we always been?"</p>
+        <p>Seeks continuity of identity.</p>
+      </div>
+      <div class="card amber">
+        <div class="card-title">History asks:</div>
+        <p>"What changed between then and now?"</p>
+        <p>Seeks the mark of discontinuity.</p>
+      </div>
+      <div class="card blue">
+        <div class="card-title">Consequence:</div>
+        <p>Memory consolidates identity. History complicates it.</p>
+      </div>
+    </div>
+
+    <!-- DIMENSION 6 -->
+    <div class="dim-header">
+      <div class="dim-num">6</div>
+      <div class="dim-title">Perspective — Subjective vs. Objective &amp; Impartial</div>
+    </div>
+
+    <div class="vs-row">
+      <div class="vs-mem">
+        <div class="vs-label">Collective Memory</div>
+        <p style="margin:0; font-size:0.9rem;"><strong>Subjective</strong> — it retains only what remains relevant to the present-day interests and identity of the group. The past is always filtered through the present.</p>
+      </div>
+      <div class="vs-divider"></div>
+      <div class="vs-hist">
+        <div class="vs-label">History</div>
+        <p style="margin:0; font-size:0.9rem;"><strong>Objective and Impartial</strong> — the historian acts as a spectator who never belonged to the group being observed, synthesizing a record independent of any specific group's judgment.</p>
+      </div>
+    </div>
+
+    <p>Halbwachs uses the image of the <em>spectator</em> very deliberately. A spectator at a play is not a participant — they observe, evaluate, and interpret from the outside. The historian occupies this position structurally: they did not live through the events they study, and they are professionally required to bracket their personal attachments.</p>
+
+    <p>Memory's subjectivity is not a flaw — it is functional. A group needs a memory that serves its current needs, affirms its identity, and provides orientation for the future. A perfectly objective memory that treated all past events as equally significant would be useless as a guide to group life.</p>
+
+    <div class="success-box">
+      <strong>Halbwachs' insight:</strong> Memory's "distortions" are not mistakes. They are <em>adaptive</em>. The group remembers what it needs to remember. This is why collective memory is always partly a <em>reconstruction</em> of the past in light of the present — not a simple storage and retrieval of fixed facts.
+    </div>
+
+    <!-- DIMENSION 7 -->
+    <div class="dim-header">
+      <div class="dim-num">7</div>
+      <div class="dim-title">Continuity — Living Trust vs. Ruptured Bond</div>
+    </div>
+
+    <div class="vs-row">
+      <div class="vs-mem">
+        <div class="vs-label">Collective Memory</div>
+        <p style="margin:0; font-size:0.9rem;">Represents a <strong>living trust and psychological bond</strong> within a social milieu. The past is not foreign — it is felt as part of the group's present reality.</p>
+      </div>
+      <div class="vs-divider"></div>
+      <div class="vs-hist">
+        <div class="vs-label">History</div>
+        <p style="margin:0; font-size:0.9rem;">Represents a <strong>ruptured continuity</strong> — it severs the psychological bonds that once held events close to life. What was intimate becomes archived and classified.</p>
+      </div>
+    </div>
+
+    <p>The concept of <em>rupture</em> is central to understanding why Halbwachs treats history as something that begins where memory ends. History does not simply extend memory — it replaces one kind of relationship with another. The bond between the living group and its past is replaced by the bond between the reader and a text.</p>
+
+    <p>Consider the difference between a family's memory of a grandparent and a historian's biography of that person. The family holds a <em>trust</em> — they feel responsible for the memory, they argue about it, they keep it alive in celebrations and stories. The biography is knowledge — accurate, valuable, but impersonal. The grandparent has become a subject, not a presence.</p>
+
+    <div class="danger-box">
+      <strong>The rupture in practice:</strong> When the last survivors of a traumatic event die, historians begin to speak of the transition from "living memory" to "history." This transition is real and mourned — it marks the moment when direct psychological connection gives way to archival mediation.
+    </div>
+
+    <!-- THE ULTIMATE OPPOSITION -->
+    <h2>The Ultimate Opposition</h2>
+
+    <div class="info-box" style="font-size:0.95rem; line-height:1.7;">
+      <strong>"Memory is a living presence; history is a summary vision of a past that is no longer part of our current social experience."</strong><br>
+      <span style="color:#555; font-size:0.85rem;">— Halbwachs, <em>The Collective Memory</em></span>
+    </div>
+
+    <p>All seven dimensions ultimately converge on this single opposition. Memory and history are not two methods for accessing the same past — they are <strong>two entirely different relationships to the past</strong>:</p>
+
+    <div class="grid2">
+      <div class="card blue">
+        <div class="card-title">Memory as Living Presence</div>
+        <p>The past is <em>here</em>. It is felt, practiced, contested, and updated. It shapes behavior and identity in the present. The group is its guardian. When the group gathers, the past gathers with them.</p>
+      </div>
+      <div class="card coral">
+        <div class="card-title">History as Summary Vision</div>
+        <p>The past is <em>over there</em>. It has been reduced to its most representative, teachable, and comparable features. It can be known by anyone — including people who have no personal or social stake in it.</p>
+      </div>
+    </div>
+
+    <p>Halbwachs frames this as a loss: something essential is surrendered when living memory is converted into historical record. But it is also a gain — history makes the past accessible beyond the boundaries of any single group. The tension between these two is irreducible.</p>
+
+    <!-- MASTER SUMMARY TABLE -->
+    <h2>Complete Summary Table</h2>
+
+    <table class="master-table">
+      <thead>
+        <tr>
+          <th>Dimension</th>
+          <th><span class="tag-mem">Memory</span> Collective Memory</th>
+          <th><span class="tag-hist">History</span> History</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="dim-tag">1. Nature</span></td>
+          <td>Living, continuous stream of thought</td>
+          <td>Formal collection of notable facts; written, taught in schools</td>
+        </tr>
+        <tr>
+          <td><span class="dim-tag">2. Time</span></td>
+          <td>Unbroken flow, irregular and uncertain boundaries</td>
+          <td>Clearly etched demarcations — centuries, periods, "acts"</td>
+        </tr>
+        <tr>
+          <td><span class="dim-tag">3. Group relation</span></td>
+          <td>Internal — exists only within the group's consciousness</td>
+          <td>External — situated above groups; begins when memory fades</td>
+        </tr>
+        <tr>
+          <td><span class="dim-tag">4. Quantity</span></td>
+          <td>Plural — as many memories as social groups</td>
+          <td>Unitary — one universal record of the human species</td>
+        </tr>
+        <tr>
+          <td><span class="dim-tag">5. Focus</span></td>
+          <td>Resemblances and common traits that bind the group</td>
+          <td>Differences and contrasts between periods and societies</td>
+        </tr>
+        <tr>
+          <td><span class="dim-tag">6. Perspective</span></td>
+          <td>Subjective — filtered by group's present interests</td>
+          <td>Objective, impartial — historian as outside spectator</td>
+        </tr>
+        <tr>
+          <td><span class="dim-tag">7. Continuity</span></td>
+          <td>Living trust — psychological bond within a social milieu</td>
+          <td>Ruptured continuity — severs bonds that held events close to life</td>
+        </tr>
+        <tr>
+          <td><span class="dim-tag">Ultimate</span></td>
+          <td><strong>Memory is a living presence</strong></td>
+          <td><strong>History is a summary vision of an absent past</strong></td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div><!-- end lesson -->
+
+  <!-- ═══ QUIZ SECTION ═══ -->
+  <div id="quiz" class="section">
+    <p class="score-text">Score: <span id="scorenum">0</span> / 15</p>
+    <div class="score-bar"><div id="scorefill"></div></div>
+    <div id="quiz-container"></div>
+  </div>
+</div>
+
+<script>
+function switchTab(id, btn) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+}
+
+const questions = [
+  {
+    q: "According to Halbwachs, what is the fundamental nature of collective memory compared to history?",
+    opts: [
+      "Collective memory is a formal collection of notable facts; history is a living stream",
+      "Collective memory is a living, continuous stream of thought; history is a formal collection of notable facts",
+      "Both are equally living and formal depending on the group",
+      "Collective memory is written and fixed; history is fluid and oral"
+    ],
+    ans: 1,
+    exp: "Halbwachs consistently contrasts memory as 'living' and organic with history as 'formal' and institutionalized — transmitted through writing and schools rather than through lived group practice."
+  },
+  {
+    q: "How does collective memory's temporal structure differ from history's, according to Halbwachs?",
+    opts: [
+      "Memory uses strict century-based divisions; history flows without boundaries",
+      "Memory is segmented into periods; history is continuous",
+      "Memory moves in an unbroken flow with uncertain boundaries; history uses clearly etched demarcations like centuries and periods",
+      "Both use identical temporal frameworks but apply them differently"
+    ],
+    ans: 2,
+    exp: "Memory's time is lived and continuous — it does not recognize the clean breaks that historians impose. Historical periodization (Renaissance, Enlightenment, etc.) is an analytical tool, not a lived reality."
+  },
+  {
+    q: "Halbwachs describes history as beginning when social memory is 'already fading or broken.' What does this tell us about history's relationship to social groups?",
+    opts: [
+      "History is internal to groups and grows stronger as memory fades",
+      "History is external to groups — it steps in from outside when the group can no longer sustain living memory",
+      "History and memory begin simultaneously in all societies",
+      "History replaces groups entirely and makes them unnecessary"
+    ],
+    ans: 1,
+    exp: "This is a key Halbwachs claim: history is external, situated above groups. It is the institutional substitute for a living process that has failed — not a companion to it."
+  },
+  {
+    q: "Why does Halbwachs say there are 'as many collective memories as there are distinct social groups'?",
+    opts: [
+      "Because individuals within a group always disagree about the past",
+      "Because memory is biologically determined and varies by ethnicity",
+      "Because memory requires a group's support, and since groups are many and distinct, their memories must be too",
+      "Because history has fragmented into competing national narratives"
+    ],
+    ans: 2,
+    exp: "Memory's plurality follows directly from its sociology: memory lives within a group. Different groups — by class, nation, religion, profession — form different boundaries, hence different memories of even the same events."
+  },
+  {
+    q: "History aims to be 'unitary.' What does this aspiration involve?",
+    opts: [
+      "Writing a single book that all nations agree on",
+      "Eliminating all collective memories and replacing them with one account",
+      "Synthesizing the partial histories of all groups into one universal record of the human species",
+      "Choosing one dominant group's memory and declaring it the official history"
+    ],
+    ans: 2,
+    exp: "History's unitary character is an aspiration: to gather partial, group-bound narratives into a single comprehensive account that transcends any one group's viewpoint."
+  },
+  {
+    q: "Collective memory focuses on 'resemblances and common traits.' What social function does this serve?",
+    opts: [
+      "It helps the group compare itself favorably to other groups",
+      "It maintains a shared consciousness — emphasizing what binds the group across time and sustains identity",
+      "It ensures historical accuracy by averaging out different accounts",
+      "It prevents the group from changing by freezing their identity"
+    ],
+    ans: 1,
+    exp: "Memory's focus on commonality is functional: it reinforces the sense of shared identity that makes the group cohere. This is why collective memories tend to smooth over internal differences."
+  },
+  {
+    q: "History focuses on 'differences and contrasts.' What does this analytical orientation produce?",
+    opts: [
+      "A history that reinforces current group identity",
+      "A record that shows how periods and societies were genuinely distinct from one another",
+      "A narrative that blends all eras into a single continuous story",
+      "A study that emphasizes what all humans have always shared"
+    ],
+    ans: 1,
+    exp: "By asking 'what changed?', history produces analytical distinctions between eras and societies. This is professionally powerful but emotionally less resonant than memory's emphasis on continuity."
+  },
+  {
+    q: "Halbwachs describes the historian as a 'spectator who never belonged to the groups observed.' What does this metaphor convey?",
+    opts: [
+      "Historians are passive and contribute nothing original to understanding the past",
+      "The historian's professional position is structurally external — they observe from outside, which enables impartiality but removes lived connection",
+      "Historians literally never witness historical events firsthand",
+      "The spectator metaphor suggests history is merely entertainment"
+    ],
+    ans: 1,
+    exp: "The spectator image captures the historian's structural position: outside the groups they study, able to observe without the distortions of belonging — but also without the living bond that memory provides."
+  },
+  {
+    q: "Halbwachs says memory's subjectivity — retaining only what is relevant to the group's present — is not a flaw. Why?",
+    opts: [
+      "Because groups are always correct about their own histories",
+      "Because subjectivity makes memory more entertaining than history",
+      "Because memory's adaptive filtering serves a functional purpose: orienting the group in the present",
+      "Because objective memory would be too politically dangerous"
+    ],
+    ans: 2,
+    exp: "A perfectly objective memory that treated all past events equally would be useless for group life. Memory's 'distortions' are adaptive — they serve the group's present identity and orientation needs."
+  },
+  {
+    q: "What does Halbwachs mean when he says history represents a 'ruptured continuity'?",
+    opts: [
+      "Historical writing is always incomplete and has gaps",
+      "History severs the psychological bonds that once held events close to the living group — the intimate becomes archived",
+      "History causes social groups to lose their sense of tradition",
+      "Written records can be destroyed, breaking the chain of knowledge"
+    ],
+    ans: 1,
+    exp: "Rupture here means the break between a living relationship to the past and an archival one. What was once felt as present-tense and personal becomes classified as past and impersonal."
+  },
+  {
+    q: "Which of the following best illustrates the transition Halbwachs describes from 'living memory' to 'history'?",
+    opts: [
+      "A family disagreeing about which year a relative was born",
+      "The moment the last survivors of a historical event die, and their direct testimony gives way to archival research",
+      "A historian publishing a revised edition of a textbook",
+      "A government declaring a national holiday to commemorate a past event"
+    ],
+    ans: 1,
+    exp: "This transition — mourned by many who study memory — is precisely what Halbwachs theorizes: when no living group can sustain the memory, it becomes history. The last survivor's death is a common marker of this rupture."
+  },
+  {
+    q: "According to Halbwachs' framework, what happens when two social groups who lived through the same events hold different collective memories of those events?",
+    opts: [
+      "One of the memories must be wrong and should be corrected by historians",
+      "Both memories are equally valid expressions of each group's social position and present interests",
+      "The groups should be merged so a single collective memory can form",
+      "History should intervene to provide the objective account"
+    ],
+    ans: 1,
+    exp: "Halbwachs' framework predicts this: plural groups produce plural memories. The French bourgeoisie and working class in 1848 genuinely held different memories of the same events — neither is simply 'wrong.'"
+  },
+  {
+    q: "What is the 'ultimate opposition' Halbwachs identifies between collective memory and history?",
+    opts: [
+      "Memory is oral; history is written",
+      "Memory is recent; history covers the distant past",
+      "Memory is a living presence; history is a summary vision of a past no longer part of current social experience",
+      "Memory is emotional; history is rational"
+    ],
+    ans: 2,
+    exp: "This is Halbwachs' deepest claim: the two differ not just in method or scope but in the nature of the relationship to the past itself — one is lived and present, the other is reconstructed and absent."
+  },
+  {
+    q: "History's schematic division of time into 'centuries' and 'periods' serves a didactic purpose. What does Halbwachs imply this costs?",
+    opts: [
+      "It makes history less accurate than memory",
+      "It imposes artificial breaks on what was experienced as continuous, severing the flow of lived experience",
+      "It limits history to audiences who have received formal education",
+      "It makes history too emotional and attached to specific eras"
+    ],
+    ans: 1,
+    exp: "The cost of schematization is the imposition of false clarity: real lived experience had no clean chapter breaks. By forcing the past into periods, history makes it teachable but less faithful to how it was actually experienced."
+  },
+  {
+    q: "If you were to apply Halbwachs' framework, which of the following would be an example of collective memory rather than history?",
+    opts: [
+      "A peer-reviewed academic article on the causes of World War I",
+      "A museum exhibition presenting artifacts from an ancient civilization",
+      "A community of Armenian descendants keeping alive stories, rituals, and grief around the 1915 Genocide within their social milieu",
+      "A government commission publishing findings on a past atrocity"
+    ],
+    ans: 2,
+    exp: "A living community actively maintaining the past within their social consciousness — through stories, rituals, and shared grief — is precisely Halbwachs' collective memory. It is internal, plural, subjective, and continuous. The other options are institutionalized external records."
+  }
+];
+
+let answered = Array(questions.length).fill(false);
+let score = 0;
+
+function answer(qi, oi) {
+  if (answered[qi]) return;
+  answered[qi] = true;
+  const block = document.querySelectorAll('.q-block')[qi];
+  const opts = block.querySelectorAll('.opt');
+  opts.forEach((o, i) => {
+    if (i === questions[qi].ans) o.classList.add('correct');
+    else o.classList.add(i === oi ? 'wrong' : 'disabled');
+  });
+  block.querySelector('.explanation').style.display = 'block';
+  if (oi === questions[qi].ans) score++;
+  document.getElementById('scorenum').textContent = score;
+  document.getElementById('scorefill').style.width = (answered.filter(Boolean).length / questions.length * 100) + '%';
+}
+
+function buildQuiz() {
+  const c = document.getElementById('quiz-container');
+  questions.forEach((q, qi) => {
+    c.innerHTML += `<div class="q-block">
+      <div class="q-text">${qi + 1}. ${q.q}</div>
+      ${q.opts.map((o, oi) => `<div class="opt" onclick="answer(${qi},${oi})">${o}</div>`).join('')}
+      <div class="explanation">&#128161; ${q.exp}</div>
+    </div>`;
+  });
+}
+buildQuiz();
+</script>
+</body>
+</html>

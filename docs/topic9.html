@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Topic 9 — From Les Lieux de Mémoire (Pierre Nora)</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f5f5f0; color: #1a1a1a; padding: 2rem 1rem; }
+.container { max-width: 880px; margin: 0 auto; }
+.back { display: inline-block; color: #1a3a6e; text-decoration: none; font-size: 0.9rem; margin-bottom: 1.5rem; }
+.back:hover { text-decoration: underline; }
+h1 { font-size: 1.5rem; font-weight: 700; color: #1a3a6e; }
+.subtitle { color: #555; font-size: 0.9rem; margin: 0.3rem 0 1.5rem; }
+.tabs { display: flex; gap: 8px; margin-bottom: 1.5rem; border-bottom: 2px solid #e0e0d8; padding-bottom: 0; }
+.tab-btn { padding: 0.5rem 1.25rem; border: none; background: none; cursor: pointer; font-size: 0.9rem; color: #666; border-bottom: 2px solid transparent; margin-bottom: -2px; font-weight: 500; }
+.tab-btn.active { color: #1a3a6e; border-bottom-color: #1a3a6e; }
+.section { display: none; }
+.section.active { display: block; }
+
+h2 { font-size: 1.15rem; font-weight: 600; color: #1a3a6e; margin: 1.5rem 0 0.75rem; }
+h3 { font-size: 1rem; font-weight: 600; color: #333; margin: 1rem 0 0.5rem; }
+p { line-height: 1.65; margin-bottom: 0.75rem; color: #333; }
+ul, ol { padding-left: 1.5rem; margin-bottom: 0.75rem; }
+li { line-height: 1.6; margin-bottom: 0.25rem; }
+em { font-style: italic; }
+code { background: #e8e8e4; padding: 2px 5px; border-radius: 3px; font-family: 'SF Mono', monospace; font-size: 0.85em; }
+.card { background: #fff; border: 1px solid #e0e0d8; border-radius: 10px; padding: 1.1rem 1.25rem; margin-bottom: 1rem; }
+.card-title { font-weight: 600; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem; }
+.blue .card-title { color: #1a3a6e; }
+.teal .card-title { color: #0f766e; }
+.amber .card-title { color: #92400e; }
+.coral .card-title { color: #c2410c; }
+.grid2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin-bottom: 1rem; }
+.grid3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-bottom: 1rem; }
+.info-box { border-left: 4px solid #3b82f6; background: #eff6ff; padding: 0.85rem 1rem; border-radius: 0 8px 8px 0; margin-bottom: 1rem; }
+.success-box { border-left: 4px solid #4caf50; background: #f0fdf4; padding: 0.85rem 1rem; border-radius: 0 8px 8px 0; margin-bottom: 1rem; }
+.warning-box { border-left: 4px solid #f59e0b; background: #fffbeb; padding: 0.85rem 1rem; border-radius: 0 8px 8px 0; margin-bottom: 1rem; }
+.quote-box { border-left: 4px solid #1a3a6e; background: #fff; padding: 0.85rem 1rem; border-radius: 0 8px 8px 0; margin-bottom: 1rem; font-style: italic; color: #444; }
+
+.compare-table { width: 100%; border-collapse: collapse; margin-bottom: 1.25rem; font-size: 0.9rem; }
+.compare-table th { background: #1a3a6e; color: #fff; padding: 0.65rem 1rem; text-align: left; }
+.compare-table th:first-child { border-radius: 8px 0 0 0; }
+.compare-table th:last-child { border-radius: 0 8px 0 0; }
+.compare-table td { padding: 0.6rem 1rem; border-bottom: 1px solid #e0e0d8; background: #fff; vertical-align: top; }
+.compare-table tr:last-child td { border-bottom: none; }
+.compare-table tr:last-child td:first-child { border-radius: 0 0 0 8px; }
+.compare-table tr:last-child td:last-child { border-radius: 0 0 8px 0; }
+.dim-label { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; color: #888; letter-spacing: 0.04em; }
+
+.score-bar { background: #e0e0d8; border-radius: 8px; height: 8px; margin-bottom: 1.5rem; overflow: hidden; }
+#scorefill { height: 100%; background: #1a3a6e; border-radius: 8px; width: 0%; transition: width 0.4s; }
+.score-text { font-size: 0.85rem; color: #555; margin-bottom: 0.5rem; }
+.q-block { background: #fff; border: 1px solid #e0e0d8; border-radius: 10px; padding: 1.1rem 1.25rem; margin-bottom: 1rem; }
+.q-text { font-weight: 500; margin-bottom: 0.75rem; font-size: 0.95rem; }
+.opt { padding: 0.6rem 0.9rem; border: 1px solid #e0e0d8; border-radius: 7px; margin-bottom: 0.4rem; cursor: pointer; font-size: 0.9rem; transition: background 0.1s; }
+.opt:hover:not(.correct):not(.wrong) { background: #f0f0eb; }
+.opt.correct { background: #d1fae5; border-color: #4caf50; color: #065f46; pointer-events: none; }
+.opt.wrong { background: #fee2e2; border-color: #ef4444; color: #991b1b; pointer-events: none; }
+.opt.disabled { pointer-events: none; color: #aaa; }
+.explanation { margin-top: 0.6rem; font-size: 0.85rem; color: #555; background: #f5f5f0; padding: 0.6rem 0.8rem; border-radius: 6px; display: none; }
+</style>
+</head>
+<body>
+<div class="container">
+  <a class="back" href="index.html">← Back</a>
+  <h1>From <em>Les Lieux de Mémoire</em></h1>
+  <p class="subtitle">Cultural Memory and Photographs · Topic 9 — Pierre Nora</p>
+
+  <div class="tabs">
+    <button class="tab-btn active" onclick="switchTab('lesson', this)">Lesson</button>
+    <button class="tab-btn" onclick="switchTab('quiz', this)">Quiz (15 Q)</button>
+  </div>
+
+  <!-- ═══ LESSON SECTION ═══ -->
+  <div id="lesson" class="section active">
+
+    <div class="info-box">
+      <strong>Key Thinker:</strong> <strong>Pierre Nora</strong> (b. 1931) — French historian, editor of the multi-volume <em>Les Lieux de Mémoire</em> (1984–92). The selection used here is the foundational essay <em>Between Memory and History</em>, where Nora diagnoses why modern societies must consciously <em>build</em> sites of memory once memory itself ceases to be lived.
+    </div>
+
+    <h2>1. The Historical Setting: 1870 and the Crisis of the Nation</h2>
+
+    <p>Nora situates the birth of <em>lieux de mémoire</em> in two French traumas. The first is the <strong>defeat of 1870</strong> at Sedan — a revolutionary shock that "weakened the call for a general reevaluation of the monarchical past" and pushed France into the belated competition with Germany over scholarly history, science, and pedagogy.</p>
+
+    <p>What gave the defeat its weight was that it broke a centuries-long coupling. Until then, the Westphalia treaty (the diplomatic), Agincourt (the military), and Ravaillac (the political) had served as <em>pillars of continuity</em> — the nation could be powerfully unified through monumental erudition. After Sedan, that unity fractured.</p>
+
+    <div class="quote-box">
+      "The most incisive eruption of memory it had accomplished — the issue, and not the last — was thus accomplished by the past and for the future."
+    </div>
+
+    <h2>2. The Coupling of State and Nation Comes Apart</h2>
+
+    <p>For Nora, the <strong>Third Republic</strong> represented a synthesis: state, nation, and history fused into one. The schoolbooks taught a teleology that annexed new territories of memory into the dogma of the nation; the holy nation acquired a sacred foundation through this kind of holy history.</p>
+
+    <p>That synthesis collapsed under the pressure of <strong>the crisis of the 1930s</strong>. The coupling of state and society was gradually replaced by the coupling of state and nation, then later by society itself in place of the nation. <em>History</em> abandoned its claim to pedagogical authority — and at the same time, <em>memory</em> retreated into jealously protected enclaves.</p>
+
+    <div class="grid2">
+      <div class="card blue">
+        <div class="card-title">Before — Unified</div>
+        <p>State + nation + history fused. Schoolbooks taught a single national memory. The past delivered legitimation for the future. Memory was lived collectively, in ritual.</p>
+      </div>
+      <div class="card amber">
+        <div class="card-title">After — Decoupled</div>
+        <p>History becomes a social science (autonomous, no longer ennobled by the nation). Memory becomes a fragile possession — to be defended in archives, monuments, anniversaries.</p>
+      </div>
+    </div>
+
+    <h2>3. The Disappearance of Spontaneous Memory</h2>
+
+    <p>Nora's defining claim: <strong>we build <em>lieux de mémoire</em> precisely because there is no spontaneous memory left to live by</strong>. If memory still inhabited every gesture, ritual, and family transmission, no one would need to consciously create archives, organize commemorations, or legislate anniversaries.</p>
+
+    <div class="quote-box">
+      "Lieux de mémoire originate with the sense that there is no spontaneous memory, that we must deliberately create archives, maintain anniversaries, organize celebrations, pronounce eulogies, and notarize bills because such activities no longer occur naturally."
+    </div>
+
+    <p>Without such defensive vigilance, history — with its hunger for analysis, criticism, and discontinuity — would sweep memory away. <em>Lieux de mémoire</em> are bastions built against this tide.</p>
+
+    <h2>4. What Is a <em>Lieu de Mémoire</em>?</h2>
+
+    <p>For Nora, a <em>lieu de mémoire</em> is "<strong>fundamentally a remain</strong>" — the ultimate embodiment of a memorial consciousness that has barely survived in a historical age that has abandoned it. They make their appearance by virtue of the <em>deritualization of our world</em>: producing, manifesting, establishing, constructing, decreeing, and maintaining by artifice and by will what would once have lived without ritual.</p>
+
+    <p>They include both the grand and the everyday:</p>
+
+    <div class="grid3">
+      <div class="card teal">
+        <div class="card-title">Material</div>
+        <ul>
+          <li>Archives</li>
+          <li>Museums</li>
+          <li>Cemeteries</li>
+          <li>Monuments</li>
+          <li>Sanctuaries</li>
+        </ul>
+      </div>
+      <div class="card teal">
+        <div class="card-title">Symbolic</div>
+        <ul>
+          <li>The tricolor flag</li>
+          <li>The Pantheon</li>
+          <li>The Arc de Triomphe</li>
+          <li>The <em>Dictionnaire Larousse</em></li>
+          <li>The Wall of the Fédérés</li>
+        </ul>
+      </div>
+      <div class="card teal">
+        <div class="card-title">Functional / Ritual</div>
+        <ul>
+          <li>Commemorations</li>
+          <li>Anniversaries</li>
+          <li>Treaties</li>
+          <li>Festivals</li>
+          <li>Eulogies</li>
+        </ul>
+      </div>
+    </div>
+
+    <p>Nora calls them "<strong>the boundary stones of another age</strong>." They mark the rituals of a society that no longer rituals naturally — illusions of eternity in a world that has lost faith in eternity.</p>
+
+    <h2>5. Memory vs. History — Nora's Sharp Distinction</h2>
+
+    <table class="compare-table">
+      <tr>
+        <th>Memory</th>
+        <th>History</th>
+      </tr>
+      <tr>
+        <td>Lived, embodied, continuous</td>
+        <td>Reconstructed, problematic, incomplete</td>
+      </tr>
+      <tr>
+        <td>Affective, magical — accommodates only what suits it</td>
+        <td>Critical, intellectual, secular — submits everything to verification</td>
+      </tr>
+      <tr>
+        <td>Plural and concrete; bound to specific groups, places, gestures</td>
+        <td>Universal in claim; belongs to no one and everyone</td>
+      </tr>
+      <tr>
+        <td>Rooted in the eternal present</td>
+        <td>A representation of the past — a decisive deepening of the gaze of critical history</td>
+      </tr>
+      <tr>
+        <td>Sacred, sometimes silent</td>
+        <td>Profane, articulate, suspicious</td>
+      </tr>
+    </table>
+
+    <p>The unprecedented modern condition, says Nora, is that society "<strong>lives in a present whose past has receded</strong>." History pulls memory away — and in that retreat, something must be built to anchor identity. That something is the <em>lieu de mémoire</em>.</p>
+
+    <h2>6. Why Photographs Are Privileged <em>Lieux de Mémoire</em></h2>
+
+    <p>Although Nora's primary examples are monuments, archives, and texts, the framework applies powerfully to photography. A photograph fits Nora's three operative dimensions simultaneously — the <em>material</em> (a print, a negative, a file), the <em>symbolic</em> (it stands for an event, a person, a feeling), and the <em>functional</em> (it is consulted, framed on walls, distributed at funerals, deposited in albums).</p>
+
+    <div class="success-box">
+      <strong>The photograph as lieu:</strong> What once would have been a remembered face, a remembered street, a remembered war, must now be photographically <em>fixed</em> — because we no longer trust spontaneous memory to keep it. Family albums, war photographs, museum exhibits, and digital cloud backups are all defensive memorial gestures of exactly the kind Nora describes.
+    </div>
+
+    <p>Photography also produces the paradox Nora identifies: by attempting to <em>preserve</em> the past it accelerates the past's retreat. The photograph stands in for the lived memory it was meant to support, and gradually replaces it.</p>
+
+    <h2>7. Why This Matters for Cultural Memory and Photographs</h2>
+
+    <div class="warning-box">
+      <strong>Take-away:</strong> Photographs are not neutral records — they are <em>built</em> sites of memory. They emerge in the gap left by vanished spontaneous memory, take the weight of identity that ritual once carried, and (paradoxically) accelerate the very forgetting they were meant to prevent. To study photography as cultural memory is to study one of the densest examples of Nora's <em>lieux de mémoire</em> at work.
+    </div>
+
+  </div>
+
+  <!-- ═══ QUIZ SECTION ═══ -->
+  <div id="quiz" class="section">
+    <p class="score-text">Score: <span id="scorenum">0</span> / 15</p>
+    <div class="score-bar"><div id="scorefill"></div></div>
+    <div id="quiz-container"></div>
+  </div>
+</div>
+
+<script>
+function switchTab(id, btn) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+}
+
+const questions = [
+  {
+    q: "According to Nora, what is the foundational reason societies create lieux de mémoire?",
+    opts: [
+      "To celebrate the achievements of national heroes",
+      "Because there is no spontaneous memory left, and memory must be deliberately constructed",
+      "Because history is too complicated for ordinary citizens to follow",
+      "To replace religion as a unifying force"
+    ],
+    ans: 1,
+    exp: "Nora's central argument: lieux de mémoire originate with the realization that 'there is no spontaneous memory.' We build archives, organize anniversaries, and erect monuments precisely because such acts no longer occur naturally."
+  },
+  {
+    q: "Which historical event does Nora identify as the trigger for a French 'reevaluation of the monarchical past'?",
+    opts: [
+      "The 1789 Revolution",
+      "The Napoleonic Wars",
+      "The defeat of 1870 (Sedan)",
+      "World War I"
+    ],
+    ans: 2,
+    exp: "Nora opens the essay by tying the modern memory crisis to the defeat of 1870, which weakened the call for a general reevaluation of the monarchical past and forced France into a belated scholarly competition with Germany."
+  },
+  {
+    q: "What three institutional pillars had unified the French nation before the late-19th-century crisis?",
+    opts: [
+      "Church, monarchy, and aristocracy",
+      "Westphalia (diplomatic), Agincourt (military), and Ravaillac (political)",
+      "Paris, Lyon, and Marseille",
+      "Voltaire, Rousseau, and Montesquieu"
+    ],
+    ans: 1,
+    exp: "Nora names these three as the historic 'pillars of continuity' — diplomatic, military, and political — that powerfully unified the nation through monumental erudition before that synthesis collapsed."
+  },
+  {
+    q: "What happens to history during the crisis of the 1930s, according to Nora?",
+    opts: [
+      "It is replaced by religion",
+      "It abandons its claim to pedagogical authority and becomes an autonomous social science",
+      "It is suppressed by the state",
+      "It merges fully with collective memory"
+    ],
+    ans: 1,
+    exp: "Under the pressure of the 1930s crisis, the coupling of state, nation, and history came apart. History abandoned its claim to pedagogical authority and was reorganized as a 'laboratory of past mentalities' — a social science with no need to build the nation."
+  },
+  {
+    q: "Which of the following does Nora list as a lieu de mémoire?",
+    opts: [
+      "Only war memorials",
+      "Only written archives",
+      "Archives, museums, cemeteries, monuments, sanctuaries, anniversaries, dictionaries, and even the tricolor flag",
+      "Only sites that have been formally designated by UNESCO"
+    ],
+    ans: 2,
+    exp: "Nora's catalog is famously broad. He explicitly names archives, museums, cemeteries, monuments, sanctuaries, fraternal orders, festivals, anniversaries, treaties, dictionaries (the Dictionnaire Larousse), the Pantheon, the Arc de Triomphe, and the tricolor — material, symbolic, and functional sites alike."
+  },
+  {
+    q: "How does Nora characterize the phrase 'boundary stones of another age'?",
+    opts: [
+      "Sites that mark national borders",
+      "Devotional remains of a society whose ritual life has been abandoned",
+      "Geological formations that anchor cultural identity",
+      "Texts produced by professional historians"
+    ],
+    ans: 1,
+    exp: "Nora uses 'boundary stones of another age' to describe lieux de mémoire as devotional institutions left behind by the deritualization of our world — fragments that mark the rituals of a society that no longer rituals naturally."
+  },
+  {
+    q: "Which contrast best captures Nora's distinction between memory and history?",
+    opts: [
+      "Memory is true; history is false",
+      "Memory is lived, affective, and bound to groups; history is reconstructed, critical, and universal in claim",
+      "Memory is older than history",
+      "Memory is written; history is oral"
+    ],
+    ans: 1,
+    exp: "Nora's binary: memory is lived, embodied, plural, and continuous; history is reconstructed, critical, and incomplete. They are no longer in a stable synthesis — modern societies live in the gap between them, which is why lieux de mémoire become necessary."
+  },
+  {
+    q: "Why are photographs especially apt examples of lieux de mémoire?",
+    opts: [
+      "Because photography is older than other art forms",
+      "Because photographs are simultaneously material, symbolic, and functional, and they are produced precisely when spontaneous memory of an event begins to fade",
+      "Because photographs are immune to political distortion",
+      "Because photographs are produced by machines rather than people"
+    ],
+    ans: 1,
+    exp: "A photograph fits Nora's three operative dimensions at once — material (the print/file), symbolic (what it stands for), and functional (consulted, framed, exhibited). And it is built defensively, in the very gap left by vanishing spontaneous memory."
+  },
+  {
+    q: "Nora claims that lieux de mémoire 'mark the rituals of a society without ritual.' What does this mean?",
+    opts: [
+      "Modern societies have abolished all ceremonies",
+      "Modern societies build artificial sites and anniversaries to compensate for the loss of organic ritual life",
+      "Rituals are now confined to religious institutions",
+      "Society has rejected memory in favor of forgetting"
+    ],
+    ans: 1,
+    exp: "The deritualization of modern life means that the spontaneous, unselfconscious ritual of premodern community is gone. Lieux de mémoire are deliberate constructions that produce, manifest, and maintain by artifice what was once lived without effort."
+  },
+  {
+    q: "What is the paradox Nora identifies between memory and the lieux that house it?",
+    opts: [
+      "Lieux de mémoire are too expensive to maintain",
+      "By preserving the outline of the past, lieux replace and accelerate the disappearance of the lived memory they were meant to defend",
+      "Lieux de mémoire only protect majority memories",
+      "Memory cannot survive in physical form"
+    ],
+    ans: 1,
+    exp: "Nora notes that the very act of constructing a lieu — putting memory into archives, monuments, and photographs — ratifies the loss of the lived memory. The defensive structure that preserves the outline also drains the substance."
+  },
+  {
+    q: "What does Nora mean when he says the Third Republic taught a 'teleology' through schoolbooks?",
+    opts: [
+      "It taught that history was random and meaningless",
+      "It taught a goal-directed national story that annexed new memories into the dogma of the nation",
+      "It taught only ancient history",
+      "It refused to teach French history at all"
+    ],
+    ans: 1,
+    exp: "Nora describes the Third Republic synthesis as teleological — schoolbooks taught a directed, sacred narrative that absorbed new territories of memory into the national dogma, giving the nation a holy historical foundation."
+  },
+  {
+    q: "What does Nora mean by saying that 'history is now a social science' — no longer ennobled by the nation?",
+    opts: [
+      "History has lost all cultural value",
+      "History has gained autonomy: it is critical, secular, and pursued for its own sake rather than to legitimate the nation",
+      "Historians no longer use written documents",
+      "History has merged with the natural sciences"
+    ],
+    ans: 1,
+    exp: "Nora notes that history has gained autonomy: no longer 'a social science, memory, deforming and transforming, penetrating and petrifying it' through the prism of the nation. It pursues knowledge of the past on its own terms — but at the cost of legitimating power."
+  },
+  {
+    q: "Why does Nora refer to the 1870 commune defenders being 'massacred' as significant for the Wall of the Fédérés?",
+    opts: [
+      "It is a fictional event",
+      "It marks the spot as a privileged lieu de mémoire whose meaning is contested by competing political traditions",
+      "It demonstrates that memory is purely subjective",
+      "It shows that monuments are unnecessary"
+    ],
+    ans: 1,
+    exp: "The Wall of the Fédérés (where Communards were executed in 1871) is named by Nora alongside the Pantheon and the Arc de Triomphe as a charged lieu — its memorial weight comes precisely from the fact that competing political traditions claim or refuse it."
+  },
+  {
+    q: "Nora writes that lieux de mémoire are 'fundamentally remains.' What does this term emphasize?",
+    opts: [
+      "That they are physical artifacts left over from war",
+      "That they are residues of a once-living memorial culture, now surviving only because they are deliberately maintained",
+      "That they are economically worthless",
+      "That they were originally produced for tourism"
+    ],
+    ans: 1,
+    exp: "'Remain' (rest, vestige) signals that lieux are what is left when the broader memorial culture has gone. They survive by artifice and will, not by living transmission — which is why their preservation is also a sign of loss."
+  },
+  {
+    q: "Why does Nora say that 'the study of lieux de mémoire lies at the intersection of two developments'?",
+    opts: [
+      "The development of cinema and television",
+      "The deepening of critical history (a representation of the past) and the unification of memory and history into a purely historiographical movement",
+      "The rise of capitalism and the fall of monarchy",
+      "Industrialization and urbanization"
+    ],
+    ans: 1,
+    exp: "Nora ends the page-148 passage by naming the two developments whose intersection produces lieux de mémoire: a critical, secularizing history that reconstructs the past, and the historiographical movement that has now absorbed memory itself into its own methods."
+  }
+];
+
+let answered = Array(questions.length).fill(false);
+let score = 0;
+
+function answer(qi, oi) {
+  if (answered[qi]) return;
+  answered[qi] = true;
+  const block = document.querySelectorAll('.q-block')[qi];
+  const opts = block.querySelectorAll('.opt');
+  opts.forEach((o, i) => {
+    if (i === questions[qi].ans) o.classList.add('correct');
+    else o.classList.add(i === oi ? 'wrong' : 'disabled');
+  });
+  block.querySelector('.explanation').style.display = 'block';
+  if (oi === questions[qi].ans) score++;
+  document.getElementById('scorenum').textContent = score;
+  document.getElementById('scorefill').style.width = (answered.filter(Boolean).length / questions.length * 100) + '%';
+}
+
+function buildQuiz() {
+  const c = document.getElementById('quiz-container');
+  questions.forEach((q, qi) => {
+    c.innerHTML += `<div class="q-block">
+      <div class="q-text">${qi + 1}. ${q.q}</div>
+      ${q.opts.map((o, oi) => `<div class="opt" onclick="answer(${qi},${oi})">${o}</div>`).join('')}
+      <div class="explanation">&#128161; ${q.exp}</div>
+    </div>`;
+  });
+}
+buildQuiz();
+</script>
+</body>
+</html>

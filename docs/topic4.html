@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Topic 4 — Photography: Social Function, History &amp; Ideology</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f5f5f0; color: #1a1a1a; padding: 2rem 1rem; }
+.container { max-width: 880px; margin: 0 auto; }
+.back { display: inline-block; color: #1a3a6e; text-decoration: none; font-size: 0.9rem; margin-bottom: 1.5rem; }
+.back:hover { text-decoration: underline; }
+h1 { font-size: 1.5rem; font-weight: 700; color: #1a3a6e; }
+.subtitle { color: #555; font-size: 0.9rem; margin: 0.3rem 0 1.5rem; }
+.tabs { display: flex; gap: 8px; margin-bottom: 1.5rem; border-bottom: 2px solid #e0e0d8; padding-bottom: 0; }
+.tab-btn { padding: 0.5rem 1.25rem; border: none; background: none; cursor: pointer; font-size: 0.9rem; color: #666; border-bottom: 2px solid transparent; margin-bottom: -2px; font-weight: 500; }
+.tab-btn.active { color: #1a3a6e; border-bottom-color: #1a3a6e; }
+.section { display: none; }
+.section.active { display: block; }
+
+h2 { font-size: 1.15rem; font-weight: 600; color: #1a3a6e; margin: 1.75rem 0 0.75rem; }
+h3 { font-size: 1rem; font-weight: 600; color: #333; margin: 1rem 0 0.5rem; }
+p { line-height: 1.65; margin-bottom: 0.75rem; color: #333; }
+ul, ol { padding-left: 1.5rem; margin-bottom: 0.75rem; }
+li { line-height: 1.6; margin-bottom: 0.3rem; }
+
+.card { background: #fff; border: 1px solid #e0e0d8; border-radius: 10px; padding: 1.1rem 1.25rem; margin-bottom: 1rem; }
+.card-title { font-weight: 600; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.6rem; }
+.blue .card-title { color: #1a3a6e; }
+.teal .card-title { color: #0f766e; }
+.amber .card-title { color: #92400e; }
+.coral .card-title { color: #c2410c; }
+.purple .card-title { color: #6d28d9; }
+.green .card-title { color: #065f46; }
+
+.grid2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin-bottom: 1rem; }
+.grid3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-bottom: 1rem; }
+
+.info-box { border-left: 4px solid #3b82f6; background: #eff6ff; padding: 0.85rem 1rem; border-radius: 0 8px 8px 0; margin-bottom: 1rem; }
+.success-box { border-left: 4px solid #4caf50; background: #f0fdf4; padding: 0.85rem 1rem; border-radius: 0 8px 8px 0; margin-bottom: 1rem; }
+.warning-box { border-left: 4px solid #f59e0b; background: #fffbeb; padding: 0.85rem 1rem; border-radius: 0 8px 8px 0; margin-bottom: 1rem; }
+.purple-box { border-left: 4px solid #6d28d9; background: #f5f3ff; padding: 0.85rem 1rem; border-radius: 0 8px 8px 0; margin-bottom: 1rem; }
+
+/* Timeline */
+.timeline { position: relative; padding-left: 1.5rem; margin-bottom: 1.25rem; }
+.timeline::before { content: ''; position: absolute; left: 0; top: 4px; bottom: 4px; width: 2px; background: #e0e0d8; }
+.tl-item { position: relative; margin-bottom: 1rem; }
+.tl-item::before { content: ''; position: absolute; left: -1.75rem; top: 5px; width: 10px; height: 10px; border-radius: 50%; background: #1a3a6e; border: 2px solid #fff; box-shadow: 0 0 0 2px #1a3a6e; }
+.tl-year { font-size: 0.75rem; font-weight: 700; color: #1a3a6e; text-transform: uppercase; letter-spacing: 0.04em; }
+.tl-desc { font-size: 0.9rem; color: #333; line-height: 1.5; }
+
+/* Dual capacity */
+.dual-card { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border-radius: 10px; overflow: hidden; border: 1px solid #e0e0d8; margin-bottom: 1rem; }
+.dual-left { background: #eff6ff; padding: 1rem 1.1rem; }
+.dual-right { background: #fef2f2; padding: 1rem 1.1rem; border-left: 1px solid #e0e0d8; }
+.dual-label { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.4rem; }
+.dual-left .dual-label { color: #1d4ed8; }
+.dual-right .dual-label { color: #b91c1c; }
+.dual-card p { font-size: 0.88rem; margin: 0; }
+
+/* Quiz */
+.score-bar { background: #e0e0d8; border-radius: 8px; height: 8px; margin-bottom: 1.5rem; overflow: hidden; }
+#scorefill { height: 100%; background: #1a3a6e; border-radius: 8px; width: 0%; transition: width 0.4s; }
+.score-text { font-size: 0.85rem; color: #555; margin-bottom: 0.5rem; }
+.q-block { background: #fff; border: 1px solid #e0e0d8; border-radius: 10px; padding: 1.1rem 1.25rem; margin-bottom: 1rem; }
+.q-text { font-weight: 500; margin-bottom: 0.75rem; font-size: 0.95rem; }
+.opt { padding: 0.6rem 0.9rem; border: 1px solid #e0e0d8; border-radius: 7px; margin-bottom: 0.4rem; cursor: pointer; font-size: 0.9rem; transition: background 0.1s; }
+.opt:hover:not(.correct):not(.wrong) { background: #f0f0eb; }
+.opt.correct { background: #d1fae5; border-color: #4caf50; color: #065f46; pointer-events: none; }
+.opt.wrong { background: #fee2e2; border-color: #ef4444; color: #991b1b; pointer-events: none; }
+.opt.disabled { pointer-events: none; color: #aaa; }
+.explanation { margin-top: 0.6rem; font-size: 0.85rem; color: #555; background: #f5f5f0; padding: 0.6rem 0.8rem; border-radius: 6px; display: none; }
+</style>
+</head>
+<body>
+<div class="container">
+  <a class="back" href="index.html">← Back</a>
+  <h1>Photography: Social Function, History &amp; Ideology</h1>
+  <p class="subtitle">Cultural Memory and Photographs · Topic 4 — Foto Okuma 4</p>
+
+  <div class="tabs">
+    <button class="tab-btn active" onclick="switchTab('lesson', this)">Lesson</button>
+    <button class="tab-btn" onclick="switchTab('quiz', this)">Quiz (15 Q)</button>
+  </div>
+
+  <!-- ═══ LESSON SECTION ═══ -->
+  <div id="lesson" class="section active">
+
+    <div class="info-box">
+      <strong>This topic covers:</strong> Photography as a social act governed by norms; its psychological functions; the transformation from ceremony to reflex; Susan Sontag's critique of photography in capitalist society; photography in the Ottoman Empire; and the problem of ambiguity in photographic meaning.
+    </div>
+
+    <!-- SECTION 1 -->
+    <h2>1. Photography as a Social Act</h2>
+
+    <p>Photography is not simply the recording of a visual moment — it is a <strong>socially governed action</strong>. Every act of taking or posing for a photograph is performed in accordance with cultural rules, social norms, and shared expectations about how people and moments should be represented.</p>
+
+    <div class="grid2">
+      <div class="card blue">
+        <div class="card-title">Photography as a Need</div>
+        <p>Photography responds to deep psychological needs: to <strong>protect against time</strong>, to communicate with others, to achieve self-realization, and to escape from reality. It is not a luxury — it functions as a form of psychological anchoring in modern life.</p>
+      </div>
+      <div class="card teal">
+        <div class="card-title">Photography as Compliance</div>
+        <p>Taking and posing for photographs is an act of <strong>compliance with social norms</strong>. We photograph what we are supposed to photograph (milestones, family, travel) and pose in ways that confirm our social roles and relationships.</p>
+      </div>
+    </div>
+
+    <h3>The Psychological Functions of Photography</h3>
+    <div class="grid2">
+      <div class="card amber">
+        <div class="card-title">Protection against time</div>
+        <p>Photography arrests the flow of time, preserving a moment that would otherwise be lost. This is why we photograph births, weddings, and last gatherings — we resist time's erasure.</p>
+      </div>
+      <div class="card coral">
+        <div class="card-title">Communication with others</div>
+        <p>Photographs are a form of social exchange — showing, sharing, and presenting ourselves to others. They maintain bonds across distance and time.</p>
+      </div>
+      <div class="card blue">
+        <div class="card-title">Self-realization</div>
+        <p>Being photographed and keeping photographs is a way of affirming one's existence and identity. "I was here. I mattered."</p>
+      </div>
+      <div class="card purple">
+        <div class="card-title">Escape from reality</div>
+        <p>Photography can also be a means of constructing an idealized version of life — presenting a curated self to the world rather than lived reality.</p>
+      </div>
+    </div>
+
+    <!-- SECTION 2 -->
+    <h2>2. Family Photography and the "Third Space"</h2>
+
+    <p>Family photographs occupy a unique position: they are the intersection of <strong>public and private space</strong> — what scholars call a <em>third space</em>. They are personal and intimate, yet they follow public conventions about how families should look and what family moments are worth photographing.</p>
+
+    <div class="info-box">
+      <strong>Key insight:</strong> Family photographs are not primarily about the <em>past</em> — they are about the <em>present</em>. They are displayed and shared to communicate something about the family <em>now</em>: our happiness, our bonds, our identity. The past event they record is secondary to the current message they send.
+    </div>
+
+    <p>This is why family albums are edited so heavily — unflattering moments, conflicts, and absent members are systematically excluded. The album constructs an ideal version of the family for current consumption, not an archive of what actually happened.</p>
+
+    <!-- SECTION 3 -->
+    <h2>3. From Ceremony to Reflex: The Historical Transformation</h2>
+
+    <p>Photography's relationship to everyday life has undergone a fundamental transformation. In its early decades, being photographed was a <strong>ceremony</strong> — a formal, deliberate, and relatively rare event. Today, it is a <strong>reflex</strong> — instantaneous, casual, and ubiquitous.</p>
+
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-year">Early Photography</div>
+        <div class="tl-desc">Being photographed required studio visits, long exposure times, formal dress, and deliberate preparation. It was a significant occasion — a ceremony marking important life moments.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">Portable Cameras</div>
+        <div class="tl-desc">The invention of portable cameras was the key technological turning point. Photography became physically accessible to ordinary people outside the studio, enabling casual and spontaneous image-making.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">Photography as Hobby</div>
+        <div class="tl-desc">As photography became a hobby and daily habit, image-making began to follow text (photojournalism) and drive commerce (advertising). The speed of image production accelerated dramatically.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">Photography as Reflex</div>
+        <div class="tl-desc">Photography is now an unquestioned, automatic part of modern perception. The phone camera is always present. The impulse to photograph precedes any conscious decision — it has become a reflex of modern life.</div>
+      </div>
+    </div>
+
+    <div class="warning-box">
+      <strong>Consequence of the transformation:</strong> When photography becomes a reflex, the conscious choices embedded in the act — what to frame, what to exclude, what to celebrate — become invisible. We forget that every photograph is a decision, not a recording.
+    </div>
+
+    <!-- SECTION 4 -->
+    <h2>4. Sontag: Photography in Capitalist Society</h2>
+
+    <p>Susan Sontag offers a critical analysis of photography's role in capitalist society. Her argument is that capitalism <em>needs</em> a culture of images — not as a luxury, but as a structural requirement.</p>
+
+    <h3>Why Capitalism Needs an Image Culture</h3>
+    <div class="grid2">
+      <div class="card coral">
+        <div class="card-title">Accelerating Consumption</div>
+        <p>A constant flow of images stimulates desire and accelerates purchasing. Advertising — an image industry — is the engine of consumer capitalism. Without images, the cycle of desire and consumption slows.</p>
+      </div>
+      <div class="card amber">
+        <div class="card-title">Managing Discontent</div>
+        <p>Capitalism generates inequalities of class, race, and gender. An endless supply of entertainment and spectacle — an "image culture" — anesthetizes this discontent, offering distraction in place of structural change.</p>
+      </div>
+      <div class="card blue">
+        <div class="card-title">Information Gathering</div>
+        <p>Administering a complex society requires constant collection of data and images — for bureaucratic management, productivity monitoring, and social control. Images are instruments of governance.</p>
+      </div>
+    </div>
+
+    <h3>The Dual Capacity of the Camera</h3>
+    <p>Sontag identifies a fundamental tension in how cameras define reality. The same technology serves two opposed social functions:</p>
+
+    <div class="dual-card">
+      <div class="dual-left">
+        <div class="dual-label">Spectacle — for the masses</div>
+        <p>Images as entertainment, pleasure, and fantasy. Photography makes the world available as a visual feast — democratizing experience, offering escape, producing desire. The masses consume images.</p>
+      </div>
+      <div class="dual-right">
+        <div class="dual-label">Surveillance — for power</div>
+        <p>Images as evidence, control, and monitoring. The same cameras that produce entertainment also produce documentation — of citizens, workers, and populations — that serves those who hold power.</p>
+      </div>
+    </div>
+
+    <div class="purple-box">
+      <strong>Sontag's point:</strong> These two functions are not separate — they are two sides of the same image culture. The camera that takes vacation photographs is the same technology as the camera that monitors public spaces. The difference lies entirely in <em>who controls the image and to what end</em>.
+    </div>
+
+    <!-- SECTION 5 -->
+    <h2>5. Photography in the Ottoman Empire</h2>
+
+    <p>The Ottoman Empire provides a historically rich case study of how photography entered a non-Western society and was rapidly adapted to serve existing cultural and political purposes.</p>
+
+    <h3>Key Actors and Events</h3>
+
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-year">Sultan Abdülmecid (1842)</div>
+        <div class="tl-desc">The first Ottoman sultan to be photographed. Photography entered the palace as a mark of modernity and prestige — the Sultan's engagement with the new technology signaled openness to Western innovation.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">Abdullah Biraderler (Brothers)</div>
+        <div class="tl-desc">The official photographers of the Ottoman court. Renowned for their elaborate presentation: the Sultan's photographs were prepared with gold leaf decoration — photography immediately became a luxury and prestige object at court.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">Cosmopolitan Archives</div>
+        <div class="tl-desc">Photographs from the period bear text on their backs in Ottoman Turkish, French, Greek, and Armenian — reflecting the empire's multiethnic and multilingual character. The photographic archive is itself a document of Ottoman cosmopolitanism.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">Documentary Photography</div>
+        <div class="tl-desc">Beyond portraits, photography documented Istanbul's ancient monuments and recorded historical events — including photographs of soldiers victorious in the 1877 Ottoman-Russian War. Photography served both cultural pride and historical record-keeping.</div>
+      </div>
+    </div>
+
+    <div class="success-box">
+      <strong>Ottoman photography as cultural analysis:</strong> The elaborate, gold-leaf-decorated court photographs reflect a culture that understood photography not as documentation but as <em>representation of prestige</em>. The medium was quickly adapted to existing conventions of power display rather than transforming those conventions.
+    </div>
+
+    <!-- SECTION 6 -->
+    <h2>6. Ambiguity in Photographic Meaning</h2>
+
+    <p>Photographs are inherently <strong>ambiguous</strong>. Because a photograph isolates a moment from its original context — it <em>quotes from appearances</em> — it severs the image from the continuous reality that gave it meaning.</p>
+
+    <h3>Why Photographs Are "Blurry" in Meaning</h3>
+    <p>A photograph captures a fraction of a second from a complex, continuous situation. The viewer sees the image without knowing what happened before, after, or around it. This disconnection creates natural ambiguity: the same image can support multiple, even contradictory, interpretations.</p>
+
+    <div class="grid2">
+      <div class="card blue">
+        <div class="card-title">How ambiguity is resolved: Personal bond</div>
+        <p>Ambiguity disappears when the viewer has a <strong>personal connection</strong> to the event shown. A family member looking at a family photograph fills in the context automatically — they complete the continuity that the image severed. The meaning is not in the image; it is in the viewer's memory.</p>
+      </div>
+      <div class="card teal">
+        <div class="card-title">How ambiguity is resolved: Text / Captions</div>
+        <p>For a general audience without personal connection, ambiguity is typically resolved by <strong>words</strong> — captions, labels, and accompanying text that claim to tell the viewer what the image "really" shows. This is why the same image with different captions produces entirely different meanings.</p>
+      </div>
+    </div>
+
+    <div class="warning-box">
+      <strong>Critical implication:</strong> When we read a caption, we experience it as a neutral clarification — as if the caption merely describes what is already obvious in the image. But the caption is actually <em>constructing</em> the meaning, not revealing it. The ambiguity of the image makes this construction invisible.
+    </div>
+
+    <!-- SECTION 7: POSING -->
+    <h2>7. Posing as Cultural Construct</h2>
+
+    <p>Even seemingly "natural" photographs are cultural constructs. When people pose for photographs, they perform their social roles — communicating their relationships, status, and identity through physical arrangement.</p>
+
+    <div class="grid2">
+      <div class="card amber">
+        <div class="card-title">Posed photographs</div>
+        <p>In formal group photographs, people stand close together, upright, looking at the camera — <strong>confirming their social roles and relationships</strong>. The arrangement is not natural; it is a performance of social structure made visible.</p>
+      </div>
+      <div class="card coral">
+        <div class="card-title">Candid / spontaneous photographs</div>
+        <p>Even in "candid" shots, the subject cannot escape cultural codes. They act according to internalized norms about <strong>how they should look</strong> and how they want to be seen. The codes are embodied — not consciously chosen in the moment, but always present.</p>
+      </div>
+    </div>
+
+    <p>This means there is no such thing as a "purely natural" photograph. The photographer's cultural framework, the subject's embodied norms, and the viewer's interpretive conventions all ensure that every photograph — however spontaneous it appears — is a cultural construction.</p>
+
+  </div><!-- end lesson -->
+
+  <!-- ═══ QUIZ SECTION ═══ -->
+  <div id="quiz" class="section">
+    <p class="score-text">Score: <span id="scorenum">0</span> / 15</p>
+    <div class="score-bar"><div id="scorefill"></div></div>
+    <div id="quiz-container"></div>
+  </div>
+</div>
+
+<script>
+function switchTab(id, btn) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+}
+
+const questions = [
+  {
+    q: "According to the sources, what is photography described as — beyond simply recording a visual moment?",
+    opts: [
+      "A purely technical process with no social dimensions",
+      "A socially governed action performed in compliance with cultural rules and norms",
+      "An objective scientific instrument for documenting reality",
+      "A private act with no relationship to collective meaning"
+    ],
+    ans: 1,
+    exp: "Photography is a social act: it is governed by cultural norms about what to photograph, how to pose, and what moments are worth recording. It is as much about social compliance as about image-making."
+  },
+  {
+    q: "Which of the following is listed as one of the psychological functions of photography?",
+    opts: [
+      "Accelerating economic growth through tourism",
+      "Replacing verbal communication in modern society",
+      "Protecting against time by preserving moments that would otherwise be lost",
+      "Providing objective evidence for legal proceedings"
+    ],
+    ans: 2,
+    exp: "Photography serves deep psychological needs including protection against time, communication with others, self-realization, and escape from reality."
+  },
+  {
+    q: "Why are family photographs described as a 'third space'?",
+    opts: [
+      "Because they are usually stored in a third drawer or shelf",
+      "Because they are taken in neither the home nor the workplace",
+      "Because they exist at the intersection of public and private space, following public conventions while documenting private life",
+      "Because they require a third party (photographer) to be produced"
+    ],
+    ans: 2,
+    exp: "Family photographs occupy a 'third space' — they are personal and intimate, yet they follow public norms about what families should look like and what moments are worth photographing."
+  },
+  {
+    q: "According to the sources, what is family photography primarily about?",
+    opts: [
+      "Preserving an accurate archive of what actually happened in the past",
+      "The present — communicating something about the family now, rather than the past event recorded",
+      "Creating legal documentation of family membership",
+      "Producing historical records for future generations"
+    ],
+    ans: 1,
+    exp: "Family photographs are about the present: they communicate current identity and bonds. The past event they record is secondary to the current message they send about the family today."
+  },
+  {
+    q: "What was the key technological development that transformed photography from a 'ceremony' into a 'reflex'?",
+    opts: [
+      "The invention of color photography",
+      "The development of digital image sensors",
+      "The invention of portable cameras",
+      "The introduction of photography into schools"
+    ],
+    ans: 2,
+    exp: "Portable cameras were the turning point: they made photography physically accessible outside the studio, transforming it from a formal, deliberate ceremony into a casual, everyday reflex."
+  },
+  {
+    q: "When photography became a 'reflex,' what important consequence followed?",
+    opts: [
+      "Photography became more accurate and objective",
+      "The conscious choices embedded in every photograph — framing, exclusion, emphasis — became invisible",
+      "People stopped photographing formal occasions entirely",
+      "Photography was democratized and became more socially equal"
+    ],
+    ans: 1,
+    exp: "When photography becomes automatic, we forget that every photograph involves decisions. The selectivity and construction embedded in each image become invisible, appearing natural rather than chosen."
+  },
+  {
+    q: "According to Susan Sontag, why does capitalist society need an image culture?",
+    opts: [
+      "Because images are cheaper to produce than written texts",
+      "To accelerate consumption, manage social discontent, and collect information for governance",
+      "Because photography is the most democratic form of artistic expression",
+      "To preserve cultural heritage for future generations"
+    ],
+    ans: 1,
+    exp: "Sontag argues capitalism structurally needs images: to stimulate desires that drive consumption, to anesthetize class/racial/gender discontent with entertainment, and to gather information for bureaucratic control."
+  },
+  {
+    q: "Sontag describes the camera as having a 'dual capacity.' What are the two sides of this capacity?",
+    opts: [
+      "Recording and erasing; preservation and destruction",
+      "Black-and-white and color; analog and digital",
+      "Spectacle for the masses and surveillance for those in power",
+      "Personal memory and public archive; private and institutional"
+    ],
+    ans: 2,
+    exp: "The same camera technology serves as spectacle (entertainment and pleasure for the masses) and surveillance (monitoring and control for those who hold power). The difference lies in who controls the image."
+  },
+  {
+    q: "Which Ottoman sultan was the first to be photographed, and approximately when?",
+    opts: [
+      "Sultan Abdülhamid II, around 1876",
+      "Sultan Mahmud II, around 1830",
+      "Sultan Abdülmecid, around 1842",
+      "Sultan Süleyman I, around 1520"
+    ],
+    ans: 2,
+    exp: "Sultan Abdülmecid was the first Ottoman sultan to be photographed (1842). Photography entered the palace as a mark of modernity and engagement with Western technological innovation."
+  },
+  {
+    q: "Who were the Abdullah Biraderler (Abdullah Brothers) and what is notable about their work?",
+    opts: [
+      "Ottoman military photographers who documented the Crimean War",
+      "The official court photographers who prepared the Sultan's photographs with gold leaf decoration",
+      "German photographers who introduced photography to Istanbul",
+      "Photojournalists who documented Ottoman street life in the 1890s"
+    ],
+    ans: 1,
+    exp: "The Abdullah Brothers were the official photographers of the Ottoman court. Their practice of decorating the Sultan's photographs with gold leaf shows that photography was immediately adapted as a luxury prestige object rather than a neutral document."
+  },
+  {
+    q: "What does the presence of Ottoman Turkish, French, Greek, and Armenian text on Ottoman-era photographs tell us?",
+    opts: [
+      "That photographs were exported to multiple European countries for sale",
+      "That the photographers were uncertain which language to use",
+      "That the Ottoman photographic archive reflects the empire's cosmopolitan, multiethnic character",
+      "That photographs required government translation for official use"
+    ],
+    ans: 2,
+    exp: "The multilingual backs of Ottoman photographs are themselves a document of the empire's cosmopolitanism — its diverse ethnic and linguistic communities all engaged with the new medium."
+  },
+  {
+    q: "Why are photographs described as inherently 'ambiguous' in meaning?",
+    opts: [
+      "Because photographic technology was imprecise in the 19th century",
+      "Because photographs isolate a moment from its continuous context, severing the image from the reality that gave it meaning",
+      "Because most photographers lack formal training in visual communication",
+      "Because viewers are generally uneducated about photography"
+    ],
+    ans: 1,
+    exp: "A photograph 'quotes from appearances' — it extracts a fraction of a second from a complex, continuous situation. The viewer sees the image without knowing what happened before, after, or around it, creating natural ambiguity."
+  },
+  {
+    q: "According to the sources, how is photographic ambiguity resolved for a viewer who has a personal connection to the event shown?",
+    opts: [
+      "By reading the caption carefully",
+      "By consulting historical archives",
+      "By filling in the context from their own memory — they complete the continuity the image severed",
+      "By comparing it with other photographs of the same event"
+    ],
+    ans: 2,
+    exp: "A viewer with personal connection to the event doesn't need a caption — their memory provides the context that the photograph severed. The meaning is not in the image; it is in the viewer's lived knowledge."
+  },
+  {
+    q: "How is photographic ambiguity typically resolved for a general audience without personal connection?",
+    opts: [
+      "Through the visual quality and composition of the image",
+      "Through captions and written text that prescribe what the viewer is meant to see",
+      "Through the photographer's reputation and credentials",
+      "Through the size and display format of the photograph"
+    ],
+    ans: 1,
+    exp: "For general audiences, captions and accompanying text resolve ambiguity — but they do so by constructing the meaning, not merely describing what is already there. The caption's power is precisely that it appears to clarify rather than to construct."
+  },
+  {
+    q: "Why can't even 'spontaneous' or candid photographs escape being cultural constructs?",
+    opts: [
+      "Because all photographs are staged by professional photographers",
+      "Because cameras always distort reality through their lenses",
+      "Because subjects act according to internalized cultural norms about how they should look and how they want to be seen, even without conscious choice",
+      "Because candid photographs are later edited before being shown publicly"
+    ],
+    ans: 2,
+    exp: "Even without deliberate posing, subjects embody cultural codes about appearance and self-presentation. These norms are internalized — not consciously chosen in the moment — but always operative. There is no culturally 'raw' photograph."
+  }
+];
+
+let answered = Array(questions.length).fill(false);
+let score = 0;
+
+function answer(qi, oi) {
+  if (answered[qi]) return;
+  answered[qi] = true;
+  const block = document.querySelectorAll('.q-block')[qi];
+  const opts = block.querySelectorAll('.opt');
+  opts.forEach((o, i) => {
+    if (i === questions[qi].ans) o.classList.add('correct');
+    else o.classList.add(i === oi ? 'wrong' : 'disabled');
+  });
+  block.querySelector('.explanation').style.display = 'block';
+  if (oi === questions[qi].ans) score++;
+  document.getElementById('scorenum').textContent = score;
+  document.getElementById('scorefill').style.width = (answered.filter(Boolean).length / questions.length * 100) + '%';
+}
+
+function buildQuiz() {
+  const c = document.getElementById('quiz-container');
+  questions.forEach((q, qi) => {
+    c.innerHTML += `<div class="q-block">
+      <div class="q-text">${qi + 1}. ${q.q}</div>
+      ${q.opts.map((o, oi) => `<div class="opt" onclick="answer(${qi},${oi})">${o}</div>`).join('')}
+      <div class="explanation">&#128161; ${q.exp}</div>
+    </div>`;
+  });
+}
+buildQuiz();
+</script>
+</body>
+</html>
